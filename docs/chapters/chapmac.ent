@@ -1,4 +1,5 @@
 <!ENTITY ch.intro SYSTEM "intro.sgml">
+<!ENTITY ch.getstart SYSTEM "getstart.sgml">
 <!--
 # arch-tag: basic macros common to all chapters
 -->

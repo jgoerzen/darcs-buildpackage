@@ -7,7 +7,10 @@
 <!ENTITY man.com.environment.refsect1 SYSTEM "com.environment.sgml">
 <!ENTITY man.com.files.refsect1 SYSTEM "com.files.sgml">
 <!ENTITY man.com.seealso.para SYSTEM "com.seealso.sgml">
+
 <!ENTITY tbp "<application>tla-buildpackage</application>">
+<!ENTITY tbp-initarchive "<command>tbp-initarchive</command>">
+<!ENTITY tla "<application>tla</application>">
 <!--
 # arch-tag: basic macros common to all manpages
 -->

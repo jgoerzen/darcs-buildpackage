@@ -34,8 +34,8 @@ def handlewaitval(waitval):
     return ",".join(errors)
 
 def qrun(command):
-    hwv = handlewaitval(os.system(command))
     print " *", command
+    hwv = handlewaitval(os.system(command))
     if hwv:
         raise RuntimeError, "Command %s: %s" % (command, hwv)
     return []

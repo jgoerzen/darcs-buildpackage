@@ -1,0 +1,132 @@
+  <chapter id="tbp.getstart">
+    <title>Getting Started</title>
+    <para>
+      Getting started with &tbp; is pretty simple -- you just need to
+      run <link
+	linkend="tbp.man.tbp.initarchive"><command>tbp-initarchive</command></link>.  This chapter shows you how.
+    </para>
+
+    <sect1 id="tbp.getstart.archivename">
+      <title>Archive Names</title>
+      <indexterm><primary>Archive</><secondary>Names</></>
+      <para>
+	The tla system uses a globally unique archive name to refer to
+	an instance of a particular archive.  (Arch supports mirrors
+	of archives; each mirror has the same archive name but a
+	different archive location.)  Generally, the archive name uses
+	your name followed by two dashes and then an identifier.  Some
+	people might just use "2003" for the identifier.  &tbp; is
+	designed to have an archive all to itself, so I suggest using
+	"debian" for the identifier.  So, your archive name might be:
+      </para>
+      <para>
+	foo@example.com--debian
+      </para>
+    </sect1>
+
+    <sect1 id="tbp.getstart.init">
+      <title>Running tbp-initarchive</title>
+      <indexterm significance="preferred"><primary>tbp-initarchive</></>
+      <para>
+	Once you have decided on an archive name, you are ready to run
+	<command>tbp-initarchive</command>.  It takes three arguments:
+	your archive name, an archive location, and a working
+	location.  The archive location is where all the tla files go
+	(similar to the CVSROOT in cvs).  You will never need to
+	access that directory manually.  You can use an sftp URL for
+	the location if you wish to publish it on another machine.
+      </para>
+      <para>
+	The working location is where you will do your daily work.
+	tbp-initarchive creates both directories for you; they must
+	not already exist.
+	Here is an example:
+      </para>
+      <screen>
+$ <command>tbp-initarchive jgoerzen@complete.org--debian \
+  ~/arch/debian ~/tree/debian</command>
+Making working copy location...
+Creating archive...
+ * tla make-archive -l "jgoerzen@complete.org--debian" "/home/jgoerzen/arch/debian"
+Initializing archive...
+ * tla archive-setup "jgoerzen@complete.org--debian/configs--head--1.0"
+* creating category jgoerzen@complete.org--debian/configs
+* creating branch jgoerzen@complete.org--debian/configs--head
+* creating version jgoerzen@complete.org--debian/configs--head--1.0
+Initializing config tree...
+ * tla init-tree "jgoerzen@complete.org--debian/configs--head--1.0"
+ * tla tagging-method tagline
+method set: tagline
+Populating config tree...
+ * tla add-tag configs
+ * tla add-tag configs/upstream
+ * tla add-tag configs/debian
+Importing config tree...
+ * tla import
+* imported jgoerzen@complete.org--debian/configs--head--1.0
+Generating /home/jgoerzen/.tla-buildpackage
+Operation successful.
+      </screen>
+      <para>
+	Every step of the way, you can see the tla commands that are
+	being run, but you don't really need to know.  Your archive is
+	set up; in the future, you'll do all your work out of your
+	working tree (<filename>~/tree/debian</filename> in this
+	example).
+      </para>
+    </sect1>
+    <sect1 id="tbp.getstart.defaultarchive">
+      <title>Setting Your Default Archive</title>
+      <indexterm><primary>Archive</><secondary>Default</></>
+      <para>
+	&tla; has a notion of a default archive.  I highly recommend
+	doing this.  If you do not, you'll need to use -A to specify
+	the archive each time you refer to a specific revision in
+	&tla;.  While that may not be often, it can save some
+	hassles.  (The &tbp; tools automatically find the right
+	archive and don't need to be told.)
+      </para>
+      <para>
+	To set your archive, just use a command like this:
+      </para>
+      <para>
+	<command>tla my-default-archive
+	  jgoerzen@complete.org--debian</command>
+      </para>
+      <para>
+	The remainder of this manual assumes that you have done this.
+	If you didn't, some examples may not work, and you should see
+	a doctor about that carpal tunnel :-)
+      </para>
+    </sect1>
+
+    <sect1 id="tbp.getstart.pref">
+      <title>The ~/.tla-buildpackage file</title>
+      <indexterm significance="preferred"><primary>~/.tla-buildpackage</></>
+      <indexterm><primary>Working Tree</><secondary>Location Of</></>
+      <para>
+	The <filename>~/.tla-buildpackage</filename> file holds the
+	path to your working tree.  <command>tbp-initarchive</command>
+	will create and set it up for you if it does not already
+	exist.  If it does already exist, and you want your default
+	changed, you'll have to edit it manually.  It has just one
+	line, which is the full path to the working tree.
+      </para>
+      <para>
+	When you run any of the &tbp; tools except for
+	<command>tbp-initarchive</command>, you can set the
+	environment variable TBP_WC to a different path, which will
+	override the default.
+      </para>
+    </sect1>
+  </chapter>
+
+<!--
+Local Variables:
+mode: sgml
+sgml-parent-document:("../tbp.sgml" "book")
+sgml-set-face: T
+End:
+
+# arch-tag: common data for tla-buildpackage manual: getting started chapter
+-->

@@ -1,6 +1,7 @@
 
 <!-- <reference> -->
   <refentry id="tbp.man.tbp.initarchive">
+    <indexterm><primary>tbp-initarchive</><secondary>Reference For</></>
     <refentryinfo>
       <address><email>jgoerzen@complete.org</email></address>
       <author><firstname>John</firstname><surname>Goerzen</surname></author>
@@ -19,19 +20,59 @@
 
     <refsynopsisdiv>
       <cmdsynopsis>
-	<command>FIXME tla-buildpackage</command>
-	<arg rep="repeat"><replaceable>args for
-	    debuild</replaceable></arg>
+	<command>tbp-initarchive</command>
+	<arg choice="plain"><replaceable>archive_name</replaceable></arg>
+	<arg choice="plain"><replaceable>archive_location</></>
+	<arg choice="plain"><replaceable>working_location</></>
       </cmdsynopsis>
     </refsynopsisdiv>
 
-    <refsect1>
+    <refsect1 id="tbp.man.tbp.initarchive.description">
       <title>Description</title>
       <para>
-	FOO
+	&tbp-initarchive; is designed to set up both the &tla; archive
+	and the working area for a &tbp; setup.  It automatically
+	handles all the tasks relating to running tla and &tbp;
+      </para>
+      <para>
+	&tbp-initarchive; will create the tla archive
+	<property>archive_name</property> in
+	<property>archive_location</property>, and check it out into
+	<property>working_location</property>, having initialized that
+	working area for &tbp;.  If
+	<filename>~/.tla-buildpackage</filename> does not exist, it
+	will be created and the working location will be written into it.
       </para>
     </refsect1>
 
+    <refsect1 id="tbp.man.tbp.initarchove.options">
+      <title>Options</title>
+      <variablelist>
+	<varlistentry><term>archive_name</term>
+	  <listitem><para>Gives the tla name of the archive to
+	      create.  tla must not know anything about it prior to
+	      running this command.  An example would be
+	      foo@example.com--debian.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry><term>archive_location</term>
+	  <listitem><para>Gives the directory where tla will create
+	      its history files.  It must not exist prior to running
+	      this command.
+	    </para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry><term>working_location</term>
+	  <listitem><para>Gives the directory where you will work with
+	      &tbp; on a daily basis.
+	    </para>
+	  </listitem>
+	</varlistentry>
+      </variablelist>
+    </refsect1>
+      
     &man.com.files.refsect1;
     &man.com.environment.refsect1;
     &man.com.footer.refsect1;
@@ -41,9 +82,7 @@
       &man.com.seealso.para;
       <para>
 	Other related references include:
-	<application>tla</application>(1),
-	<application>debuild</application>(1),
-	<application>dpkg-buildpackage</application>(1).
+	<application>tla</application>(1).
       </para>
     </refsect1>
       
@@ -55,7 +94,7 @@
 <!--
 Local Variables:
 mode: sgml
-sgml-parent-document:("../tbp.sgml" "book" "part" "reference")
+sgml-parent-document:("../tbp.sgml" "book" "appendix" "reference")
 sgml-set-face: T
 End:
 

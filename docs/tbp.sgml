@@ -15,6 +15,7 @@
     <address><email>jgoerzen@complete.org</email></address>
   </bookinfo>
   &ch.intro;
+  &ch.getstart;
   
   <appendix id="tbp.man.reference">
     <title>Command Reference</title>

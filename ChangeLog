@@ -2,6 +2,27 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/tla-buildpackage--head--1.0
 #
 
+2003-10-16 16:28:06 GMT	John Goerzen <jgoerzen@complete.org>	patch-36
+
+    Summary:
+      Making more progress on docs
+    Revision:
+      tla-buildpackage--head--1.0--patch-36
+
+    Making more progress on docs
+    
+
+    new files:
+     ./docs/chapters/getstart.sgml
+
+    modified files:
+     ./ChangeLog ./docs/chapters/chapmac.ent
+     ./docs/chapters/intro.sgml ./docs/mansgml/manmac.ent
+     ./docs/mansgml/tbp-initarchive.sgml
+     ./docs/mansgml/tla-buildpackage.sgml ./docs/tbp.sgml
+     ./tbppy/extcmd.py
+
+
 2003-10-16 15:40:37 GMT	John Goerzen <jgoerzen@complete.org>	patch-35
 
     Summary:

@@ -116,7 +116,7 @@
 <!--
 Local Variables:
 mode: sgml
-sgml-parent-document:("../tbp.sgml" "book" "part")
+sgml-parent-document:("../tbp.sgml" "book")
 sgml-set-face: T
 End:
 
