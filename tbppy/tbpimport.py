@@ -69,10 +69,11 @@ def importdsc(dscname):
 
     os.chdir(wc)
     archive = tla.getarchive()
-    tlaupstreamrev = extcmd.run('tla catcfg upstream/%s/%s' % \
+    tlaupstreamrev = extcmd.run('tla cfgcat upstream/%s/%s' % \
                                 (dscinfo['Source'],
                                  versions.getupstreamver(dscinfo['Version'])))
     tlaupstreamrev = tlaupstreamrev[0].split("\t")[1].strip()
+    tlaupstreamrevb = re.search('^[^/]+/(.+)$', tlaupstreamrev).group(1)
     tladebianver = "%s/%s--debian--1.0" % (archive, dscinfo['Source'])
     isnew = tla.condsetup(tladebianver)
     configs.makepkgconfigifneeded('debian', dscinfo['Source'])
@@ -105,7 +106,10 @@ def importdsc(dscname):
            versions.getupstreamver(dscinfo['Version']):
             # OK, our current tree doesn't use the same upstream
             # version as the new one.  So we need to fix.
-            extcmd.qrun('tla star-merge "%s"' % tlaupstreamrev)
+            #extcmd.qrun('tla star-merge "%s"' % tlaupstreamrev)
+            extcmd.qrun('tla replay -A "%s" --new --in-place . "%s"' % \
+                        (archive, tlaupstreamrevb))
+            #extcmd.qrun('tla update --in-place . "%s"' % tlaupstreamrev)
             for file in extcmd.run('tla inventory -b'):
                 # Delete orig, rej files
                 file = file.rstrip()
@@ -124,7 +128,7 @@ def importdsc(dscname):
     os.chdir(wc)
     configs.writeconfig('debian', dscinfo['Source'], dscinfo['Version'],
                         newrev)
-    extcmd.qrun('tla commit -s "Added configs for Debian %s %s"' % \
+    extcmd.qrun('tla commit -L "Added configs for Debian %s %s"' % \
                 (dscinfo['Source'], dscinfo['Version']))
 
 
@@ -227,6 +231,6 @@ def importorigdir(dirname, package, version):
     
     configs.writeconfig('upstream', package, version, newrev)
 
-    extcmd.qrun('tla commit -s "Added configs for upstream %s %s"' % \
+    extcmd.qrun('tla commit -L "Added configs for upstream %s %s"' % \
                 (package, version))
     

@@ -2,6 +2,21 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/tla-buildpackage--head--1.0
 #
 
+2003-10-15 21:58:23 GMT	John Goerzen <jgoerzen@complete.org>	patch-20
+
+    Summary:
+      Start of work trying to make it compatible with tla 1.0
+    Revision:
+      tla-buildpackage--head--1.0--patch-20
+
+    Start of work trying to make it compatible with tla 1.0
+    
+
+    modified files:
+     ./ChangeLog ./tbp-initarchive ./tbppy/configs.py
+     ./tbppy/tbpimport.py
+
+
 2003-10-15 20:21:32 GMT	John Goerzen <jgoerzen@complete.org>	patch-19
 
     Summary:

@@ -34,14 +34,14 @@ def makepkgconfigifneeded(configtype, package):
     if not os.path.exists('configs/%s/%s' % (configtype, package)):
         print "Adding new config dir for this %s package" % configtype
         os.mkdir('configs/%s/%s' % (configtype, package))
-        extcmd.run('tla add configs/%s/%s' % (configtype, package))
+        extcmd.run('tla add-tag configs/%s/%s' % (configtype, package))
 
 def makepkgdirifneeded(package):
     """Assumes we are in wc dir already."""
     if not os.path.exists('packages/%s' % package):
         print "Adding new package dir for %s" % package
         os.mkdir('packages/%s' % package)
-        extcmd.run('tla add packages/%s' % package)
+        extcmd.run('tla add-tag packages/%s' % package)
 
 def checkversion(configtype, package, version):
     """Iterates over versions of package present in the directory for
