@@ -2,6 +2,21 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/tla-buildpackage--head--1.0
 #
 
+2003-10-15 16:03:46 GMT	John Goerzen <jgoerzen@complete.org>	patch-14
+
+    Summary:
+      Bugfixes for upstream import
+    Revision:
+      tla-buildpackage--head--1.0--patch-14
+
+    I can now state that upstream import works with both a tar file and a
+    directory.
+
+    modified files:
+     ChangeLog tbppy/configs.py tbppy/extcmd.py tbppy/tbpimport.py
+     tbppy/tla.py
+
+
 2003-10-15 15:35:21 GMT	John Goerzen <jgoerzen@complete.org>	patch-13
 
     Summary:

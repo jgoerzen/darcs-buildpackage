@@ -16,7 +16,7 @@
 #    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
 
 import re, os, time
-import versions
+import versions, extcmd
 
 class InvalidConfigType(RuntimeError):
     pass
@@ -35,6 +35,13 @@ def makepkgconfigifneeded(configtype, package):
         print "Adding new config dir for this %s package" % configtype
         os.mkdir('configs/%s/%s' % (configtype, package))
         extcmd.run('tla add configs/%s/%s' % (configtype, package))
+
+def makepkgdirifneeded(package):
+    """Assumes we are in wc dir already."""
+    if not os.path.exists('packages/%s' % package):
+        print "Adding new package dir for %s" % package
+        os.mkdir('packages/%s' % package)
+        extcmd.run('tla add packages/%s' % package)
 
 def checkversion(configtype, package, version):
     """Iterates over versions of package present in the directory for
@@ -55,7 +62,7 @@ def writeconfig(configtype, package, pkgversion, tlaversion):
     """Writes a config file given the information passed in.  Assumes already
     in wc dir."""
     assertvalidtype(configtype)
-    fd = os.path.open('configs/%s/%s/%s' % (configtype, package, version), 'w')
+    fd = open('configs/%s/%s/%s' % (configtype, package, pkgversion), 'w')
     fd.write("# arch-tag: config for %s package %s version %s (%s)\n" % \
              (configtype, package, pkgversion, str(time.time())))
     fd.write("./packages/%s/%s-%s.orig" % (package, package, pkgversion))

@@ -36,8 +36,8 @@ def importorigtargz(tarname, package, version):
     """Imports the original source stored in the file named by tarname.
 
     Side effect: chdir to wc"""
-    tarname = os.abspath(tarname)
-    wc = os.abspath(tbpconfig.getwcdir())
+    tarname = os.path.abspath(tarname)
+    wc = os.path.abspath(tbpconfig.getwcdir())
 
     tmpdir = os.path.join(wc, ",,tbp-importorigtargz")
     os.mkdir(tmpdir)
@@ -52,6 +52,7 @@ def importorigtargz(tarname, package, version):
             srcdir = os.path.join(tmpdir, os.listdir(tmpdir)[0])
         importorigdir(srcdir, package, version)
     finally:
+        os.chdir(wc)
         rmrf(tmpdir)
 
 def importorigdir(dirname, package, version):
@@ -59,8 +60,8 @@ def importorigdir(dirname, package, version):
 
     Side-effect: chdir to wc"""
     print " *** Import upstream package %s version %s from directory %s" % (package, version, dirname)
-    dirname = os.abspath(dirname)
-    wc = os.abspath(tbpconfig.getwcdir())
+    dirname = os.path.abspath(dirname)
+    wc = os.path.abspath(tbpconfig.getwcdir())
     os.chdir(wc)
 
     archive = tla.getarchive()
@@ -75,6 +76,7 @@ def importorigdir(dirname, package, version):
     # After doing that, update the config file and commit.
     
     configs.makepkgconfigifneeded('upstream', package)
+    configs.makepkgdirifneeded(package)
     if not configs.checkversion('upstream', package, version):
         print "Upstream import: version %s is not newer than all versions in archive" % version
         print "Will not import upstream because of this."
@@ -97,17 +99,30 @@ def importorigdir(dirname, package, version):
         if isnew:
             print "Initializing storage area for upstream..."
             os.chdir(',,tbp-importorigdir')
-            extcmd.qrun('tla init-tree "%s"' % tlaversion)
+            extcmd.qrun('tla init-tree --nested "%s"' % tlaversion)
             extcmd.qrun('tla tagging-method explicit')
+            # Relax the source pattern...
+            fd = open('{arch}/=tagging-method')
+            lines = fd.readlines()
+            fd.close()
+            fd = open('{arch}/=tagging-method', 'w')
+            for line in lines:
+                if line.startswith('source '):
+                    fd.write(r'source (^[._=a-zA-Z0-9!#-].*$|^\.gdbinit)')
+                    fd.write("\n")
+                else:
+                    fd.write(line)
+            fd.close()
             extcmd.qrun('tla import')
             os.chdir(wc)
-        os.qrun('tla_load_dirs --wc="%s/,,tbp-importorigdir" --summary="Import upstream %s version %s" "%s"' % \
+        extcmd.qrun('tla_load_dirs --wc="%s/,,tbp-importorigdir" --summary="Import upstream %s version %s" "%s"' % \
                 (wc, package, version, dirname))
         os.chdir('%s/,,tbp-importorigdir' % wc)
         newrev = extcmd.run('tla revisions')[-1]
         newrev = "%s--%s" % (tlaversion, newrev)
         print "Committed %s" % newrev
     finally:
+        os.chdir(wc)
         rmrf("%s/,,tbp-importorigdir" % wc)
         
     # Now add a config for this version.

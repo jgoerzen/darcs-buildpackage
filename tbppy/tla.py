@@ -24,7 +24,7 @@ def gettreeversion():
 def getarchive(version = None):
     if version == None:
         version = gettreeversion()
-    return re.search('^([^/]+)/[^/]+$', version)
+    return re.search('^([^/]+)/[^/]+$', version).group(1)
 
 def isvalidversion(ver):
     try:
@@ -40,7 +40,7 @@ def condsetup(version):
 
     Returns true if it created it, false otherwise."""
     if not isvalidversion(version):
-        print "Setting up version %s"
+        print "Setting up version %s" % version
         archive_setup(version)
         return 1
     else:
