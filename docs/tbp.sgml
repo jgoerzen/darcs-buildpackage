@@ -28,6 +28,7 @@
     &man.tla.buildpackage;
     &man.tbp.importdsc;
     &man.tbp.importorig;
+    &man.tbp.markdeb;
     &man.tbp.initarchive;
   </appendix>
 

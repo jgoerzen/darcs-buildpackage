@@ -28,7 +28,7 @@ build-stamp: configure-stamp
 	#$(MAKE)
 	$(PYTHON) setup.py build
 	#/usr/bin/docbook-to-man debian/tla-buildpackage.sgml > tla-buildpackage.1
-	cd docs && make all html
+	cd docs && make ps html
 	cd docs && make manpages 
 	touch build-stamp
 

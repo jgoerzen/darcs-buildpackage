@@ -2,6 +2,7 @@
 <!ENTITY man.tbp.initarchive SYSTEM "tbp-initarchive.sgml">
 <!ENTITY man.tbp.importdsc SYSTEM "tbp-importdsc.sgml">
 <!ENTITY man.tbp.importorig SYSTEM "tbp-importorig.sgml">
+<!ENTITY man.tbp.markdeb SYSTEM "tbp-markdeb.sgml">
 
 <!ENTITY tbp.copyright SYSTEM "copyright.sgml">
 <!ENTITY man.com.copyright.refsect1 SYSTEM "com.copyright.sgml">
@@ -15,6 +16,7 @@
 <!ENTITY tbp-initarchive "<command>tbp-initarchive</command>">
 <!ENTITY tbp-importdsc "<command>tbp-importdsc</command>">
 <!ENTITY tbp-importorig "<command>tbp-importorig</command>">
+<!ENTITY tbp-markdeb "<command>tbp-markdeb</command>">
 <!ENTITY tla-buildpackage "<command>tla-buildpackage</command>">
 
 <!ENTITY tla "<application>tla</application>">

@@ -1,0 +1,62 @@
+
+<!-- <reference> -->
+  <refentry id="tbp.man.tbp.markdeb">
+    <indexterm><primary>tbp-markdeb</><secondary>Reference For</></>
+    <refentryinfo>
+      <address><email>jgoerzen@complete.org</email></address>
+      <author><firstname>John</firstname><surname>Goerzen</surname></author>
+    </refentryinfo>
+
+    <refmeta>
+      <refentrytitle>tbp-markdeb</refentrytitle>
+      <manvolnum>1</manvolnum>
+      <refmiscinfo>John Goerzen</refmiscinfo>
+    </refmeta>
+
+    <refnamediv>
+      <refname>tbp-importdsc</refname>
+      <refpurpose>Mark the Debian version of the working directory in archive</>
+    </refnamediv>
+
+    <refsynopsisdiv>
+      <cmdsynopsis>
+	<command>tbp-markdeb</command>
+      </cmdsynopsis>
+    </refsynopsisdiv>
+
+    <refsect1 id="tbp.man.tbp.markdeb.description">
+      <title>Description</title>
+      <para>
+        &tbp-markdeb; is used to tell &tbp; that the version of a
+        package represented in the current working directory is
+        "official".  The progam will find the Debian version from
+        <filename>debian/changelog</filename> and record it as
+        appropriate.  No input is required and no arguments are
+        required.  &tbp-markdeb; will abort if it is run more than
+        once for a single Debian version.
+      </para>
+    </refsect1>
+
+    &man.com.files.refsect1;
+    &man.com.environment.refsect1;
+    &man.com.footer.refsect1;
+
+    <refsect1>
+      <title>See Also</title>
+      &man.com.seealso.para;
+    </refsect1>
+      
+
+  </refentry>
+
+<!-- </reference> -->
+
+<!--
+Local Variables:
+mode: sgml
+sgml-parent-document:("../tbp.sgml" "book" "appendix" "reference")
+sgml-set-face: T
+End:
+
+# arch-tag: manpage for tbp-markdeb(1)
+-->

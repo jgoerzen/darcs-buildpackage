@@ -2,6 +2,25 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/tla-buildpackage--head--1.0
 #
 
+2003-10-21 21:04:22 GMT	John Goerzen <jgoerzen@complete.org>	patch-43
+
+    Summary:
+      Docs updated some more
+    Revision:
+      tla-buildpackage--head--1.0--patch-43
+
+    Docs updated some more
+    
+
+    new files:
+     ./docs/man.tbp-markdeb.sgml ./docs/mansgml/tbp-markdeb.sgml
+
+    modified files:
+     ./ChangeLog ./debian/rules ./docs/Makefile
+     ./docs/chapters/regular.sgml ./docs/mansgml/manmac.ent
+     ./docs/tbp.sgml
+
+
 2003-10-21 20:25:07 GMT	John Goerzen <jgoerzen@complete.org>	patch-42
 
     Summary:

@@ -124,8 +124,187 @@ Running:  debuild ['-i\\+\\+pristine-trees|,,*|\\{arch\\}|\\.arch-ids', '-rfaker
       </para>
       <para>
         There have been a few tools to do that:
-        <command>uupdate</command> is one.
+        <command>uupdate</command> is one.  However, now that you are
+        using Arch, you can use its built-in commands to make this
+        easier: update and replay.
+      </para>
+      <para>
+        The first thing that you will do is to import the new upstream
+        sources into your &tbp; archive.  Please see <xref
+          linkend="tbp.import.orig"> for instructions.
+      </para>
+      <para>
+        Next, check out the latest Debian version if you don't already
+        have it (see <xref linkend="tbp.regular.fetching">) and then
+        cd into the Debian source directory.
+      </para>
+      <para>
+        [ Note: I anticipate writing a program to automate the
+        following steps. ]
+      </para>
+      <sect2 id="tbp.upstream.merging">
+        <title>Merging In Upstream</title>
+        <para>
+          Now, you are ready to merge in the new upstream.
+          Run <emphasis>ONE</emphasis> of <command>tla replay</command>
+          or
+          <command>tla update</command>.
+        </para>
+        <para>
+          The difference between the two is how they apply changes.
+          <command>tla replay</command> will apply the upstream
+          changes atop your Debian tree by first essentially applying
+          patches made by diffing the upstream version onto your tree.
+          <command>tla update</command>, on the other hand, will
+          revert all your Debian changes, copy over the upstream
+          version, and then re-apply your Debian changes.  This is
+          usually the best option, but in tla 1.0, <command>tla
+            replay</command> is easier.  The difference between the
+          two only matters if there are conflicts; otherwise, the end
+          result is identical.
+        </para>
+        <sect3 id="tbp.upstream.merging.replay">
+          <title>Using tla replay</title>
+          <indexterm><primary>tla replay</primary></indexterm>
+          <screen>
+$ <command>tla replay --new --in-place . rdiff-backup--head--1.0</command>
+          </screen>
+          <para>
+            Just replace rdiff-backup with the name of your package.  This
+            command will automatically merge all the changes from the
+            upstream into your Debian tree.
+          </para>
 
+          &tla11;
+            <para>
+              In newer versions of tla, you can just use <command>tla
+              replay --new rdiff-backup--head--1.0</command>.  Better
+              yet, just <command>tla star-merge
+              rdiff-backup--head--1.0</command>.
+            </para>
+          &etla11;
+
+        </sect3>
+        <sect3 id="tbp.upstream.merging.update">
+          <title>Using tla update</title>
+          <indexterm><primary>tla update</primary></indexterm>
+          <screen>
+$ <command>tla update --in-place . rdiff-backup--head--1.0</command>
+* setting aside local changes temporarily
+what-changed: no local copies to compare to (jgoerzen@complete.org--debian/rdiff-backup--head--1.0--patch-2)
+  consider `add-prisitine --help'
+* linting the source tree
+$ <command>tla add-pristine rdiff-backup--head--1.0--patch-2</command>
+...
+$ <command>tla update --in-place . rdiff-backup--head--1.0</command>
+          </screen>
+
+          <para>
+            First, you run <command>tla update</command>.  If you are
+            missing any pristine versions, you have to run
+            add-pristine, using the version the first command gave
+            you, and then run <command>tla update</command> again.
+          </para>
+
+          &tla11;
+            <para>
+              This is far easier in tla 1.1.  You can just run
+              <command>tla update rdiff-backup--head--1.0</> and
+              it will handle everything the above three commands did.
+            </para>
+          &etla11;
+        </sect3>
+      </sect2>
+      <sect2 id="tbp.upstream.merge.examining">
+        <title>Examining the Merge</title>
+        <para>
+          Now, you will want to examine the merge, especially of &tla;
+          complained of any conflicts.
+        </para>
+        <para>
+          You'll also want to note the new version in
+          <filename>debian/changelog</filename> and rename your
+          directory based on the new version.  I find it easy to run a
+          command like
+          <command>debchange -v 0.13.3-1</command>, then modify the
+          changelog as appropriate.  debchange will handle the rename
+          for you.
+        </para>
+      </sect2>
+      <sect2 id="tbp.upstream.commiting">
+        <title>Committing the Merge</title>
+        <para>
+          Finally, you will want to commit the merge.  If you want to
+          just use a simple log message, a command like this will
+          work:
+        </para>
+        <screen>
+$ <command>tla commit -L "Merged in upstream 0.13.3"</command>
+...
+* commited jgoerzen@complete.org--debian/rdiff-backup--debian--1.0--patch-3
+        </screen>
+        <para>
+          The string supplied after the -L is the log message.
+        </para>
+        <para>
+          If you want to add a more detailed log, try this:
+        </para>
+        <screen>
+$ <command>LOG=`tla make-log`</command>
+$ <command>tla log-for-merge >> $LOG</command>
+$ <command>emacs $LOG</command>
+$ <command>tla commit</command>
+        </screen>
+        <para>
+          The log-for-merge will add information about the merge to
+          the textual message for you.  &tla; automatically records
+          the information in its metadata; this just makes it nicer.
+        </para>
+        <para>
+          You can see what happened by using cat-log:
+        </para>
+        <screen>
+$ <command>tla cat-log patch-3</command>
+...
+New-patches: jgoerzen@complete.org--debian/rdiff-backup--debian--1.0--patch-3
+    jgoerzen@complete.org--debian/rdiff-backup--head--1.0--patch-3
+Removed-patches:
+
+Merged in upstream 0.13.3
+
+Patches applied:
+
+ * jgoerzen@complete.org--debian/rdiff-backup--head--1.0--patch-3
+   Import upstream rdiff-backup version 0.13.3
+        </screen>
+        <para>
+          Slick -- it shows exactly which upstream patches you used.
+        </para>
+      </sect2>
+    </sect1>
+
+    <sect1 id="tla.regular.debian-update">
+      <title>Finalizing New Debian Versions</title>
+      <indexterm><primary>tbp-markdeb</primary>
+      <para>
+        When you have uploaded a Debian package to the archive, you
+        should ask &tbp; to note this for you.  That way, you can
+        request this specific version later.  Just run this:
+      </para>
+      <screen>
+$ <command>tbp-markdeb</command>
+...
+ *** Success: Noted Debian rdiff-backup version 0.13.3-1
+ *** at jgoerzen@complete.org--debian/rdiff-backup--debian--1.0--patch-3
+      </screen>
+      <para>
+        The reason for this is that you might make several commits
+        during the course of hacking on a given Debian version.  This
+        command lets you note the final version, and to run it again,
+        you must update the changelog.
+      </para>
+    </sect1>
+          
   </chapter>
 
 <!--
