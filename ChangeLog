@@ -2,6 +2,20 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/tla-buildpackage--head--1.0
 #
 
+2003-10-22 21:06:20 GMT	John Goerzen <jgoerzen@complete.org>	patch-54
+
+    Summary:
+      Noted new location of configs in tla repo
+    Revision:
+      tla-buildpackage--head--1.0--patch-54
+
+    Noted new location of configs in tla repo
+    
+
+    modified files:
+     ChangeLog docs/mansgml/com.author.sgml
+
+
 2003-10-22 19:00:43 GMT	John Goerzen <jgoerzen@complete.org>	patch-53
 
     Summary:

@@ -18,10 +18,10 @@
 $ <command>tla register-archive jgoerzen@complete.org--projects \
   http://arch.complete.org/projects</command>
 $ <command>tla get \
-  jgoerzen@complete.org--projects/tla-buildpackage-configs--head--1.0 \
-  tla-buildpackage</command>
-$ <command>cd tla-buildpackage</command>
-$ <command>tla buildcfg tla-buildpackage</command>
+  jgoerzen@complete.org--projects/configs--head--1.0 \
+  jgoerzen</command>
+$ <command>cd jgoerzen</command>
+$ <command>tla buildcfg tla-buildpackage/latest</command>
       </programlisting>
     </refsect1>
 
