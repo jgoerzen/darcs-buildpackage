@@ -8,12 +8,24 @@ Standards-Version: 3.6.0
 Package: tla-buildpackage
 Architecture: all
 Depends: python2.3, tla, tla-load-dirs, dpkg-dev, devscripts, python-apt
-Description: Set of scripts to help load Debian packages into Arch archives
- This package provides the following programs:
+Description: Suie to help with with Debian packages in Arch archives
+ This package helps automate and ease the task of maintaining Debian
+ packages by helping you, the Debian developer, take advantage of
+ the unique features in tla/Arch.  The programs included are:
+ .
+ tbp-initarchive: Initialize an archive and working directory for use
+ with tla-buildpackage.
+ .
+ tbp-importdsc: Import an upstream version and a Debian version from
+ a Debian source package, automatically detecting package and version
+ information from the .dsc.
+ .
+ tbp-importorig: Import an upstream tar.gz or directory.
+ .
+ tbp-markdeb: Mark a working copy for future reference.
  .
  tla-buildpackage: Builds a Debian package based on information in
  the repository, checking out Debian and upstream versions as necessary.
  .
- tla-importpackage: Takes a Debian .dsc and imports it into a tla
- repository, taking note to handle Debian and upstream versions
- appropriately.
+ Also, the package includes a comprehensive 24-page manual in PostScript and
+ HTML versions.

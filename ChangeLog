@@ -2,6 +2,20 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/tla-buildpackage--head--1.0
 #
 
+2003-10-21 21:23:36 GMT	John Goerzen <jgoerzen@complete.org>	patch-46
+
+    Summary:
+      Extended the description
+    Revision:
+      tla-buildpackage--head--1.0--patch-46
+
+    Extended the description
+    
+
+    modified files:
+     ./ChangeLog ./debian/control
+
+
 2003-10-21 21:10:13 GMT	John Goerzen <jgoerzen@complete.org>	patch-45
 
     Summary:
