@@ -2,6 +2,26 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/tla-buildpackage--head--1.0
 #
 
+2003-10-14 19:42:54 GMT	John Goerzen <jgoerzen@complete.org>	patch-9
+
+    Summary:
+      Added Python infrastructure
+    Revision:
+      tla-buildpackage--head--1.0--patch-9
+
+    Added some code in Python to get things going.
+
+    new files:
+     tbppy/.arch-ids/=id tbppy/__init__.py tbppy/extcmd.py
+     tbppy/versions.py
+
+    modified files:
+     ChangeLog
+
+    new directories:
+     tbppy tbppy/.arch-ids
+
+
 2003-10-14 18:23:11 GMT	John Goerzen <jgoerzen@complete.org>	patch-8
 
     Summary:
