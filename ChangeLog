@@ -2,6 +2,26 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/tla-buildpackage--head--1.0
 #
 
+2003-10-16 03:25:33 GMT	John Goerzen <jgoerzen@complete.org>	patch-24
+
+    Summary:
+      Started work drafting common sections for manpages
+    Revision:
+      tla-buildpackage--head--1.0--patch-24
+
+    Started work drafting common sections for manpages
+    
+
+    new files:
+     ./docs/mansgml/com.author.sgml
+     ./docs/mansgml/com.copyright.sgml
+     ./docs/mansgml/com.environment.sgml
+
+    modified files:
+     ./ChangeLog ./docs/mansgml/manmac.ent
+     ./docs/mansgml/tla-buildpackage.sgml
+
+
 2003-10-16 03:06:17 GMT	John Goerzen <jgoerzen@complete.org>	patch-23
 
     Summary:

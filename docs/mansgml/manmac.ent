@@ -1,6 +1,9 @@
 <!ENTITY man.tla.buildpackage SYSTEM "tla-buildpackage.sgml">
-<!ENTITY OfflineIMAP "<application>OfflineIMAP</application>">
-
+<!ENTITY man.com.copyright.refsect1 SYSTEM "com.copyright.sgml">
+<!ENTITY man.com.author.refsect1 SYSTEM "com.author.sgml">
+<!ENTITY man.com.footer.refsect1 "&man.com.copyright.refsect1; &man.com.author.refsect1;">
+<!ENTITY man.com.environment.refsect1 SYSTEM "com.environment.sgml">
+<!ENTITY tbp "<application>tla-buildpackage</application>">
 <!--
 # arch-tag: basic macros common to all manpages
 -->

@@ -1,0 +1,36 @@
+    <refsect1>
+      <title>Author</title>
+      <para>
+	&tbp;, its modules, documentation, executables, and all
+	included files, except where noted, was written by
+	John Goerzen <email>jgoerzen@complete.org</email> and
+	copyright is held as stated in the COPYRIGHT section.
+      </para>
+      <para>
+	&tbp; may be downloaded from the Debian packaging system or at
+	<ulink
+	  url="http://packages.debian.org/tla-buildpackage"></ulink>.
+      </para>
+      <para>
+	&tbp; may also be downloaded using tla like this:
+      </para>
+      <programlisting>
+$ <command>tla register-archive jgoerzen@complete.org--projects \
+  http://arch.complete.org/projects</command>
+$ <command>tla get \
+  jgoerzen@complete.org--projects/tla-buildpackage-configs--head--1.0 \
+  tla-buildpackage</command>
+$ <command>tla buildcfg tla-buildpackage</command>
+      </programlisting>
+    </refsect1>
+
+ 
+<!--
+Local Variables:
+mode: sgml
+sgml-parent-document:("./tla-buildpackage.sgml" "reference")
+sgml-set-face: T
+End:
+
+# arch-tag: common data for tla-buildpackage manual: author
+-->

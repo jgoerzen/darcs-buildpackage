@@ -34,7 +34,12 @@
 	FOO
       </para>
     </refsect1>
+
+    &man.com.environment.refsect1;
+    &man.com.footer.refsect1;
+
   </refentry>
+
 <!-- </reference> -->
 
 <!--
