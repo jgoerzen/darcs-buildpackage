@@ -2,6 +2,35 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/tla-buildpackage--head--1.0
 #
 
+2003-10-15 15:35:21 GMT	John Goerzen <jgoerzen@complete.org>	patch-13
+
+    Summary:
+      Progress on importing, some code rearranging
+    Revision:
+      tla-buildpackage--head--1.0--patch-13
+
+    Renamed import.py -> tbpimport.py account import is a Python keyword
+    
+    Added some generic config handling code to configs.py and moved that code
+    out of tbpimport.py
+    
+    Added tbp-importorig script
+    
+    Genericized some other import code
+    
+    Added tar.gz import code
+
+    new files:
+     tbp-importorig tbppy/configs.py
+
+    modified files:
+     ChangeLog tbppy/tbpimport.py
+
+    renamed files:
+     tbppy/import.py
+       ==> tbppy/tbpimport.py
+
+
 2003-10-15 03:05:08 GMT	John Goerzen <jgoerzen@complete.org>	patch-12
 
     Summary:
