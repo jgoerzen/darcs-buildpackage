@@ -110,8 +110,8 @@ def importdsc(dscname):
             # FIXME: when we get tla 1.1, use tlaupstreamrev to be more
             # precise.
             try:
-                extcmd.qrun('tla replay --new --in-place . "%s"' % \
-                            (tlaupstreamver))
+                extcmd.qrun('tla %s "%s"' % \
+                            (cmd().replay, tlaupstreamver))
             except RuntimeError:
                 pass
             #extcmd.qrun('tla update --in-place . "%s"' % tlaupstreamrev)
@@ -207,7 +207,7 @@ def importorigdir(dirname, package, version):
             print "Initializing storage area for upstream..."
             os.chdir(',,tbp-importorigdir')
             extcmd.qrun('tla init-tree --nested "%s"' % tlaversion)
-            extcmd.qrun('tla tagging-method explicit')
+            extcmd.qrun('tla %s explicit' % cmd().tagging_method)
             # Relax the source pattern...
             fd = open('{arch}/=tagging-method')
             lines = fd.readlines()

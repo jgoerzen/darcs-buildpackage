@@ -2,12 +2,12 @@ Source: tla-buildpackage
 Section: devel
 Priority: optional
 Maintainer: John Goerzen <jgoerzen@complete.org>
-Build-Depends-Indep: debhelper (>= 4.0.0), python2.3-dev, gtk-doc-tools, sgml2x, docbook-utils, jade, tla-load-dirs, lynx
+Build-Depends-Indep: debhelper (>= 4.0.0), python2.3-dev, gtk-doc-tools, sgml2x, docbook-utils, jade, tla-load-dirs (>= 1.0.8), lynx
 Standards-Version: 3.6.0
 
 Package: tla-buildpackage
 Architecture: all
-Depends: python2.3, tla, tla-load-dirs, dpkg-dev, devscripts, python-apt
+Depends: python2.3, tla, tla-load-dirs (>= 1.0.8), dpkg-dev, devscripts, python-apt
 Description: Suite to help with with Debian packages in Arch archives
  This package helps automate and ease the task of maintaining Debian
  packages by helping you, the Debian developer, take advantage of

@@ -19,6 +19,7 @@
 
 import os, sys
 from tbppy import tla, extcmd
+from tla_support.commandver import cmd
 
 def printhelp():
     print """Usage:
@@ -62,12 +63,12 @@ extcmd.qrun('tla archive-setup "%s"' % CONFIGVER)
 
 print "Initializing config tree..."
 extcmd.qrun('tla init-tree "%s"' % CONFIGVER)
-extcmd.qrun('tla tagging-method tagline')
+extcmd.qrun('tla %s tagline' % cmd().tagging_method)
 
 print "Populating config tree..."
 for newdir in ['configs', 'configs/upstream', 'configs/debian']:
     os.mkdir(newdir)
-    extcmd.qrun('tla add-tag %s' % newdir)
+    extcmd.qrun('tla %s %s' % (cmd().add, newdir))
     
 print "Importing config tree..."
 extcmd.qrun('tla import')

@@ -17,6 +17,7 @@
 
 import re, os, time
 import versions, extcmd
+from tla_support.commandver import cmd
 
 class InvalidConfigType(RuntimeError):
     pass
@@ -34,7 +35,7 @@ def makepkgconfigifneeded(configtype, package):
     if not os.path.exists('configs/%s/%s' % (configtype, package)):
         print "Adding new config dir for this %s package" % configtype
         os.mkdir('configs/%s/%s' % (configtype, package))
-        extcmd.run('tla add-tag configs/%s/%s' % (configtype, package))
+        extcmd.run('tla %s configs/%s/%s' % (cmd().add, configtype, package))
 
 def makepkgdirifneeded(package):
     """Assumes we are in wc dir already."""
@@ -43,7 +44,7 @@ def makepkgdirifneeded(package):
     #if not os.path.exists('+packages/%s' % package):
     #    print "Adding new package dir for %s" % package
     #    os.mkdir('+packages/%s' % package)
-    #    extcmd.run('tla add-tag +packages/%s' % package)
+    #    extcmd.run('tla %s +packages/%s' % package)
 
 def checkversion(configtype, package, version):
     """Iterates over versions of package present in the directory for
