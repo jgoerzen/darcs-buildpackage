@@ -30,7 +30,7 @@ setup(name = "tla-buildpackage",
       url = "http://packages.debian.org/tla-buildpackage",
       packages = ['tbppy'],
       scripts = ['tbp-importdsc', 'tbp-importorig', 'tbp-initarchive',
-                 'tla-buildpackage'],
+                 'tla-buildpackage', 'tbp-markdeb'],
       license = "Copyright (C) 2003 John Goerzen" + \
                 ", Licensed under the GPL version 2"
 )

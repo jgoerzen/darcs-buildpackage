@@ -22,27 +22,7 @@ from tla_support import util
 from tbppy import versions, extcmd, tbpconfig
 util.verbose = 1
 
-debver = versions.getverfromchangelog()
-upstreamver = versions.getupstreamver(debver)
-package = versions.getpackagefromchangelog()
-wcdir = os.path.abspath(tbpconfig.getwcdir())
-
-# Sanity checks.
-
-shouldbe = os.path.realpath(wcdir) + '/+packages/%s/%s-%s' % \
-           (package, package, upstreamver)
-
-if not os.path.realpath(os.getcwd()) == shouldbe:
-    print "Current working directory %s" % os.getcwd()
-    print "is not part of working copy build area %s" % shouldbe
-    print "Exiting."
-    sys.exit(50)
-
-if not os.path.basename(os.getcwd()) == '%s-%s' % (package, upstreamver):
-    # I guess this test is redundant now....
-    print "Current working directory should be named"
-    print "%s-%s but it is %s" % (package, upstreamver,
-                                  os.path.basename(os.getcwd()))
+debver, upstreamver, package, wcdir = tbpconfig.pkginit()
 
 tgzname = "%s_%s.orig.tar.gz" % (package, upstreamver)
 tgzpath = os.path.abspath(os.getcwd() + "/../%s" % tgzname)

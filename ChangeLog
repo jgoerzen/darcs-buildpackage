@@ -2,6 +2,25 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/tla-buildpackage--head--1.0
 #
 
+2003-10-16 14:56:13 GMT	John Goerzen <jgoerzen@complete.org>	patch-32
+
+    Summary:
+      Added tbp-markdeb
+    Revision:
+      tla-buildpackage--head--1.0--patch-32
+
+    Added tbp-markdeb.  Adjusted build scripts and docs "see also" to take note
+    of it.  Moved some code from tla-buildpackage to tbpconfig.py to be able to
+    share the code with tbp-markdeb.
+
+    new files:
+     ./tbp-markdeb
+
+    modified files:
+     ./ChangeLog ./docs/mansgml/com.seealso.sgml ./setup.py
+     ./tbppy/configs.py ./tbppy/tbpconfig.py ./tla-buildpackage
+
+
 2003-10-16 14:35:02 GMT	John Goerzen <jgoerzen@complete.org>	patch-31
 
     Summary:

@@ -60,6 +60,13 @@ def checkversion(configtype, package, version):
             return 0
     return 1
 
+def hasconfig(configtype, package, version):
+    """Assumes already in wc dir."""
+    assertvalidtype(configtype)
+    return os.path.isfile('configs/%s/%s/%s' % (configtype, package,
+                                                version))
+    
+
 def writeconfig(configtype, package, pkgversion, tlaversion):
     """Writes a config file given the information passed in.  Assumes already
     in wc dir."""
