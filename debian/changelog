@@ -1,3 +1,13 @@
+tla-buildpackage (0.9.4) unstable; urgency=low
+
+  * Update build-depend to tla-load-dirs 1.0.11 -- ensuring that
+    tla-buildpackage users get the tla "candidate" bugfix in that version.
+  * Build-depend on debhelper 4.1.80 or later so that the tla ChangeLog can be
+    included in the .deb.  Modify dh_installchangelogs to include it as
+    "upstream" log.
+
+ -- John Goerzen <jgoerzen@complete.org>  Tue, 16 Dec 2003 16:33:02 -0600
+
 tla-buildpackage (0.9.3) unstable; urgency=low
 
   * Now compatible with both tla 1.0 in unstable and latest tla 1.1

@@ -2,6 +2,24 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/tla-buildpackage--head--1.0
 #
 
+2003-12-16 22:38:14 GMT	John Goerzen <jgoerzen@complete.org>	patch-55
+
+    Summary:
+      Fixes to build scripts
+    Revision:
+      tla-buildpackage--head--1.0--patch-55
+
+      * Update build-depend to tla-load-dirs 1.0.11 -- ensuring that
+        tla-buildpackage users get the tla "candidate" bugfix in that version.
+      * Build-depend on debhelper 4.1.80 or later so that the tla ChangeLog can be
+        included in the .deb.  Modify dh_installchangelogs to include it as
+        "upstream" log.
+    
+
+    modified files:
+     ChangeLog debian/changelog debian/control debian/rules
+
+
 2003-10-22 21:06:20 GMT	John Goerzen <jgoerzen@complete.org>	patch-54
 
     Summary:
