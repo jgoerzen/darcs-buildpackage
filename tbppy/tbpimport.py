@@ -21,16 +21,102 @@ import extcmd, tbpconfig, tla, versions, configs
 def parsedsc(filename):
     fd = open(filename)
     retval = {}
+    lastline = None
     for line in fd:
-        line = line.strip()
-        m = re.search("^([a-zA-Z]+): (.+)$", line)
-        if m:
-            retval[m.group(1)] = m.group(2)
+        line = line.rstrip()
+        if line.startswith(' ') and lastline:
+            retval[lastline].append(line.strip())
+        else:
+            m = re.search("^([a-zA-Z]+): *(.*)$", line)
+            if m:
+                if m.group(1) in retval:
+                    # Bah, Version: also occurs in a signature.
+                    lastline = None
+                    continue
+                if not len(m.group(2)):
+                    retval[m.group(1)] = []
+                else:
+                    retval[m.group(1)] = m.group(2)
+                lastline = m.group(1)
     return retval
 
 def rmrf(dirname):
     print "Removing temporary directory %s..." % dirname
     extcmd.qrun('rm -fr "%s"' % dirname)
+
+def importdsc(dscname):
+    """Imports the original source into both upstream and Debian
+    locations.
+
+    Side effect: chdir to wc"""
+    dscname = os.path.abspath(dscname)
+    wc = os.path.abspath(tbpconfig.getwcdir())
+    dscinfo = parsedsc(dscname)
+    origtar = None
+    for item in dscinfo['Files']:
+        md5sum, size, filename = item.split(' ')
+        if filename.endswith('tar.gz'):
+            origtar = filename
+    if origtar == None:
+        print "Could not find orig.tar.gz in dsc file; aborting."
+        sys.exit(20)
+
+    origtar = os.path.join(os.path.dirname(dscname), origtar)
+    importorigtargz(origtar, dscinfo['Source'],
+                    versions.getupstreamver(dscinfo['Version']))
+
+    # OK, upstream is in there.  Now handle the Debian side of things.
+
+    os.chdir(wc)
+    archive = tla.getarchive()
+    tlaupstreamrev = extcmd.run('tla catcfg upstream/%s/%s' % \
+                                (dscinfo['Source'],
+                                 versions.getupstreamver(dscinfo['Version'])))
+    tlaupstreamrev = tlaupstreamrev[0].split(' ')[1]
+    tladebianver = "%s/%s--debian--1.0" % (archive, dscinfo['Source'])
+    isnew = tla.condsetup(tladebianver)
+    configs.makeconfigifneeded('debian', dscinfo['Source'])
+    if not configs.checkversion('debian', dscinfo['Source'],
+                                dscinfo['Version']):
+        print "Debian import: version %s is not newer than all versions in archive" % dscinfo['Version']
+        print "Will not import Debian because of this."
+        return
+
+    if isnew:
+        extcmd.qrun('tla tag "%s" "%s"' % (tlaupstreamrev, tladebianver))
+    
+    tmpdir = os.path.join(wc, ",,tbp-importdeb")
+    os.mkdir(tmpdir)
+    try:
+        os.chdir(tmpdir)
+        extcmd.qrun('dpkg-source -x "%s"' % dscname)
+        if len(os.listdir(tmpdir)) != 1:
+            print "Error; %s had more than one entry; aborting." % tmpdir
+            sys.exit(25)
+        debsrcdir = os.listdir(tmpdir)[0]
+        tmpwcdir = os.path.join(tmpdir, ",,tbp-importdeb-wc")
+        extcmd.qrun('tla get "%s" "%s"' % (tlaupstreamrev, tmpwcdir))
+        os.chdir(tmpwcdir)
+        extcmd.qrun('tla set-tree-version "%s"' % tladebianver)
+        extcmd.qrun('tla join-branch "%s"' % tladebianver)
+        extcmd.qrun('tla sync-tree "%s"' % tladebian-ver)
+        os.chdir(tmpdir)
+        extcmd.qrun('tla_load_dirs --wc="%s" --summary="Import Debian %s version %s" "%s"' % \
+                    (tmpwcdir, dscinfo['Source'], dscinfo['Version'], debsrcdir))
+        os.chdir(tmpwcdir)
+        newrev = extcmd.run('tla revisions')[-1]
+        newrev = "%s--%s" % (tladebianver, newrev)
+        print "Committed %s" % newrev
+    finally:
+        os.chdir(wc)
+        rmrf(tmpdir)
+
+    os.chdir(wc)
+    configs.writeconfig('debian', dscinfo['Source'], dscinfo['Version'],
+                        newrev)
+    extcmd.qrun('tla commit -s "Added configs for Debian %s %s"' % \
+                (dscinfo['Source'], dscinfo['Version']))
+
 
 def importorigtargz(tarname, package, version):
     """Imports the original source stored in the file named by tarname.
