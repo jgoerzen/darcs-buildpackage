@@ -2,6 +2,26 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/tla-buildpackage--head--1.0
 #
 
+2003-10-21 03:41:24 GMT	John Goerzen <jgoerzen@complete.org>	patch-40
+
+    Summary:
+      Finished writing about tbp-importdsc
+    Revision:
+      tla-buildpackage--head--1.0--patch-40
+
+    Finished writing about tbp-importdsc
+    
+
+    new files:
+     ./docs/mansgml/copyright.sgml
+
+    modified files:
+     ./ChangeLog ./docs/chapters/chapmac.ent
+     ./docs/chapters/import.sgml ./docs/chapters/intro.sgml
+     ./docs/mansgml/com.copyright.sgml ./docs/mansgml/manmac.ent
+     ./docs/mansgml/tbp-importdsc.sgml ./docs/tbp.sgml
+
+
 2003-10-18 02:40:26 GMT	John Goerzen <jgoerzen@complete.org>	patch-39
 
     Summary:

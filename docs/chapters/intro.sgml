@@ -111,6 +111,33 @@
 	run tbp-markdeb to record the version for future reference.
       </para>
     </sect1>
+
+    <sect1 id="ch.intro.tla.versions">
+      <title>Versions of tla</title>
+      <indexterm><primary>tla</><secondary>Versions of</></>
+      <para>
+	Debian's unstable distribution currently contains version 1.0
+	of tla.  Version 1.1 is in development and has become stable,
+	so many people are running 1.1 or Andrew Suffield's
+	<ulink url="http://people.debian.org/~asuffield/arch/">daily
+	  snapshots for Debian</ulink>.  tla 1.1 alters command-line
+	syntax, generally making it more clear and less verbose.
+	However, it is not entirely compatible with tla 1.0.  Since
+	only tla 1.0 is part of Debian, &tbp; is written for it and
+	cannot use tla 1.1 directly.  However, you can easily install
+	tla 1.1 with a different name and use it whenever you issue a
+	tla command directly; the two are completely compatible
+	on-disk.
+      </para>
+      &tla11;
+	<para>
+	  Whenever tla commands are given in this manual, if differences
+	  exist for version 1.1 or the snapshots, they will be
+	  highlighted in a box such as this one.
+	</para>
+      &etla11;
+    </sect1>
+	
   </chapter>
 
 <!--

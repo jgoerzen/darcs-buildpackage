@@ -2,6 +2,7 @@
 <!ENTITY man.tbp.initarchive SYSTEM "tbp-initarchive.sgml">
 <!ENTITY man.tbp.importdsc SYSTEM "tbp-importdsc.sgml">
 
+<!ENTITY tbp.copyright SYSTEM "copyright.sgml">
 <!ENTITY man.com.copyright.refsect1 SYSTEM "com.copyright.sgml">
 <!ENTITY man.com.author.refsect1 SYSTEM "com.author.sgml">
 <!ENTITY man.com.footer.refsect1 "&man.com.copyright.refsect1; &man.com.author.refsect1;">

@@ -26,6 +26,7 @@
         </para>
       </listitem>
     </itemizedlist>
+    
     <para>
       There are two different programs that handle importing:
       &tbp-importdsc; and &tbp-importorig;.  Both are covered in this
@@ -33,14 +34,68 @@
     </para>
     <sect1 id="tbp.import.deb">
       <title>Importing Debian Source Packages</title>
-      
+      <indexterm><primary>tbp-importdsc</primary></>
+      <para>
+	Importing a package is very easy.  All you have to do is run
+	&tbp-importdsc; with the name of a .dsc file to import:
+      </para>
+      <screen>
+$ <command>tbp-importdsc ~/dpkg/rdiff-backup_0.12.3-1.dsc</command>
+ * tar -zxSpf "/home/jgoerzen/dpkg/rdiff-backup_0.12.3.orig.tar.gz"
+ *** Import upstream package rdiff-backup version 0.12.3 from
+	directory
+        /home/jgoerzen/tree/debian/,,tbp-importorigtargz/rdiff-backup-0.12.3
+...
+* commited jgoerzen@complete.org--debian/configs--head--1.0--patch-1
+...
+Committed jgoerzen@complete.org--debian/rdiff-backup--debian--1.0--patch-1
+...
+* commited jgoerzen@complete.org--debian/configs--head--1.0--patch-2
+      </screen>
+      <para>
+	In this example, I had never imported rdiff-backup before.
+	&tbp-importdsc; therefore initialized the repository for me.
+	It then added and committed the upstream version (the first
+	commit message), committed the Debian diffs (second commit), 
+	and noted which version in the archive corresponds to 0.12.3
+	and 0.12.3-1 (third commit message).
+      </para>
+      <para>
+	I can run it again with a new version:
+      </para>
+      <screen>
+$ <command>tbp-importdsc ~/dpkg/rdiff-backup_0.12.5-1.dsc</command>
+ * tar -zxSpf "/home/jgoerzen/dpkg/rdiff-backup_0.12.5.orig.tar.gz"
+ *** Import upstream package rdiff-backup version 0.12.5 from
+	directory
+        /home/jgoerzen/tree/debian/,,tbp-importorigtargz/rdiff-backup-0.12.5
+...
+* commited jgoerzen@complete.org--debian/rdiff-backup--head--1.0--patch-2
+...
+Committed jgoerzen@complete.org--debian/rdiff-backup--debian--1.0--patch-2
+...
+* commited jgoerzen@complete.org--debian/configs--head--1.0--patch-4
+      </screen>
+      <para>
+	&tbp-importdsc; is smart enough to know not to import an
+	upstream version twice.  For instance, if I would now load
+	0.12.5-2, there would be only two commits: a patch-3 on the
+	Debian tree and a patch-5 on the configs tree.
+      </para>
+      <para>
+	&tbp-importdsc; has a few restrictions: you must always load
+	packages in ascending order of package version.  Please see
+	<xref linkend="tbp.man.tbp.importdsc">for more details.
+      </para>
+    </sect1>
+
   </chapter>
 
 <!--
 Local Variables:
 mode: sgml
 sgml-parent-document:("../tbp.sgml" "book")
-sgml-set-face: T
+  sgml-set-face: T
 End:
 
 # arch-tag: common data for tla-buildpackage manual: import chapter

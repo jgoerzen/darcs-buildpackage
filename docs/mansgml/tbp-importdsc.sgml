@@ -15,7 +15,8 @@
 
     <refnamediv>
       <refname>tbp-importdsc</refname>
-      <refpurpose>Import a Debian source package into tla-buildpackage</>
+      <refpurpose>Import a Debian source package into tla-buildpackage
+      archive</>
     </refnamediv>
 
     <refsynopsisdiv>
