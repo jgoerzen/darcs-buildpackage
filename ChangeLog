@@ -2,6 +2,24 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/tla-buildpackage--head--1.0
 #
 
+2004-02-27 15:23:48 GMT	John Goerzen <jgoerzen@complete.org>	patch-57
+
+    Summary:
+      Noted new documentation system
+    Revision:
+      tla-buildpackage--head--1.0--patch-57
+
+
+    new files:
+     docs/SConstruct
+
+    removed files:
+     docs/Makefile
+
+    modified files:
+     ChangeLog debian/changelog debian/control debian/rules
+
+
 2004-02-26 22:44:58 GMT	John Goerzen <jgoerzen@complete.org>	patch-56
 
     Summary:

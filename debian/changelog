@@ -2,6 +2,8 @@ tla-buildpackage (0.9.5) unstable; urgency=low
 
   * Minor bugfix to properly handle multi-line fields with text on the
     first line.
+  * Updated to newer sgml-common for documentation generation and switched
+    to the SCons-based generation system.
 
  -- John Goerzen <jgoerzen@complete.org>  Thu, 26 Feb 2004 16:43:47 -0600
 

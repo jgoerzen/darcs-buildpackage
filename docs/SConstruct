@@ -1,5 +1,5 @@
-# arch-tag: documentation build system
-# Copyright (C) 2003 John Goerzen
+# Copyright (C) 2004 John Goerzen <jgoerzen@complete.org>
+# arch-tag: primary build for docs
 # <jgoerzen@complete.org>
 #
 #    This program is free software; you can redistribute it and/or modify
@@ -16,24 +16,15 @@
 #    along with this program; if not, write to the Free Software
 #    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
 
-MASTERBASE := tbp
-TOPNODE := tbp
-BASICDEPS := $(wildcard */*.sgml */*.ent)
-DOINDEX := yes
-#DOINDEX := no
-HTMLARGS := -s local
-PSARGS := -s local=printlocal
+env = Environment()
+env.Export("env")
+env.Append(MASTERBASE = 'tbp', TOPNODE = 'tbp', DOINDEX = 1,
+        HTMLARGS = '-s local', PDFARGS = '-s local=printlocal')
 
-all: ps
-ps: $(MASTERBASE).ps
-html: html/index.html
-text: $(MASTERBASE).txt
+execfile('sgml-common/SConstruct')
 
-manpages: tla-buildpackage.1 tbp-initarchive.1 tbp-importorig.1 tbp-importdsc.1 tbp-markdeb.1
-%.1: man.%.sgml $(wildcard mansgml/*.sgml mansgml/*.ent)
-	docbook2man $<
-
-include sgml-common/Makefile.common
-
-realclean: clean
-	-rm -rf *.links *.refs tbp-html *.1
+manpages = []
+for manpage in ['tla-buildpackage', 'tbp-initarchive', 'tbp-importorig',
+                'tbp-importdsc', 'tbp-markdeb']:
+    manpages.append(env.MAN('%s.1' % manpage, 'man.%s.sgml' % manpage))
+env.Alias('manpages', manpages)

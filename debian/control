@@ -2,7 +2,7 @@ Source: tla-buildpackage
 Section: devel
 Priority: optional
 Maintainer: John Goerzen <jgoerzen@complete.org>
-Build-Depends-Indep: debhelper (>= 4.1.80), python2.3-dev, gtk-doc-tools, sgml2x, docbook-utils, jade, tla-load-dirs (>= 1.0.11), lynx
+Build-Depends-Indep: debhelper (>= 4.1.80), python2.3-dev, gtk-doc-tools, sgml2x, docbook-utils, jade, tla-load-dirs (>= 1.0.11), lynx, scons
 Standards-Version: 3.6.0
 
 Package: tla-buildpackage

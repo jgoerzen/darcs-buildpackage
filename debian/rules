@@ -28,8 +28,8 @@ build-stamp: configure-stamp
 	#$(MAKE)
 	$(PYTHON) setup.py build
 	#/usr/bin/docbook-to-man debian/tla-buildpackage.sgml > tla-buildpackage.1
-	cd docs && make ps html
-	cd docs && make manpages 
+	cd docs && scons ps html
+	cd docs && scons manpages
 	touch build-stamp
 
 clean:
@@ -40,7 +40,8 @@ clean:
 	# Add here commands to clean up after the build process.
 	-$(PYTHON) setup.py clean
 	-rm -rf build
-	-cd docs; make realclean
+	-cd docs; scons -c .
+	-cd docs; rm -r `find . -name .sconsign` manpage.links manpage.refs
 	#-$(MAKE) clean
 
 	dh_clean 
