@@ -2,6 +2,26 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/tla-buildpackage--head--1.0
 #
 
+2004-03-03 03:26:34 GMT	John Goerzen <jgoerzen@complete.org>	patch-58
+
+    Summary:
+      Fixed several bugs
+    Revision:
+      tla-buildpackage--head--1.0--patch-58
+
+    tla-buildpackage (0.9.6) unstable; urgency=low
+    
+      * Fixed a follow-up bug that was introduced in 0.9.5.  This makes
+          multiline fields work.  Closes: #222912.
+            * Ignore .arch-inventory files.  Closes: #228464.
+              * Fixed an error in the tbp-importdsc manpage.  Closes: #222925.
+    
+
+    modified files:
+     ChangeLog debian/changelog docs/mansgml/tbp-importorig.sgml
+     tbppy/tbpimport.py tla-buildpackage
+
+
 2004-02-27 15:23:48 GMT	John Goerzen <jgoerzen@complete.org>	patch-57
 
     Summary:

@@ -14,14 +14,14 @@
     </refmeta>
 
     <refnamediv>
-      <refname>tbp-importdsc</refname>
+      <refname>tbp-importorig</refname>
       <refpurpose>Import an upstream source into tla-buildpackage
       archive</>
     </refnamediv>
 
     <refsynopsisdiv>
       <cmdsynopsis>
-	<command>tbp-importdsc</command>
+	<command>tbp-importorig</command>
 	<arg choice="plain"><replaceable>filename_or_dir</replaceable></arg>
 	<arg choice="plain"><replaceable>package</></>
 	<arg choice="plain"><replaceable>version</></>

@@ -63,24 +63,24 @@ def importdsc(dscname):
         sys.exit(20)
 
     origtar = os.path.join(os.path.dirname(dscname), origtar)
-    importorigtargz(origtar, dscinfo['Source'],
-                    versions.getupstreamver(dscinfo['Version']))
+    importorigtargz(origtar, dscinfo['Source'][0],
+                    versions.getupstreamver(dscinfo['Version'][0]))
 
     # OK, upstream is in there.  Now handle the Debian side of things.
 
     os.chdir(wc)
     archive = tla.getarchive()
     tlaupstreamrev = extcmd.run('tla cfgcat upstream/%s/%s' % \
-                                (dscinfo['Source'],
-                                 versions.getupstreamver(dscinfo['Version'])))
+                                (dscinfo['Source'][0],
+                                 versions.getupstreamver(dscinfo['Version'][0])))
     tlaupstreamrev = tlaupstreamrev[0].split("\t")[1].strip()
     tlaupstreamver = re.search('^(.+)--.+$', tlaupstreamrev).group(1)
-    tladebianver = "%s/%s--debian--1.0" % (archive, dscinfo['Source'])
+    tladebianver = "%s/%s--debian--1.0" % (archive, dscinfo['Source'][0])
     isnew = tla.condsetup(tladebianver)
-    configs.makepkgconfigifneeded('debian', dscinfo['Source'])
-    if not configs.checkversion('debian', dscinfo['Source'],
-                                dscinfo['Version']):
-        print "Debian import: version %s is not newer than all versions in archive" % dscinfo['Version']
+    configs.makepkgconfigifneeded('debian', dscinfo['Source'][0])
+    if not configs.checkversion('debian', dscinfo['Source'][0],
+                                dscinfo['Version'][0]):
+        print "Debian import: version %s is not newer than all versions in archive" % dscinfo['Version'][0]
         print "Will not import Debian because of this."
         return
 
@@ -104,7 +104,7 @@ def importdsc(dscname):
             # First import -- just tagged, no Debian version.
             oldver = 'TPBIMPORTFAKE'
         if versions.getupstreamver(oldver) != \
-           versions.getupstreamver(dscinfo['Version']):
+           versions.getupstreamver(dscinfo['Version'][0]):
             # OK, our current tree doesn't use the same upstream
             # version as the new one.  So we need to fix.
             #extcmd.qrun('tla star-merge "%s"' % tlaupstreamrev)
@@ -122,7 +122,7 @@ def importdsc(dscname):
                 os.unlink(file)
         os.chdir(tmpdir)
         extcmd.qrun('tla_load_dirs --wc="%s" --summary="Import Debian %s version %s" "%s"' % \
-                    (tmpwcdir, dscinfo['Source'], dscinfo['Version'], debsrcdir))
+                    (tmpwcdir, dscinfo['Source'][0], dscinfo['Version'][0], debsrcdir))
         os.chdir(tmpwcdir)
         newrev_base = extcmd.run('tla revisions')[-1]
         newrev = "%s--%s" % (tladebianver, newrev_base)
@@ -132,12 +132,12 @@ def importdsc(dscname):
         rmrf(tmpdir)
 
     os.chdir(wc)
-    configs.writeconfig('debian', dscinfo['Source'], dscinfo['Version'],
+    configs.writeconfig('debian', dscinfo['Source'][0], dscinfo['Version'][0],
                         newrev)
-    configs.writelatest('debian', dscinfo['Source'], dscinfo['Version'],
+    configs.writelatest('debian', dscinfo['Source'][0], dscinfo['Version'][0],
                         tladebianver)
     extcmd.qrun('tla commit -L "Added configs for Debian %s %s"' % \
-                (dscinfo['Source'], dscinfo['Version']))
+                (dscinfo['Source'][0], dscinfo['Version'][0]))
 
 
 def importorigtargz(tarname, package, version):

@@ -45,6 +45,6 @@ if not os.path.isfile(tgzpath):
 os.chdir(startdir)
 print " *** Running build program"
 util.safeexec("debuild",
-              [r'-i\+\+pristine-trees|,,*|\{arch\}|\.arch-ids'] + \
+              [r'-i\+\+pristine-trees|,,*|\{arch\}|\.arch-ids|\.arch-inventory'] + \
               sys.argv[1:])
     
