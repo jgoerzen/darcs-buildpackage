@@ -75,6 +75,14 @@
 	<listitem><para>Tight integration with tla_load_dirs for
 	    intelligent handling and versioning of file renames upstream</para>
 	</listitem>
+	<listitem><para>Autosensing of information wherever possible
+	    from Debian changelogs, dsc files, and the tla
+	    environment.
+	  </para>
+	</listitem>
+	<listitem><para>tla-markdeb can be used to easily checkpoint
+	    development into tla.</para>
+	</listitem>
       </itemizedlist>
     </sect1>
 
@@ -92,8 +100,16 @@
 	you'll use tbp-importorig to bring in the upstream sources and
 	tag that to the Debian area.
       </para>
+      <para>
+	As you work on your Debian sources, you'll use
+	tla-buildpackage in place of debuild or dpkg-buildpackage
+	(tla-buildpackage passes all its arguments to debuild for
+	you).  You can use standard tla commands, such as tla commit
+	or tla logs, to commit changes and view history.  When you
+	have a final version of a Debian package, you'll upload it and
+	run tbp-markdeb to record the version for future reference.
+      </para>
     </sect1>
-      
   </chapter>
 
 <!--

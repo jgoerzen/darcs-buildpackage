@@ -21,8 +21,8 @@
   <part id="tbp.man">
     <title>Manpages</title>
     <subtitle>Reference to tla-buildpackage Commands</subtitle>
-    <reference>
-    &man.tla.buildpackage;
+    <reference id="tbp.man.reference">
+      &man.tla.buildpackage;
     </reference>
   </part>
 </book>

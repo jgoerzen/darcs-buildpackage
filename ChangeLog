@@ -2,6 +2,20 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/tla-buildpackage--head--1.0
 #
 
+2003-10-16 15:25:54 GMT	John Goerzen <jgoerzen@complete.org>	patch-33
+
+    Summary:
+      Integrated docs into .deb
+    Revision:
+      tla-buildpackage--head--1.0--patch-33
+
+    Modified build system to install the .ps, HTML, and manpages into the .deb.
+
+    modified files:
+     ./ChangeLog ./debian/docs ./debian/rules
+     ./docs/chapters/intro.sgml ./docs/tbp.sgml
+
+
 2003-10-16 14:56:13 GMT	John Goerzen <jgoerzen@complete.org>	patch-32
 
     Summary:
