@@ -2,6 +2,18 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/tla-buildpackage--head--1.0
 #
 
+2003-10-15 20:03:01 GMT	John Goerzen <jgoerzen@complete.org>	patch-18
+
+    Summary:
+      Small bugfix
+    Revision:
+      tla-buildpackage--head--1.0--patch-18
+
+
+    modified files:
+     ChangeLog tbppy/tbpimport.py
+
+
 2003-10-15 19:56:55 GMT	John Goerzen <jgoerzen@complete.org>	patch-17
 
     Summary:

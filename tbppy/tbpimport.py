@@ -96,7 +96,11 @@ def importdsc(dscname):
         tmpwcdir = os.path.join(tmpdir, ",,tbp-importdeb-wc")
         extcmd.qrun('tla get "%s" "%s"' % (tladebianver, tmpwcdir))
         os.chdir(tmpwcdir)
-        oldver = versions.getverfromchangelog()
+        if os.path.isfile('debian/changelog'):
+            oldver = versions.getverfromchangelog()
+        else:
+            # First import -- just tagged, no Debian version.
+            oldver = 'TPBIMPORTFAKE'
         if versions.getupstreamver(oldver) != \
            versions.getupstreamver(dscinfo['Version']):
             # OK, our current tree doesn't use the same upstream
