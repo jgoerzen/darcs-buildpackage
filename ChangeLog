@@ -2,6 +2,18 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/tla-buildpackage--head--1.0
 #
 
+2004-12-10 21:47:15 GMT	John Goerzen <jgoerzen@complete.org>	patch-62
+
+    Summary:
+      Minor doc update
+    Revision:
+      tla-buildpackage--head--1.0--patch-62
+
+
+    modified files:
+     ChangeLog debian/changelog docs/chapters/intro.sgml
+
+
 2004-12-10 21:45:47 GMT	John Goerzen <jgoerzen@complete.org>	patch-61
 
     Summary:

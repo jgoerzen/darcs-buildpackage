@@ -119,7 +119,7 @@
 	Debian's unstable distribution currently contains version 1.0
 	of tla.  Version 1.1 is in development and has become stable,
 	so many people are running 1.1 or Andrew Suffield's
-	<ulink url="http://people.debian.org/~asuffield/arch/">daily
+	<ulink url="http://people.debian.org/~asuffield/daily/tla/">daily
 	  snapshots for Debian</ulink>.  tla 1.1 alters command-line
 	syntax, generally making it more clear and less verbose.
       </para>

@@ -2,6 +2,7 @@ tla-buildpackage (0.9.8) unstable; urgency=low
 
   * Fixed an import failure case using patch from Erik van
     Konijenburg.  Closes: #241885.
+  * Noted new location for asuffield's directory.  Closes: #224595.
 
  -- John Goerzen <jgoerzen@complete.org>  Fri, 10 Dec 2004 15:44:10 -0600
 
