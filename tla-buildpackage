@@ -17,7 +17,7 @@
 #    along with this program; if not, write to the Free Software
 #    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
 #
-# Depends: awk, bash, sed, dpkg-dev
+# Depends: awk, bash, sed, dpkg-dev, devscripts
 # Programs: tail, tla, grep
 
 set -e
@@ -42,8 +42,37 @@ getupstreamver() {
   getdebianver | sed 's/-[^-]\+$//'
 }
 
+getpackage() {
+  dpkg-parsechangelog | sed -n 's/^Source: //p'
+}
+
+echo -n " *** tla-buildpackage for "
 getdebianver
-getupstreamver
+
+UPSTREAMREV=`getupstreamrev`
+WCDIR=`pwd`
+WCDIRNAME=$(basename `pwd`)
+
+cd ..
+ORIGDIRNAME=$(WCDIRNAME).orig
+ORIGDIR=`pwd`/$(ORIGDIRNAME)
+
+echo " *** Building $ORIGDIRNAME from $UPSTREAMREV"
+tla get $UPSTREAMREV $ORIGDIRNAME
+
+TARNAME=`getpackage`_`getupstreamver`.orig.tar.gz
+echo " *** Building $TARNAME"
+
+tla inventory -s $ORIGDIRNAME | tar -cSpf - -T- | gzip -9 > $TARNAME
+
+rm -r $ORIGDIRNAME
+cd "$WCDIR"
+
+echo " *** Running build program"
+debuild -i '\+\+pristine-trees' -i ',,*' "$@"
+
+rm -r $(ORIGDIR) &> /dev/null || true
+tla get $UPSTREAMREV
 
 TMPDIR=/tmp/tla-buildpackage.$$
 mkdir -m 0700 $TMPDIR
