@@ -2,6 +2,18 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/tla-buildpackage--head--1.0
 #
 
+2004-04-21 19:04:42 GMT	John Goerzen <jgoerzen@complete.org>	patch-60
+
+    Summary:
+      Added xpdf-utils to build-dep-indep.
+    Revision:
+      tla-buildpackage--head--1.0--patch-60
+
+
+    modified files:
+     ChangeLog debian/changelog debian/control
+
+
 2004-04-05 13:15:45 GMT	John Goerzen <jgoerzen@complete.org>	patch-59
 
     Summary:

@@ -1,3 +1,9 @@
+tla-buildpackage (0.9.7) unstable; urgency=low
+
+  * Added xpdf-utils to build-dep-indep.  Closes: #242966.
+
+ -- John Goerzen <jgoerzen@complete.org>  Wed, 21 Apr 2004 14:04:07 -0500
+
 tla-buildpackage (0.9.6) unstable; urgency=low
 
   * Fixed a follow-up bug that was introduced in 0.9.5.  This makes
