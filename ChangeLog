@@ -2,6 +2,21 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/tla-buildpackage--head--1.0
 #
 
+2003-10-16 15:40:37 GMT	John Goerzen <jgoerzen@complete.org>	patch-35
+
+    Summary:
+      Fixed up formatting of manpages in PS output; added index
+    Revision:
+      tla-buildpackage--head--1.0--patch-35
+
+    Fixed up formatting of manpages in PS output; added index
+    
+
+    modified files:
+     ./ChangeLog ./docs/Makefile ./docs/chapters/intro.sgml
+     ./docs/man.tbp-initarchive.sgml ./docs/tbp.sgml
+
+
 2003-10-16 15:31:11 GMT	John Goerzen <jgoerzen@complete.org>	patch-34
 
     Summary:

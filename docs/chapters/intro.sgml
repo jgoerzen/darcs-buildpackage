@@ -88,6 +88,7 @@
 
     <sect1 id="ch.intro.flow">
       <title>Usage Overview</title>
+      <indexterm><primary>Overview</primary></indexterm>
       <para>
 	Here is a high-level overview of the Debian development
 	process using &tbp;.

@@ -19,9 +19,9 @@
 MASTERBASE := tbp
 TOPNODE := tbp
 BASICDEPS := $(wildcard */*.sgml */*.ent)
-#DOINDEX := yes
-DOINDEX := no
-#HTMLARGS := -s local
+DOINDEX := yes
+#DOINDEX := no
+HTMLARGS := -s local
 PSARGS := -s local=printlocal
 
 all: $(MASTERBASE).ps

@@ -3,6 +3,7 @@
   %MANMAC;
   <!ENTITY % CHAPMAC SYSTEM "chapters/chapmac.ent">
   %CHAPMAC;
+  <!ENTITY index SYSTEM "index/index.sgml">
 ]>
 
 <book id="tbp">
@@ -13,20 +14,15 @@
     </author>
     <address><email>jgoerzen@complete.org</email></address>
   </bookinfo>
-  <part id="tbp.chaps">
-    <title>Guide to tla-buildpackage</title>
-    &ch.intro;
-  </part>
+  &ch.intro;
   
-  <part id="tbp.man">
-    <title>Manpages</title>
-    <subtitle>Reference to tla-buildpackage Commands</subtitle>
-    <reference id="tbp.man.reference">
-      <title>Manpage Reference</title>
-      &man.tla.buildpackage;
-      &man.tbp.initarchive;
-    </reference>
-  </part>
+  <appendix id="tbp.man.reference">
+    <title>Command Reference</title>
+    &man.tla.buildpackage;
+    &man.tbp.initarchive;
+  </appendix>
+
+  &index;
 </book>
 
 <!--
