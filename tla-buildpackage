@@ -58,15 +58,16 @@ cd ..
 ORIGDIRNAME=${WCDIRNAME}.orig
 ORIGDIR=`pwd`/${ORIGDIRNAME}
 
-echo " *** Building $ORIGDIRNAME from $UPSTREAMREV"
-rm -fr ${ORIGDIR} &> /dev/null || true
-tla get $UPSTREAMREV $ORIGDIRNAME
-
-echo " *** Building $TARNAME"
-
-tla inventory -s $ORIGDIRNAME | tar -cSpf - -T- | gzip -9 > $TARNAME
-
-rm -fr $ORIGDIRNAME
+if test -f $TARNAME; then
+  echo " *** Not building $TARNAME"
+else
+  echo " *** Building $ORIGDIRNAME from $UPSTREAMREV"
+  rm -fr ${ORIGDIR} &> /dev/null || true
+  tla get $UPSTREAMREV $ORIGDIRNAME
+  echo " *** Building $TARNAME"
+  tla inventory -s $ORIGDIRNAME | tar -cSpf - -T- | gzip -9 > $TARNAME
+  rm -fr $ORIGDIRNAME 
+fi
 cd "$WCDIR"
 
 echo " *** Running build program"

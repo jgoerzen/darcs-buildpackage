@@ -2,6 +2,18 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/tla-buildpackage--head--1.0
 #
 
+2003-10-11 16:24:33 GMT	John Goerzen <jgoerzen@complete.org>	patch-5
+
+    Summary:
+      Misc cleanups
+    Revision:
+      tla-buildpackage--head--1.0--patch-5
+
+
+    modified files:
+     ChangeLog tla-buildpackage
+
+
 2003-10-11 03:51:50 GMT	John Goerzen <jgoerzen@complete.org>	patch-4
 
     Summary:
