@@ -1,4 +1,4 @@
-# arch-tag: tla buildpackage: calls to tla package
+# arch-tag: tla buildpackage import utilities
 # Copyright (C) 2003 John Goerzen
 #
 #    This program is free software; you can redistribute it and/or modify
@@ -16,33 +16,30 @@
 #    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
 
 import re
-import extcmd
+import extcmd, tbpconfig, tla
 
-def gettreeversion():
-    return extcmd.run("tla tree-version")[0].strip()
+def parsedsc(filename):
+    fd = open(filename)
+    retval = {}
+    for line in fd:
+        line = line.strip()
+        m = re.search("^([a-zA-Z]+): (.+)$", line)
+        if m:
+            retval[m.group(1)] = m.group(2)
+    return retval
 
-def getarchive(version = None):
-    if version == None:
-        version = gettreeversion()
-    return re.search('^([^/]+)/[^/]+$', version)
+def importorig(dirname, package, version):
+    """Side-effect: chdir to wc"""
+    wc = tbpconfig.getwcdir()
+    os.chdir(wc)
 
-def isvalidversion(ver):
-    try:
-        return len(extcmd.run("tla revisions %s" % ver))
-    except:
-        return 0
+    archive = tla.getarchive()
+    version = "%s/%s--head--1.0" % (archive, package)
 
-def archive_setup(ver):
-    extcmd.qrun('tla archive-setup "%s"' % ver)
-    
-def condsetup(version):
-    """Will create version in archive if it's not there.
+    isnew = tla.condsetup(version)
 
-    Returns true if it created it, false otherwise."""
-    if not isvalidversion(version):
-        print "Setting up version %s"
-        archive_setup(version)
-        return 1
-    else:
-        return 0
+    # If it's new, need to create empty dir and then tla_load_dirs
+    # into it.  Otherwise, check out latest and tla_load_dirs into that.
+    #
+    # After doing that, update the config file and commit.
     

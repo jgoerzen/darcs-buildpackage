@@ -17,6 +17,8 @@
 
 import re
 import extcmd
+import apt_pkg
+apt_pkg.InitSystem()
 
 def splitver(version):
     """Takes a full version number version and returns a tuple consisting
@@ -40,3 +42,6 @@ def getverfromchangelog():
 
 def getpackagefromchangelog():
     return extcmd.extractline('dpkg-parsechangelog', 'Source')
+
+def vercmp(v1, v2):
+    return apt_pkg.VersionCompare(v1, v2)

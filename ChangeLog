@@ -2,6 +2,22 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/tla-buildpackage--head--1.0
 #
 
+2003-10-14 21:54:02 GMT	John Goerzen <jgoerzen@complete.org>	patch-11
+
+    Summary:
+      Checkpointing import development
+    Revision:
+      tla-buildpackage--head--1.0--patch-11
+
+    Partway done with import orig.  Need to do some more work on it yet.
+
+    new files:
+     tbppy/import.py tbppy/tbpconfig.py
+
+    modified files:
+     ChangeLog tbppy/tla.py tbppy/versions.py
+
+
 2003-10-14 20:10:35 GMT	John Goerzen <jgoerzen@complete.org>	patch-10
 
     Summary:
