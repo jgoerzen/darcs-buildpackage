@@ -1,5 +1,4 @@
-#!/bin/bash
-# -*- Mode: shell-script; -*-
+#!/usr/bin/python2.3
 # arch-tag: program to initialize a Debian package repository
 # Copyright (C) 2003 John Goerzen
 #
@@ -17,15 +16,13 @@
 #    along with this program; if not, write to the Free Software
 #    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
 #
-# Depends: awk, bash, sed, dpkg-dev, devscripts
-# Programs: tail, tla, grep
 
-set -e
+import os, sys
+from tbppy import tla, extcmd
 
-printhelp() {
-  cat <<EOF
-Usage:
-$0 archive-name archive-location working-location
+def printhelp():
+    print """Usage:
+%s archive-name archive-location working-location
 
 Where:
   archive-name is the tla archive name to create; for instance,
@@ -35,64 +32,53 @@ Where:
   ~/arch/debian
 
   working-location is where you will check out sources and work with
-  the system; for instance, ~/devel/debian
-EOF
-}
+  the system; for instance, ~/devel/debian""" % sys.argv[0]
 
-syntax() {
-  printhelp
-  exit 1
-}
+def syntax():
+    printhelp()
+    sys.exit(1)
 
-if test -z "$3"; then
-  syntax
-fi
+if len(sys.argv) < 4:
+    syntax()
 
-ARCHIVENAME="$1"
-ARCHIVELOC="$2"
-WCLOC="$3"
-CONFIGVER="$ARCHIVENAME/configs--head--1.0"
+progname, ARCHIVENAME, ARCHIVELOC, WCLOC = sys.argv
+CONFIGVER = "%s/configs--head--1.0" % ARCHIVENAME
+if os.path.exists(ARCHIVELOC):
+    print "Archive location %s already exists" % ARCHIVELOC
+    sys.exit(2)
+if os.path.exists(WCLOC):
+    print "Working copy directory %s already exists" % WCLOC
+    sys.exit(3)
 
-if test -e "$ARCHIVELOC"; then
-  echo "Archive location $ARCHIVELOC already exists"
-  exit 2
-fi
+print "Making working copy location..."
+os.mkdir(WCLOC)
+os.chdir(WCLOC)
 
-if test -e "$WCLOC"; then
-  echo "Working copy location $WCLOC already exists"
-  exit 3
-fi
+print "Creating archive..."
+extcmd.qrun('tla make-archive -l "%s" "%s"' % (ARCHIVENAME, ARCHIVELOC))
 
-echo "Making working copy location..."
-mkdir $WCLOC
-cd $WCLOC
+print "Initializing archive..."
+extcmd.qrun('tla archive-setup "%s"' % CONFIGVER)
 
-echo "Creating archive..."
-tla make-archive -l "$ARCHIVENAME" "$ARCHIVELOC"
+print "Initializing config tree..."
+extcmd.qrun('tla init-tree "%s"' % CONFIGVER)
+extcmd.qrun('tla tagging-method tagline')
 
-echo "Initializing archive..."
-tla archive-setup "$CONFIGVER"
+print "Populating config tree..."
+for newdir in ['configs', 'configs/upstream', 'configs/debian', 'packages']:
+    os.mkdir(newdir)
+    extcmd.qrun('tla add %s' % newdir)
+    
+print "Importing config tree..."
+extcmd.qrun('tla import')
 
-echo "Initializing config tree..."
-tla init-tree "$CONFIGVER"
-tla tagging-method tagline
+configfilename = os.path.expanduser('~/.tla-buildpackage')
+if os.path.exists(configfilename):
+    print "%s already exists; not modifying" % configfilename
+else:
+    print "Generating %s" % configfilename
+    fd = open(configfilename, "w")
+    fd.write("%s\n" % WCLOC)
+    fd.close()
 
-echo "Populating config tree..."
-
-for NEWDIR in configs configs/upstream configs/debian packages; do
-  mkdir $NEWDIR
-  tla add $NEWDIR
-done
-
-echo "Importing config tree..."
-tla import
-
-if test -e ~/.tla-buildpackage; then
-  echo "~/.tla-buildpackage already exists; not modifying."
-else
-  echo "Generating ~/.tla-buildpackage..."
-  echo "$WCLOC" > ~/.tla-buildpackage
-fi
-
-echo "Operation successful."
-
+print "Operation successful."

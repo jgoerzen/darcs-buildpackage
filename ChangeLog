@@ -2,6 +2,24 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/tla-buildpackage--head--1.0
 #
 
+2003-10-14 20:10:35 GMT	John Goerzen <jgoerzen@complete.org>	patch-10
+
+    Summary:
+      Pythonization
+    Revision:
+      tla-buildpackage--head--1.0--patch-10
+
+    Rewrote tbp-initrepos in Python.
+    
+    Added Python support modules in preparation for Pythonizing the rest.
+
+    new files:
+     tbppy/tla.py
+
+    modified files:
+     ChangeLog tbp-initrepos tbppy/extcmd.py tla-buildpackage
+
+
 2003-10-14 19:42:54 GMT	John Goerzen <jgoerzen@complete.org>	patch-9
 
     Summary:

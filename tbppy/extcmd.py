@@ -15,7 +15,7 @@
 #    along with this program; if not, write to the Free Software
 #    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
 
-import popen2, os, re
+import popen2, os, re, sys
 
 def handlewaitval(waitval):
     """Returns None if there was no error, or a string describing the problem
@@ -33,7 +33,10 @@ def handlewaitval(waitval):
         errors.append("received signal %d" % os.WTERMSIG(waitval))
     return ",".join(errors)
 
-def run(command, debug = 1):
+def qrun(command):
+    return run(command, capture = 0)
+
+def run(command, debug = 1, capture = 1):
     """Executes command command.  Returns a list of lines of output from that
     command.  Debug may be:
 
@@ -42,8 +45,13 @@ def run(command, debug = 1):
 
     p =  popen2.Popen3(command)
     if debug:
-        print " * Running:", command
-    lines = p.fromchild.readlines()
+        print " *", command
+    if capture:
+        lines = p.fromchild.readlines()
+    else:
+        lines = []
+        for line in p.fromchild:
+            sys.stdout.write(line)
     waitval = p.wait()
     waiterrors = handlewaitval(waitval)
     if waiterrors:

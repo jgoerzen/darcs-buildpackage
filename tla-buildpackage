@@ -1,5 +1,4 @@
-#!/bin/bash
-# -*- Mode: shell-script; -*-
+#!/usr/bin/python2.3
 # arch-tag: main entry point
 # Copyright (C) 2003 John Goerzen
 #
@@ -17,6 +16,9 @@
 #    along with this program; if not, write to the Free Software
 #    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
 #
+
+
+"""
 # Depends: awk, bash, sed, dpkg-dev, devscripts
 # Programs: tail, tla, grep
 
@@ -73,3 +75,4 @@ cd "$WCDIR"
 echo " *** Running build program"
 debuild '-i\+\+pristine-trees|,,*|\{arch\}|\.arch-ids' "$@"
 
+"""
