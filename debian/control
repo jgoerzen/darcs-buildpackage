@@ -8,7 +8,7 @@ Standards-Version: 3.6.0
 Package: tla-buildpackage
 Architecture: all
 Depends: python2.3, tla, tla-load-dirs (>= 1.0.11), dpkg-dev, devscripts, python-apt
-Description: Suite to help with with Debian packages in Arch archives
+Description: Suite to help with Debian packages in Arch archives
  This package helps automate and ease the task of maintaining Debian
  packages by helping you, the Debian developer, take advantage of
  the unique features in tla/Arch.  The programs included are:

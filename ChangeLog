@@ -2,6 +2,18 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/tla-buildpackage--head--1.0
 #
 
+2004-04-05 13:15:45 GMT	John Goerzen <jgoerzen@complete.org>	patch-59
+
+    Summary:
+      Removed extra 'with' in descrption.
+    Revision:
+      tla-buildpackage--head--1.0--patch-59
+
+
+    modified files:
+     ChangeLog debian/control
+
+
 2004-03-03 03:26:34 GMT	John Goerzen <jgoerzen@complete.org>	patch-58
 
     Summary:
