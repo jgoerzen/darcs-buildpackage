@@ -34,7 +34,10 @@ def handlewaitval(waitval):
     return ",".join(errors)
 
 def qrun(command):
-    return run(command, capture = 0)
+    hwv = handlewaitval(os.system(command))
+    if hwv:
+        raise RuntimeRrror, "Command %s: %s" % (command, hwv)
+    return []
 
 def run(command, debug = 1, capture = 1):
     """Executes command command.  Returns a list of lines of output from that
