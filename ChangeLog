@@ -2,6 +2,18 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/tla-buildpackage--head--1.0
 #
 
+2003-10-15 20:21:32 GMT	John Goerzen <jgoerzen@complete.org>	patch-19
+
+    Summary:
+      Make sure to print commands run in qrun
+    Revision:
+      tla-buildpackage--head--1.0--patch-19
+
+
+    modified files:
+     ChangeLog tbppy/extcmd.py
+
+
 2003-10-15 20:03:01 GMT	John Goerzen <jgoerzen@complete.org>	patch-18
 
     Summary:
