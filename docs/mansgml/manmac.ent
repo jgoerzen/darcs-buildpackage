@@ -1,4 +1,6 @@
 <!ENTITY man.tla.buildpackage SYSTEM "tla-buildpackage.sgml">
+<!ENTITY man.tbp.initarchive SYSTEM "tbp-initarchive.sgml">
+
 <!ENTITY man.com.copyright.refsect1 SYSTEM "com.copyright.sgml">
 <!ENTITY man.com.author.refsect1 SYSTEM "com.author.sgml">
 <!ENTITY man.com.footer.refsect1 "&man.com.copyright.refsect1; &man.com.author.refsect1;">

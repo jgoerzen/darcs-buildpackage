@@ -2,6 +2,26 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/tla-buildpackage--head--1.0
 #
 
+2003-10-16 15:31:11 GMT	John Goerzen <jgoerzen@complete.org>	patch-34
+
+    Summary:
+      Adjust docs for multiple manpages
+    Revision:
+      tla-buildpackage--head--1.0--patch-34
+
+    Adjust docs for multiple manpages
+    
+
+    new files:
+     ./docs/man.tbp-initarchive.sgml
+     ./docs/mansgml/tbp-initarchive.sgml
+
+    modified files:
+     ./ChangeLog ./docs/Makefile ./docs/man.tla-buildpackage.sgml
+     ./docs/mansgml/manmac.ent ./docs/mansgml/tla-buildpackage.sgml
+     ./docs/tbp.sgml
+
+
 2003-10-16 15:25:54 GMT	John Goerzen <jgoerzen@complete.org>	patch-33
 
     Summary:

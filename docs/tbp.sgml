@@ -22,7 +22,9 @@
     <title>Manpages</title>
     <subtitle>Reference to tla-buildpackage Commands</subtitle>
     <reference id="tbp.man.reference">
+      <title>Manpage Reference</title>
       &man.tla.buildpackage;
+      &man.tbp.initarchive;
     </reference>
   </part>
 </book>

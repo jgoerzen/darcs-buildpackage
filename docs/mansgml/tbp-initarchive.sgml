@@ -1,26 +1,25 @@
 
 <!-- <reference> -->
-  <refentry id="tbp.man.tla.buildpackage">
+  <refentry id="tbp.man.tbp.initarchive">
     <refentryinfo>
       <address><email>jgoerzen@complete.org</email></address>
       <author><firstname>John</firstname><surname>Goerzen</surname></author>
     </refentryinfo>
 
     <refmeta>
-      <refentrytitle>tla-buildpackage</refentrytitle>
+      <refentrytitle>tbp-initarchive</refentrytitle>
       <manvolnum>1</manvolnum>
       <refmiscinfo>John Goerzen</refmiscinfo>
     </refmeta>
 
     <refnamediv>
-      <refname>tla-buildpackage</refname>
-      <refpurpose>Build Debian packages from a tla/Arch
-	archive</refpurpose>
+      <refname>tbp-initarchive</refname>
+      <refpurpose>Initialize an archive and tree for tla-buildpackage</>
     </refnamediv>
 
     <refsynopsisdiv>
       <cmdsynopsis>
-	<command>tla-buildpackage</command>
+	<command>FIXME tla-buildpackage</command>
 	<arg rep="repeat"><replaceable>args for
 	    debuild</replaceable></arg>
       </cmdsynopsis>
@@ -60,5 +59,5 @@ sgml-parent-document:("../tbp.sgml" "book" "part" "reference")
 sgml-set-face: T
 End:
 
-# arch-tag: manpage for tla-buildpackage(1)
+# arch-tag: manpage for tbp-initarchive(1)
 -->
