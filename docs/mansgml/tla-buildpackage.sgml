@@ -2,7 +2,7 @@
 <!-- <reference> -->
   <title>tla-buildpackage Manual</title>
 
-  <refentry>
+  <refentry id="tbp.man.tla.buildpackage">
     <refentryinfo>
       <address><email>jgoerzen@complete.org</email></address>
       <author><firstname>John</firstname><surname>Goerzen</surname></author>
@@ -35,6 +35,7 @@
       </para>
     </refsect1>
 
+    &man.com.files.refsect1;
     &man.com.environment.refsect1;
     &man.com.footer.refsect1;
 

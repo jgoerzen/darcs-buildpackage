@@ -2,6 +2,27 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/tla-buildpackage--head--1.0
 #
 
+2003-10-16 03:34:48 GMT	John Goerzen <jgoerzen@complete.org>	patch-25
+
+    Summary:
+      Further manual refinements
+    Revision:
+      tla-buildpackage--head--1.0--patch-25
+
+    Further manual refinements
+    
+
+    new files:
+     ./docs/chapters/.arch-ids/=id ./docs/mansgml/com.files.sgml
+
+    modified files:
+     ./ChangeLog ./docs/Makefile ./docs/mansgml/manmac.ent
+     ./docs/mansgml/tla-buildpackage.sgml
+
+    new directories:
+     ./docs/chapters ./docs/chapters/.arch-ids
+
+
 2003-10-16 03:25:33 GMT	John Goerzen <jgoerzen@complete.org>	patch-24
 
     Summary:

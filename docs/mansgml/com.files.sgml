@@ -1,0 +1,25 @@
+    <refsect1>
+      <title>Files</title>
+      <para>
+        The following specific files are used by this application:
+      </para>
+      <variablelist>
+	<varlistentry><term><filename>~/.tla-buildpackage</></term>
+	  <listitem><para>
+            Specifies the default working copy location for all
+            build procedures.  This file, and the directory it specifies,
+            are both normally created by <application>tbp-initarchive</>.
+	    </para>
+	  </listitem>
+	</varlistentry>
+      </variablelist>
+    </refsect1>
+<!--
+Local Variables:
+mode: sgml
+sgml-parent-document:("./tla-buildpackage.sgml" "reference")
+sgml-set-face: T
+End:
+
+# arch-tag: common data for tla-buildpackage manual: files
+-->
