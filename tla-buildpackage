@@ -45,9 +45,9 @@ if not os.path.basename(os.getcwd()) == '%s-%s' % (package, upstreamver):
                                   os.path.basename(os.getcwd()))
 
 tgzname = "%s_%s.orig.tar.gz" % (package, upstreamver)
-tgzpath = os.path.abspath(os.getcwd + "../%s" % tgzname)
+tgzpath = os.path.abspath(os.getcwd() + "/../%s" % tgzname)
 origdirname = '%s-%s.orig' % (package, upstreamver)
-origdir = os.path.abspath(os.getcwd + "../%s-%s.orig" % (package, upstreamver))
+origdir = os.path.abspath(os.getcwd() + "/../%s-%s.orig" % (package, upstreamver))
 startdir = os.getcwd()
 
 if not os.path.isfile(tgzpath):
@@ -61,9 +61,10 @@ if not os.path.isfile(tgzpath):
     os.chdir('..')
     extcmd.qrun('tla inventory -s "%s" | tar -cSpf - -T- | gzip -9 > "%s"' % \
                 (origdirname, tgzname))
-    os.chdir(startdir)
-    print " *** Running build program"
-    util.safeexec("debuild",
-                  [r'-i\+\+pristine-trees|,,*|\{arch\}|\.arch-ids'] + \
-                  sys.argv[1:])
+
+os.chdir(startdir)
+print " *** Running build program"
+util.safeexec("debuild",
+              [r'-i\+\+pristine-trees|,,*|\{arch\}|\.arch-ids'] + \
+              sys.argv[1:])
     

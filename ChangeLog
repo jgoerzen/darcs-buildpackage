@@ -2,6 +2,20 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/tla-buildpackage--head--1.0
 #
 
+2003-10-16 14:35:02 GMT	John Goerzen <jgoerzen@complete.org>	patch-31
+
+    Summary:
+      Bugfixes after initial testing to tla-buildpackage
+    Revision:
+      tla-buildpackage--head--1.0--patch-31
+
+    Bugfixes after initial testing to tla-buildpackage
+    
+
+    modified files:
+     ./ChangeLog ./tla-buildpackage
+
+
 2003-10-16 14:26:36 GMT	John Goerzen <jgoerzen@complete.org>	patch-30
 
     Summary:
