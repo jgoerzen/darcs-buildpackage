@@ -1,12 +1,19 @@
 Source: tla-buildpackage
-Section: unknown
+Section: devel
 Priority: optional
 Maintainer: John Goerzen <jgoerzen@complete.org>
-Build-Depends: debhelper (>= 4.0.0)
+Build-Depends-Indep: debhelper (>= 4.0.0), python2.3-dev
 Standards-Version: 3.6.0
 
 Package: tla-buildpackage
-Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Architecture: all
+Depends: python2.3, tla | tla-snapshot, tla_load_dirs, awk, bash, sed, dpkg-dev, devscripts, tail, grep
+Description: Set of scripts to help load Debian packages into Arch archives
+ This package provides the following programs:
+ .
+ tla-buildpackage: Builds a Debian package based on information in
+ the repository, checking out Debian and upstream versions as necessary.
+ .
+ tla-importpackage: Takes a Debian .dsc and imports it into a tla
+ repository, taking note to handle Debian and upstream versions
+ appropriately.

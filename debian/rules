@@ -6,26 +6,17 @@
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
+PYTHON=python2.3
+PACKAGE=tla-buildpackage
 
 
-
-CFLAGS = -Wall -g
-
-ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
-	CFLAGS += -O0
-else
-	CFLAGS += -O2
-endif
-ifeq (,$(findstring nostrip,$(DEB_BUILD_OPTIONS)))
-	INSTALL_PROGRAM += -s
-endif
 
 configure: configure-stamp
 configure-stamp:
 	dh_testdir
 	# Add here commands to configure the package.
 
-	touch configure-stamp
+	#touch configure-stamp
 
 
 build: build-stamp
@@ -34,7 +25,8 @@ build-stamp: configure-stamp
 	dh_testdir
 
 	# Add here commands to compile the package.
-	$(MAKE)
+	#$(MAKE)
+	$(PYTHON) setup.py build
 	#/usr/bin/docbook-to-man debian/tla-buildpackage.sgml > tla-buildpackage.1
 
 	touch build-stamp
@@ -45,7 +37,8 @@ clean:
 	rm -f build-stamp configure-stamp
 
 	# Add here commands to clean up after the build process.
-	-$(MAKE) clean
+	-$(PYTHON) setup.py clean
+	#-$(MAKE) clean
 
 	dh_clean 
 
@@ -56,7 +49,8 @@ install: build
 	dh_installdirs
 
 	# Add here commands to install the package into debian/tla-buildpackage.
-	$(MAKE) install DESTDIR=$(CURDIR)/debian/tla-buildpackage
+	#$(MAKE) install DESTDIR=$(CURDIR)/debian/tla-buildpackage
+	$(PYTHON) setup.py install --root=`pwd`/debian/$(PACKAGE) --no-compile
 
 
 # Build architecture-independent files here.
@@ -64,7 +58,7 @@ binary-indep: build install
 # We have nothing to do by default.
 
 # Build architecture-dependent files here.
-binary-arch: build install
+binary-indep: build install
 	dh_testdir
 	dh_testroot
 	dh_installchangelogs ChangeLog
@@ -86,7 +80,7 @@ binary-arch: build install
 	dh_compress
 	dh_fixperms
 #	dh_perl
-#	dh_python
+	dh_python
 #	dh_makeshlibs
 	dh_installdeb
 	dh_shlibdeps
