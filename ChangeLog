@@ -2,6 +2,20 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/tla-buildpackage--head--1.0
 #
 
+2003-10-22 00:35:56 GMT	John Goerzen <jgoerzen@complete.org>	patch-47
+
+    Summary:
+      Fixed spelling of Suite
+    Revision:
+      tla-buildpackage--head--1.0--patch-47
+
+    Fixed spelling of Suite
+    
+
+    modified files:
+     ./ChangeLog ./debian/control
+
+
 2003-10-21 21:23:36 GMT	John Goerzen <jgoerzen@complete.org>	patch-46
 
     Summary:
