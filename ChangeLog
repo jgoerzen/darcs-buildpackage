@@ -2,6 +2,20 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/tla-buildpackage--head--1.0
 #
 
+2003-10-22 03:53:21 GMT	John Goerzen <jgoerzen@complete.org>	patch-49
+
+    Summary:
+      Added logic to ignore error from tla replay during import of dsc.
+    Revision:
+      tla-buildpackage--head--1.0--patch-49
+
+    Added logic to ignore error from tla replay during import of dsc.
+    
+
+    modified files:
+     ./ChangeLog ./debian/changelog ./tbppy/tbpimport.py
+
+
 2003-10-22 01:02:56 GMT	John Goerzen <jgoerzen@complete.org>	patch-48
 
     Summary:

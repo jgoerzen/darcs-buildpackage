@@ -109,8 +109,11 @@ def importdsc(dscname):
             #extcmd.qrun('tla star-merge "%s"' % tlaupstreamrev)
             # FIXME: when we get tla 1.1, use tlaupstreamrev to be more
             # precise.
-            extcmd.qrun('tla replay --new --in-place . "%s"' % \
-                        (tlaupstreamver))
+            try:
+                extcmd.qrun('tla replay --new --in-place . "%s"' % \
+                            (tlaupstreamver))
+            except RuntimeError:
+                pass
             #extcmd.qrun('tla update --in-place . "%s"' % tlaupstreamrev)
             for file in extcmd.run('tla inventory -b'):
                 # Delete orig, rej files

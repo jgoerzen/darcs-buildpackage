@@ -1,3 +1,9 @@
+tla-buildpackage (0.9.2) unstable; urgency=low
+
+  * Added logic to ignore error from tla replay during import of dsc.
+
+ -- John Goerzen <jgoerzen@complete.org>  Tue, 21 Oct 2003 22:52:36 -0500
+
 tla-buildpackage (0.9.1) unstable; urgency=low
 
   * Now generate and document "latest" files for configs.
