@@ -1,0 +1,24 @@
+  <para>
+    Detailed usage information, including a background and a description of how
+    the tools fit together, can be found in the tla-buildpackage Manual.  On
+    Debian systems, you may find this at
+    <filename>/usr/share/doc/tla-buildpackage</filename>.
+  </para>
+
+  <para>
+    &tbp; applications have references in that manual and the
+    following manpages: <application>tbp-initarchive</application>(1),
+    <application>tbp-importdsc</application>(1),
+    <application>tbp-importorig</application>(1),
+    <application>tla-buildpackage</application>(1).
+  </para>
+
+<!--
+Local Variables:
+mode: sgml
+sgml-parent-document:("./tla-buildpackage.sgml" "reference" "refsect1")
+sgml-set-face: T
+End:
+
+# arch-tag: common data for tla-buildpackage manual: see also
+-->

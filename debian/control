@@ -2,12 +2,12 @@ Source: tla-buildpackage
 Section: devel
 Priority: optional
 Maintainer: John Goerzen <jgoerzen@complete.org>
-Build-Depends-Indep: debhelper (>= 4.0.0), python2.3-dev
+Build-Depends-Indep: debhelper (>= 4.0.0), python2.3-dev, gtk-doc-tools, sgml2x, docbook-utils, jade, tla-load-dirs
 Standards-Version: 3.6.0
 
 Package: tla-buildpackage
 Architecture: all
-Depends: python2.3, tla | tla-snapshot, tla-load-dirs, awk, bash, sed, dpkg-dev, devscripts, tail, grep, python-apt
+Depends: python2.3, tla, tla-load-dirs, bash, sed, dpkg-dev, devscripts, python-apt, dpkg-dev
 Description: Set of scripts to help load Debian packages into Arch archives
  This package provides the following programs:
  .

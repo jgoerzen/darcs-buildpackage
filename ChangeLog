@@ -2,6 +2,24 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/tla-buildpackage--head--1.0
 #
 
+2003-10-16 13:37:01 GMT	John Goerzen <jgoerzen@complete.org>	patch-26
+
+    Summary:
+      More work on the docs
+    Revision:
+      tla-buildpackage--head--1.0--patch-26
+
+    More work on the docs
+    
+
+    new files:
+     ./docs/mansgml/com.seealso.sgml
+
+    modified files:
+     ./ChangeLog ./debian/control ./docs/mansgml/manmac.ent
+     ./docs/mansgml/tla-buildpackage.sgml
+
+
 2003-10-16 03:34:48 GMT	John Goerzen <jgoerzen@complete.org>	patch-25
 
     Summary:

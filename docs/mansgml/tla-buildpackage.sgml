@@ -39,6 +39,18 @@
     &man.com.environment.refsect1;
     &man.com.footer.refsect1;
 
+    <refsect1>
+      <title>See Also</title>
+      &man.com.seealso.para;
+      <para>
+	Other related references include:
+	<application>tla</application>(1),
+	<application>debuild</application>(1),
+	<application>dpkg-buildpackage</application>(1).
+      </para>
+    </refsect1>
+      
+
   </refentry>
 
 <!-- </reference> -->
