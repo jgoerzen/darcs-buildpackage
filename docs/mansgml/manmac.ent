@@ -1,6 +1,7 @@
 <!ENTITY man.tla.buildpackage SYSTEM "tla-buildpackage.sgml">
 <!ENTITY man.tbp.initarchive SYSTEM "tbp-initarchive.sgml">
 <!ENTITY man.tbp.importdsc SYSTEM "tbp-importdsc.sgml">
+<!ENTITY man.tbp.importorig SYSTEM "tbp-importorig.sgml">
 
 <!ENTITY tbp.copyright SYSTEM "copyright.sgml">
 <!ENTITY man.com.copyright.refsect1 SYSTEM "com.copyright.sgml">

@@ -85,7 +85,25 @@ Committed jgoerzen@complete.org--debian/rdiff-backup--debian--1.0--patch-2
       <para>
 	&tbp-importdsc; has a few restrictions: you must always load
 	packages in ascending order of package version.  Please see
-	<xref linkend="tbp.man.tbp.importdsc">for more details.
+	<xref linkend="tbp.man.tbp.importdsc"> for more details.
+      </para>
+    </sect1>
+
+    <sect1 id="tbp.import.orig">
+      <title>Importing Upstream Sources</title>
+      <indexterm><primary>tbp-importorig</primary></>
+      <para>
+	While &tbp-importdsc; can solve many problems, sometimes you
+	need to import just upstream sources (the Debian orig.tar.gz
+	file).  For this task, &tbp-importorig; exists.  You will
+	often use it if you have already loaded all the Debian
+	versions into your archive, upstream has released a new
+	version, and you want to package that version.
+      </para>
+      <para>
+	Using &tbp-importorig; is simple and straightforward; please
+	refer to <xref linkend="tbp.man.tbp.importorig"> for more
+	details.
       </para>
     </sect1>
 

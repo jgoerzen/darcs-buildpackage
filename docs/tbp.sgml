@@ -26,6 +26,7 @@
     <title>Command Reference</title>
     &man.tla.buildpackage;
     &man.tbp.importdsc;
+    &man.tbp.importorig;
     &man.tbp.initarchive;
   </appendix>
 

@@ -2,6 +2,25 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/tla-buildpackage--head--1.0
 #
 
+2003-10-21 03:53:30 GMT	John Goerzen <jgoerzen@complete.org>	patch-41
+
+    Summary:
+      Documented tbp-importorig
+    Revision:
+      tla-buildpackage--head--1.0--patch-41
+
+    Documented tbp-importorig
+    
+
+    new files:
+     ./docs/man.tbp-importorig.sgml
+     ./docs/mansgml/tbp-importorig.sgml
+
+    modified files:
+     ./ChangeLog ./docs/chapters/import.sgml
+     ./docs/mansgml/manmac.ent ./docs/tbp.sgml
+
+
 2003-10-21 03:41:24 GMT	John Goerzen <jgoerzen@complete.org>	patch-40
 
     Summary:
