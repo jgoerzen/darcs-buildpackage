@@ -1,0 +1,17 @@
+  <chapter id="tbp.import">
+    <title>Importing Packages</title>
+    <para>
+      You will need to import sources into your &tbp; archive on
+      several different occasions:
+    </para>
+  </chapter>
+
+<!--
+Local Variables:
+mode: sgml
+sgml-parent-document:("../tbp.sgml" "book")
+sgml-set-face: T
+End:
+
+# arch-tag: common data for tla-buildpackage manual: import chapter
+-->

@@ -104,6 +104,7 @@ Operation successful.
       <title>The ~/.tla-buildpackage file</title>
       <indexterm significance="preferred"><primary>~/.tla-buildpackage</></>
       <indexterm><primary>Working Tree</><secondary>Location Of</></>
+      <indexterm><primary>TBP_WC environment variable</primary></indexterm>
       <para>
 	The <filename>~/.tla-buildpackage</filename> file holds the
 	path to your working tree.  <command>tbp-initarchive</command>

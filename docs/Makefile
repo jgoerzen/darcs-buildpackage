@@ -24,7 +24,8 @@ DOINDEX := yes
 HTMLARGS := -s local
 PSARGS := -s local=printlocal
 
-all: $(MASTERBASE).ps
+all: ps
+ps: $(MASTERBASE).ps
 html: html/index.html
 
 manpages: tla-buildpackage.1 tbp-initarchive.1

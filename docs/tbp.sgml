@@ -16,7 +16,8 @@
   </bookinfo>
   &ch.intro;
   &ch.getstart;
-  
+  &ch.import;
+
   <appendix id="tbp.man.reference">
     <title>Command Reference</title>
     &man.tla.buildpackage;
