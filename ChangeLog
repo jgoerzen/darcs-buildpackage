@@ -2,6 +2,35 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/tla-buildpackage--head--1.0
 #
 
+2003-10-15 19:56:55 GMT	John Goerzen <jgoerzen@complete.org>	patch-17
+
+    Summary:
+      Alter importation of Debian diffs to merge new upstream
+    Revision:
+      tla-buildpackage--head--1.0--patch-17
+
+    While the algorithm in the code now does work (check out upstream, change
+    tree to Debian, then apply Debian changes), the Debian files all get deleted
+    and the re-added on each merge.  This is because the explicit tags have to
+    be re-generated, so tla doesn't recognize it as the same file.
+    
+    So, a new algorithm will be to:
+    
+    1. check out Debian tree
+    
+    2. if it does not already include the right upstream:
+       a. star-merge the upstream
+       b. delete any orig/rej files left around and otherwise ignore conflicts
+    
+    3. tla_load_dir the Debian tree over it, effectively masking conflict
+       problems
+    
+    This is a first attempt at that implementation.
+
+    modified files:
+     ChangeLog tbppy/tbpimport.py
+
+
 2003-10-15 19:05:55 GMT	John Goerzen <jgoerzen@complete.org>	patch-16
 
     Summary:

@@ -94,11 +94,18 @@ def importdsc(dscname):
             if not item.endswith('tar.gz'):
                 debsrcdir = os.path.abspath(item)
         tmpwcdir = os.path.join(tmpdir, ",,tbp-importdeb-wc")
-        extcmd.qrun('tla get "%s" "%s"' % (tlaupstreamrev, tmpwcdir))
+        extcmd.qrun('tla get "%s" "%s"' % (tladebianver, tmpwcdir))
         os.chdir(tmpwcdir)
-        extcmd.qrun('tla set-tree-version "%s"' % tladebianver)
-        extcmd.qrun('tla join-branch "%s"' % tladebianver)
-        extcmd.qrun('tla sync-tree "%s"' % tladebianver)
+        oldver = versions.getverfromchangelog()
+        if versions.getupstreamver(oldver) != \
+           versions.getupstreamver(dscinfo['Version']):
+            # OK, our current tree doesn't use the same upstream
+            # version as the new one.  So we need to fix.
+            extcmd.qrun('tla star-merge "%s"' % tlaupstreamrev)
+            for file in extcmd.run('tla inventory -b'):
+                # Delete orig, rej files
+                file = file.rstrip()
+                os.unlink(file)
         os.chdir(tmpdir)
         extcmd.qrun('tla_load_dirs --wc="%s" --summary="Import Debian %s version %s" "%s"' % \
                     (tmpwcdir, dscinfo['Source'], dscinfo['Version'], debsrcdir))
