@@ -2,6 +2,25 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/tla-buildpackage--head--1.0
 #
 
+2003-10-18 02:40:26 GMT	John Goerzen <jgoerzen@complete.org>	patch-39
+
+    Summary:
+      More work on docs
+    Revision:
+      tla-buildpackage--head--1.0--patch-39
+
+    More work on docs
+    
+
+    new files:
+     ./TODO ./docs/man.tbp-importdsc.sgml
+     ./docs/mansgml/tbp-importdsc.sgml
+
+    modified files:
+     ./ChangeLog ./docs/Makefile ./docs/chapters/import.sgml
+     ./docs/mansgml/manmac.ent ./tbp-importdsc
+
+
 2003-10-16 21:58:52 GMT	John Goerzen <jgoerzen@complete.org>	patch-38
 
     Summary:

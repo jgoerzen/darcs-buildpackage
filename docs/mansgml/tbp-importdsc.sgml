@@ -1,0 +1,103 @@
+
+<!-- <reference> -->
+  <refentry id="tbp.man.tbp.importdsc">
+    <indexterm><primary>tbp-importdsc</><secondary>Reference For</></>
+    <refentryinfo>
+      <address><email>jgoerzen@complete.org</email></address>
+      <author><firstname>John</firstname><surname>Goerzen</surname></author>
+    </refentryinfo>
+
+    <refmeta>
+      <refentrytitle>tbp-importdsc</refentrytitle>
+      <manvolnum>1</manvolnum>
+      <refmiscinfo>John Goerzen</refmiscinfo>
+    </refmeta>
+
+    <refnamediv>
+      <refname>tbp-importdsc</refname>
+      <refpurpose>Import a Debian source package into tla-buildpackage</>
+    </refnamediv>
+
+    <refsynopsisdiv>
+      <cmdsynopsis>
+	<command>tbp-importdsc</command>
+	<arg choice="plain"><replaceable>dsc_name</replaceable></arg>
+      </cmdsynopsis>
+    </refsynopsisdiv>
+
+    <refsect1 id="tbp.man.tbp.importdsc.description">
+      <title>Description</title>
+      <para>
+        &tbp-importdsc; imports a Debian source package into a &tbp;
+        archive, notes the package version in the configs, and commits
+        the change.  All information, including package name, version,
+        Debian diffs, and upstream source, is automatically detected
+        from the source package.
+      </para>
+      <para>
+        This program will automatically detect if the upstream sources
+        have already been imported, and if so, will not attempt to
+        re-import them again.
+      </para>
+      <para>
+        It is an error to run &tbp-importdsc; on a package whose
+        Debian version already exists in the archive.  It is also an
+        error to run &tbp-importdsc; on a package when a newer version
+        already exists in the archive.  &tbp-importdsc; detects both
+        conditions and will terminate without causing harm.
+      </para>
+    </refsect1>
+
+    <refsect1 id="tbp.man.tbp.importdsc.options">
+      <title>Options</title>
+      <variablelist>
+	<varlistentry><term>dsc_name</term>
+	  <listitem><para>Gives the path to the Debian .dsc file from
+              the source package.</para>
+	  </listitem>
+	</varlistentry>
+      </variablelist>
+    </refsect1>
+      
+    <refsect1 id="tbp.man.tbp.importdsc.bugs">
+      <title>Bugs</title>
+      <itemizedlist>
+        <listitem><para>Neither GPG signatures nor MD5 sums are
+            verified when unpacking Debian source packages.</para>
+        </listitem>
+        <listitem><para>This program does not deal well with Debian
+            native packages (ones that lack a Debian diff.gz).
+            It will probably work, but building the package later
+            might result in a non-native package.
+          </para>
+        </listitem>
+      </itemizedlist>
+    </refsect1>
+
+    &man.com.files.refsect1;
+    &man.com.environment.refsect1;
+    &man.com.footer.refsect1;
+
+    <refsect1>
+      <title>See Also</title>
+      &man.com.seealso.para;
+      <para>
+	Other related references include:
+	<application>tla</application>(1), <application>dpkg-source</>(1).
+      </para>
+    </refsect1>
+      
+
+  </refentry>
+
+<!-- </reference> -->
+
+<!--
+Local Variables:
+mode: sgml
+sgml-parent-document:("../tbp.sgml" "book" "appendix" "reference")
+sgml-set-face: T
+End:
+
+# arch-tag: manpage for tbp-importdsc(1)
+-->

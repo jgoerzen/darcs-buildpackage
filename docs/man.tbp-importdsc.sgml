@@ -1,0 +1,19 @@
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DocBook V4.1//EN" [
+  <!ENTITY % MANMAC SYSTEM "mansgml/manmac.ent">
+  %MANMAC;
+]>
+
+<reference>
+<title>tla-buildpackage Manual</title>
+&man.tbp.importdsc;
+</reference>
+
+
+<!--
+Local Variables:
+mode: sgml
+sgml-set-face: T
+End:
+
+# arch-tag: sgml wrapper for tbp-importdsc(1) manpage
+-->

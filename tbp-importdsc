@@ -25,7 +25,7 @@ def printhelp():
 %s dscname
 
 Where:
-  orig-name is the name of a dsc file to import""" % sys.argv[0]
+  dsc-name is the name of a dsc file to import""" % sys.argv[0]
 
 def syntax():
     printhelp()

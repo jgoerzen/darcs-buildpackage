@@ -1,5 +1,6 @@
 <!ENTITY man.tla.buildpackage SYSTEM "tla-buildpackage.sgml">
 <!ENTITY man.tbp.initarchive SYSTEM "tbp-initarchive.sgml">
+<!ENTITY man.tbp.importdsc SYSTEM "tbp-importdsc.sgml">
 
 <!ENTITY man.com.copyright.refsect1 SYSTEM "com.copyright.sgml">
 <!ENTITY man.com.author.refsect1 SYSTEM "com.author.sgml">
@@ -10,6 +11,9 @@
 
 <!ENTITY tbp "<application>tla-buildpackage</application>">
 <!ENTITY tbp-initarchive "<command>tbp-initarchive</command>">
+<!ENTITY tbp-importdsc "<command>tbp-importdsc</command>">
+<!ENTITY tbp-importorig "<command>tbp-importorig</command>">
+
 <!ENTITY tla "<application>tla</application>">
 <!--
 # arch-tag: basic macros common to all manpages

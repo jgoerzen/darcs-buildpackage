@@ -4,6 +4,36 @@
       You will need to import sources into your &tbp; archive on
       several different occasions:
     </para>
+    <itemizedlist>
+      <listitem><para>You have existing Debian packages that you would
+          like to maintain with &tbp;.  In this case, you'll want to
+          import one or more full Debian source packages with
+          &tbp-importdsc;.</para>
+      </listitem>
+      <listitem><para>You want to package some previously-unpackaged
+          software for Debian.  In this case, you'll want to import an
+          upstream tarball with &tbp-importorig;.
+        </para>
+      </listitem>
+      <listitem><para>You want to update your Debian package with a
+          new version of upstream source.  This case also calls for
+          &tbp-importorig;.
+        </para>
+      </listitem>
+      <listitem><para>You want to import Debian sources from someone
+          else (for instance, if someone NMU's a package you maintain)
+          into your tree.  &tbp-importdsc; can handle that.
+        </para>
+      </listitem>
+    </itemizedlist>
+    <para>
+      There are two different programs that handle importing:
+      &tbp-importdsc; and &tbp-importorig;.  Both are covered in this
+      chapter.
+    </para>
+    <sect1 id="tbp.import.deb">
+      <title>Importing Debian Source Packages</title>
+      
   </chapter>
 
 <!--

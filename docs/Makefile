@@ -28,7 +28,7 @@ all: ps
 ps: $(MASTERBASE).ps
 html: html/index.html
 
-manpages: tla-buildpackage.1 tbp-initarchive.1
+manpages: tla-buildpackage.1 tbp-initarchive.1 tbp-importdsc.1
 %.1: man.%.sgml $(wildcard mansgml/*.sgml mansgml/*.ent)
 	docbook2man $<
 
