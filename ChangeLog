@@ -2,6 +2,18 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/tla-buildpackage--head--1.0
 #
 
+2003-10-15 19:05:55 GMT	John Goerzen <jgoerzen@complete.org>	patch-16
+
+    Summary:
+      Bugfixes on Debian import
+    Revision:
+      tla-buildpackage--head--1.0--patch-16
+
+
+    modified files:
+     ChangeLog tbppy/configs.py tbppy/tbpimport.py
+
+
 2003-10-15 16:34:12 GMT	John Goerzen <jgoerzen@complete.org>	patch-15
 
     Summary:

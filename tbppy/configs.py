@@ -65,6 +65,9 @@ def writeconfig(configtype, package, pkgversion, tlaversion):
     fd = open('configs/%s/%s/%s' % (configtype, package, pkgversion), 'w')
     fd.write("# arch-tag: config for %s package %s version %s (%s)\n" % \
              (configtype, package, pkgversion, str(time.time())))
-    fd.write("./packages/%s/%s-%s.orig" % (package, package, pkgversion))
+    if configtype == 'upstream':
+        fd.write("./packages/%s/%s-%s.orig" % (package, package, pkgversion))
+    else:
+        fd.write("./packages/%s/%s-%s" % (package, package, pkgversion))
     fd.write(' %s\n' % tlaversion)
     fd.close()

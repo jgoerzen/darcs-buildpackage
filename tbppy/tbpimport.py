@@ -72,10 +72,10 @@ def importdsc(dscname):
     tlaupstreamrev = extcmd.run('tla catcfg upstream/%s/%s' % \
                                 (dscinfo['Source'],
                                  versions.getupstreamver(dscinfo['Version'])))
-    tlaupstreamrev = tlaupstreamrev[0].split(' ')[1]
+    tlaupstreamrev = tlaupstreamrev[0].split("\t")[1].strip()
     tladebianver = "%s/%s--debian--1.0" % (archive, dscinfo['Source'])
     isnew = tla.condsetup(tladebianver)
-    configs.makeconfigifneeded('debian', dscinfo['Source'])
+    configs.makepkgconfigifneeded('debian', dscinfo['Source'])
     if not configs.checkversion('debian', dscinfo['Source'],
                                 dscinfo['Version']):
         print "Debian import: version %s is not newer than all versions in archive" % dscinfo['Version']
@@ -90,16 +90,15 @@ def importdsc(dscname):
     try:
         os.chdir(tmpdir)
         extcmd.qrun('dpkg-source -x "%s"' % dscname)
-        if len(os.listdir(tmpdir)) != 1:
-            print "Error; %s had more than one entry; aborting." % tmpdir
-            sys.exit(25)
-        debsrcdir = os.listdir(tmpdir)[0]
+        for item in os.listdir(tmpdir):
+            if not item.endswith('tar.gz'):
+                debsrcdir = os.path.abspath(item)
         tmpwcdir = os.path.join(tmpdir, ",,tbp-importdeb-wc")
         extcmd.qrun('tla get "%s" "%s"' % (tlaupstreamrev, tmpwcdir))
         os.chdir(tmpwcdir)
         extcmd.qrun('tla set-tree-version "%s"' % tladebianver)
         extcmd.qrun('tla join-branch "%s"' % tladebianver)
-        extcmd.qrun('tla sync-tree "%s"' % tladebian-ver)
+        extcmd.qrun('tla sync-tree "%s"' % tladebianver)
         os.chdir(tmpdir)
         extcmd.qrun('tla_load_dirs --wc="%s" --summary="Import Debian %s version %s" "%s"' % \
                     (tmpwcdir, dscinfo['Source'], dscinfo['Version'], debsrcdir))
