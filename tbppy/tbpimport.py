@@ -37,7 +37,7 @@ def parsedsc(filename):
                 if not len(m.group(2)):
                     retval[m.group(1)] = []
                 else:
-                    retval[m.group(1)] = m.group(2)
+                    retval[m.group(1)] = [m.group(2)]
                 lastline = m.group(1)
     return retval
 
