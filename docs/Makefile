@@ -29,7 +29,7 @@ ps: $(MASTERBASE).ps
 html: html/index.html
 text: $(MASTERBASE).txt
 
-manpages: tla-buildpackage.1 tbp-initarchive.1 tbp-importdsc.1 tbp-markdeb.1
+manpages: tla-buildpackage.1 tbp-initarchive.1 tbp-importorig.1 tbp-importdsc.1 tbp-markdeb.1
 %.1: man.%.sgml $(wildcard mansgml/*.sgml mansgml/*.ent)
 	docbook2man $<
 

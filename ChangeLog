@@ -2,6 +2,20 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/tla-buildpackage--head--1.0
 #
 
+2003-10-21 21:07:25 GMT	John Goerzen <jgoerzen@complete.org>	patch-44
+
+    Summary:
+      Fixed some Lintian errors
+    Revision:
+      tla-buildpackage--head--1.0--patch-44
+
+    Fixed some Lintian errors
+    
+
+    modified files:
+     ./ChangeLog ./debian/control ./docs/Makefile ./docs/tbp.sgml
+
+
 2003-10-21 21:04:22 GMT	John Goerzen <jgoerzen@complete.org>	patch-43
 
     Summary:
