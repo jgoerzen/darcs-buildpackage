@@ -27,7 +27,7 @@ getlastupstream() {
 }
 
 getupstreamtree() {
-  cat debian/tla-upstream
+  head -n 1 < debian/tla-upstream
 }
 
 getupstreamrev() {
@@ -52,29 +52,23 @@ getdebianver
 UPSTREAMREV=`getupstreamrev`
 WCDIR=`pwd`
 WCDIRNAME=$(basename `pwd`)
+TARNAME=`getpackage`_`getupstreamver`.orig.tar.gz
 
 cd ..
-ORIGDIRNAME=$(WCDIRNAME).orig
-ORIGDIR=`pwd`/$(ORIGDIRNAME)
+ORIGDIRNAME=${WCDIRNAME}.orig
+ORIGDIR=`pwd`/${ORIGDIRNAME}
 
 echo " *** Building $ORIGDIRNAME from $UPSTREAMREV"
+rm -fr ${ORIGDIR} &> /dev/null || true
 tla get $UPSTREAMREV $ORIGDIRNAME
 
-TARNAME=`getpackage`_`getupstreamver`.orig.tar.gz
 echo " *** Building $TARNAME"
 
 tla inventory -s $ORIGDIRNAME | tar -cSpf - -T- | gzip -9 > $TARNAME
 
-rm -r $ORIGDIRNAME
+rm -fr $ORIGDIRNAME
 cd "$WCDIR"
 
 echo " *** Running build program"
-debuild -i '\+\+pristine-trees' -i ',,*' "$@"
+debuild '-i\+\+pristine-trees|,,*|\{arch\}|\.arch-ids' "$@"
 
-rm -r $(ORIGDIR) &> /dev/null || true
-tla get $UPSTREAMREV
-
-TMPDIR=/tmp/tla-buildpackage.$$
-mkdir -m 0700 $TMPDIR
-
-rm -r $TMPDIR
