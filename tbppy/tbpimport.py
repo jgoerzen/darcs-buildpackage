@@ -17,6 +17,7 @@
 
 import re, sys, os
 import extcmd, tbpconfig, tla, versions, configs
+from tla_support.commandver import cmd
 
 def parsedsc(filename):
     fd = open(filename)

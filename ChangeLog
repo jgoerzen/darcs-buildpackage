@@ -2,6 +2,20 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/tla-buildpackage--head--1.0
 #
 
+2003-10-22 18:48:49 GMT	John Goerzen <jgoerzen@complete.org>	patch-51
+
+    Summary:
+      Fixed missing import
+    Revision:
+      tla-buildpackage--head--1.0--patch-51
+
+    Fixed missing import
+    
+
+    modified files:
+     ChangeLog tbppy/tbpimport.py
+
+
 2003-10-22 18:40:44 GMT	John Goerzen <jgoerzen@complete.org>	patch-50
 
     Summary:
