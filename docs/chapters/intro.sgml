@@ -72,6 +72,9 @@
 	    show up there.
 	  </para>
 	</listitem>
+	<listitem><para>Tight integration with tla_load_dirs for
+	    intelligent handling and versioning of file renames upstream</para>
+	</listitem>
       </itemizedlist>
     </sect1>
 
