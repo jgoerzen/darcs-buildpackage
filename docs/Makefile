@@ -27,6 +27,7 @@ PSARGS := -s local=printlocal
 all: ps
 ps: $(MASTERBASE).ps
 html: html/index.html
+text: $(MASTERBASE).txt
 
 manpages: tla-buildpackage.1 tbp-initarchive.1 tbp-importdsc.1
 %.1: man.%.sgml $(wildcard mansgml/*.sgml mansgml/*.ent)

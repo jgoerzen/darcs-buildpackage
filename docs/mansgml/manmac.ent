@@ -15,6 +15,7 @@
 <!ENTITY tbp-initarchive "<command>tbp-initarchive</command>">
 <!ENTITY tbp-importdsc "<command>tbp-importdsc</command>">
 <!ENTITY tbp-importorig "<command>tbp-importorig</command>">
+<!ENTITY tla-buildpackage "<command>tla-buildpackage</command>">
 
 <!ENTITY tla "<application>tla</application>">
 <!--

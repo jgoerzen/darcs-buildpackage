@@ -2,6 +2,26 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/tla-buildpackage--head--1.0
 #
 
+2003-10-21 20:25:07 GMT	John Goerzen <jgoerzen@complete.org>	patch-42
+
+    Summary:
+      Much work on docs; fixed up manpages, added new info, etc.
+    Revision:
+      tla-buildpackage--head--1.0--patch-42
+
+    Much work on docs; fixed up manpages, added new info, etc.
+    
+
+    new files:
+     ./docs/chapters/regular.sgml
+
+    modified files:
+     ./ChangeLog ./debian/control ./docs/Makefile
+     ./docs/chapters/chapmac.ent ./docs/chapters/intro.sgml
+     ./docs/mansgml/com.seealso.sgml ./docs/mansgml/manmac.ent
+     ./docs/mansgml/tla-buildpackage.sgml ./docs/tbp.sgml
+
+
 2003-10-21 03:53:30 GMT	John Goerzen <jgoerzen@complete.org>	patch-41
 
     Summary:

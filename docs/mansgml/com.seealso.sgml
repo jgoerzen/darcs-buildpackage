@@ -7,7 +7,8 @@
 
   <para>
     &tbp; applications have references in that manual and the
-    following manpages: <application>tbp-initarchive</application>(1),
+    following manpages: 
+    <application>tbp-initarchive</application>(1),
     <application>tbp-importdsc</application>(1),
     <application>tbp-importorig</application>(1),
     <application>tbp-markdeb</application>(1),

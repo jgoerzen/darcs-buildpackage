@@ -1,6 +1,8 @@
 <!ENTITY ch.intro SYSTEM "intro.sgml">
 <!ENTITY ch.getstart SYSTEM "getstart.sgml">
 <!ENTITY ch.import SYSTEM "import.sgml">
+<!ENTITY ch.regular SYSTEM "regular.sgml">
+
 <!ENTITY tla11 "<sidebar><title>Differences With tla 1.1/Snapshot</title>">
 <!ENTITY etla11 "</sidebar>">
 <!--

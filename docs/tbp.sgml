@@ -21,6 +21,7 @@
   &ch.intro;
   &ch.getstart;
   &ch.import;
+  &ch.regular;
 
   <appendix id="tbp.man.reference">
     <title>Command Reference</title>

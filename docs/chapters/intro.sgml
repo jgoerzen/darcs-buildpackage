@@ -127,7 +127,8 @@
 	cannot use tla 1.1 directly.  However, you can easily install
 	tla 1.1 with a different name and use it whenever you issue a
 	tla command directly; the two are completely compatible
-	on-disk.
+	on-disk.  Just make sure that the first "tla" on your PATH is
+        the one found in Debian unstable.
       </para>
       &tla11;
 	<para>

@@ -1,0 +1,139 @@
+  <chapter id="tbp.regular">
+    <title>Common Tasks</title>
+    <para>
+      This chapter describes how to use &tbp; to carry out regular,
+      every-day development activities.
+    </para>
+    <sect1 id="tbp.regular.historic-versions">
+      <title>Finding Historic Versions</title>
+      <indexterm><primary>Configs</></>
+      <para>
+        To find the versions available in your &tbp; archive, first cd
+        to its top level and then run:
+      </para>
+      <screen>
+$ <command>ls configs/*/*</command>
+configs/debian/rdiff-backup:
+0.12.3-1  0.12.5-1
+
+configs/upstream/rdiff-backup:
+0.12.3  0.12.5
+      </screen>
+      <para>
+        This shows you that two Debian versions and two upstream
+        versions of rdiff-backup are present.
+      </para>
+    </sect1>
+    <sect1 id="tbp.regular.fetching">
+      <title>Fetching Source from History</title>
+      <indexterm><primary>Configs</></>
+      <para>
+        To fetch the source code from the &tbp; archive, first
+        <command>cd</command> into your top-level working copy.
+        Then, using the name of the config file (see <xref
+          linkend="tbp.regular.historic-versions">), use the
+        <command>tla buildcfg</command> command:
+      </para>
+      <screen>
+$ <command>tla buildcfg debian/rdiff-backup/0.12.5-1</command>
+* from import revision: jgoerzen@complete.org--debian/rdiff-backup--head--1.0--base-0
+* patching for revision: jgoerzen@complete.org--debian/rdiff-backup--head--1.0--patch-1
+* patching for revision: jgoerzen@complete.org--debian/rdiff-backup--debian--1.0--base-0
+* patching for revision: jgoerzen@complete.org--debian/rdiff-backup--debian--1.0--patch-1
+* patching for revision: jgoerzen@complete.org--debian/rdiff-backup--debian--1.0--patch-2
+* making pristine copy
+* tree version set jgoerzen@complete.org--debian/rdiff-backup--debian--1.0
+      </screen>
+      <para>
+        This command will have created the directory
+        <filename>+packages/rdiff-backup/rdiff-backup-0.12.5</filename>
+        to contain the sources.  Generating upstream sources works the
+        same, and puts them into a directory ending in .orig.
+      </para>
+    </sect1>
+
+    <sect1 id="tbp.regular.building">
+      <title>Building and Working With Source</title>
+      <indexterm><primary>tla-buildpackage</></>
+      <para>
+        Before you start working on any source package with &tbp;,
+        first check it out as described in <xref
+          linkend="tbp.regular.fetching"> to make sure it is in its
+        proper location.  Then, as you work, you will use
+        <command>tla commit</command> to commit your changes to the
+        Debian repository.  (If you just want to build an old package,
+        there's no need to do this.)
+      </para>
+      <para>
+        When you're ready to build a package, just run
+        &tla-buildpackage; to build it.  The &tla-buildpackage;
+        command takes the same arguments as
+        <command>debuild</command>, and passes them on to
+        <command>debuild</command>, so give it your usual set.
+        &tla-buildpackage; will use your existing orig.tar.gz file for
+        source generation, if it exists; otherwise, it will take care
+        of automatically building it from the upstream sources if
+        necessary.
+      </para>
+      <para>
+        Here's an example:
+      </para>
+      <screen>
+~/tree/debian$ <command>cd +packages/rdiff-backup/rdiff-backup-0.12.5</command>
+~/tree/debian/+packages/rdiff-backup/rdiff-backup-0.12.5$ <command>tla-buildpackage \
+        -rfakeroot -us -uc</command>
+...
+Building .orig from archive.
+ * tla buildcfg upstream/rdiff-backup/0.12.5
+* from import revision: jgoerzen@complete.org--debian/rdiff-backup--head--1.0--base-0
+* patching for revision: jgoerzen@complete.org--debian/rdiff-backup--head--1.0--patch-1
+* patching for revision: jgoerzen@complete.org--debian/rdiff-backup--head--1.0--patch-2
+* making pristine copy
+* tree version set jgoerzen@complete.org--debian/rdiff-backup--head--1.0
+ * tla inventory -s "rdiff-backup-0.12.5.orig" | tar -cSpf - -T- | gzip -9 > "rdiff-backup_0.12.5.orig.tar.gz"
+ *** Running build program
+Running:  debuild ['-i\\+\\+pristine-trees|,,*|\\{arch\\}|\\.arch-ids', '-rfakeroot', '-us', '-uc']
+...
+      </screen>
+      <para>
+        In this case, I had not checked out the upstream source and
+        did not have my orig.tar.gz file handy.  Therefore,
+        &tla-buildpackage; checked out the upstream sources for me,
+        generated the tar.gz file, and then called
+        <command>debuild</command>
+        to do the
+        rest.
+      </para>
+      <para>
+        If you are building for Debian, you will want to keep your
+        orig.tar.gz around so that future source uploads use the same
+        MD5 sum in the .dsc file.
+      </para>
+      <para>
+        For more details, please see the manpage for
+        <xref linkend="tbp.man.tla.buildpackage">.
+      </para>
+    </sect1>
+
+    <sect1 id="tbp.regular.upstream-update">
+      <title>Handling New Upstream Versions</title>
+      <para>
+        A common scenario for a Debian developer to deal with is that
+        of a new upstream release.  The Debian patches from the most
+        recent Debian release must be merged into the upstream one.
+      </para>
+      <para>
+        There have been a few tools to do that:
+        <command>uupdate</command> is one.
+
+  </chapter>
+
+<!--
+Local Variables:
+mode: sgml
+sgml-parent-document:("../tbp.sgml" "book")
+  sgml-set-face: T
+End:
+
+# arch-tag: common data for tla-buildpackage manual: common/regular tasks
+-->
