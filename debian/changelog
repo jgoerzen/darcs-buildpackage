@@ -1,6 +1,6 @@
 tla-buildpackage (0.9.0) unstable; urgency=low
 
-  * Initial Release.
+  * Initial Release.  Closes: #215265.
 
  -- John Goerzen <jgoerzen@complete.org>  Sat, 11 Oct 2003 11:26:57 -0500
 

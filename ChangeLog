@@ -2,6 +2,20 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/tla-buildpackage--head--1.0
 #
 
+2003-10-21 21:10:13 GMT	John Goerzen <jgoerzen@complete.org>	patch-45
+
+    Summary:
+      Noted closure of wnpp bug.
+    Revision:
+      tla-buildpackage--head--1.0--patch-45
+
+    Noted closure of wnpp bug.
+    
+
+    modified files:
+     ./ChangeLog ./debian/changelog
+
+
 2003-10-21 21:07:25 GMT	John Goerzen <jgoerzen@complete.org>	patch-44
 
     Summary:
