@@ -65,7 +65,7 @@ extcmd.qrun('tla init-tree "%s"' % CONFIGVER)
 extcmd.qrun('tla tagging-method tagline')
 
 print "Populating config tree..."
-for newdir in ['configs', 'configs/upstream', 'configs/debian', 'packages']:
+for newdir in ['configs', 'configs/upstream', 'configs/debian']:
     os.mkdir(newdir)
     extcmd.qrun('tla add-tag %s' % newdir)
     

@@ -73,7 +73,7 @@ def importdsc(dscname):
                                 (dscinfo['Source'],
                                  versions.getupstreamver(dscinfo['Version'])))
     tlaupstreamrev = tlaupstreamrev[0].split("\t")[1].strip()
-    tlaupstreamrevb = re.search('^[^/]+/(.+)$', tlaupstreamrev).group(1)
+    tlaupstreamver = re.search('^(.+)--.+$', tlaupstreamrev).group(1)
     tladebianver = "%s/%s--debian--1.0" % (archive, dscinfo['Source'])
     isnew = tla.condsetup(tladebianver)
     configs.makepkgconfigifneeded('debian', dscinfo['Source'])
@@ -107,8 +107,10 @@ def importdsc(dscname):
             # OK, our current tree doesn't use the same upstream
             # version as the new one.  So we need to fix.
             #extcmd.qrun('tla star-merge "%s"' % tlaupstreamrev)
-            extcmd.qrun('tla replay -A "%s" --new --in-place . "%s"' % \
-                        (archive, tlaupstreamrevb))
+            # FIXME: when we get tla 1.1, use tlaupstreamrev to be more
+            # precise.
+            extcmd.qrun('tla replay --new --in-place . "%s"' % \
+                        (tlaupstreamver))
             #extcmd.qrun('tla update --in-place . "%s"' % tlaupstreamrev)
             for file in extcmd.run('tla inventory -b'):
                 # Delete orig, rej files

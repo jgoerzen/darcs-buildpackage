@@ -7,7 +7,7 @@ Standards-Version: 3.6.0
 
 Package: tla-buildpackage
 Architecture: all
-Depends: python2.3, tla | tla-snapshot, tla_load_dirs, awk, bash, sed, dpkg-dev, devscripts, tail, grep
+Depends: python2.3, tla | tla-snapshot, tla-load-dirs, awk, bash, sed, dpkg-dev, devscripts, tail, grep, python-apt
 Description: Set of scripts to help load Debian packages into Arch archives
  This package provides the following programs:
  .

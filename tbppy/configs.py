@@ -38,10 +38,12 @@ def makepkgconfigifneeded(configtype, package):
 
 def makepkgdirifneeded(package):
     """Assumes we are in wc dir already."""
-    if not os.path.exists('packages/%s' % package):
-        print "Adding new package dir for %s" % package
-        os.mkdir('packages/%s' % package)
-        extcmd.run('tla add-tag packages/%s' % package)
+    return 0
+    # disabled for now
+    #if not os.path.exists('+packages/%s' % package):
+    #    print "Adding new package dir for %s" % package
+    #    os.mkdir('+packages/%s' % package)
+    #    extcmd.run('tla add-tag +packages/%s' % package)
 
 def checkversion(configtype, package, version):
     """Iterates over versions of package present in the directory for
@@ -66,8 +68,9 @@ def writeconfig(configtype, package, pkgversion, tlaversion):
     fd.write("# arch-tag: config for %s package %s version %s (%s)\n" % \
              (configtype, package, pkgversion, str(time.time())))
     if configtype == 'upstream':
-        fd.write("./packages/%s/%s-%s.orig" % (package, package, pkgversion))
-    else:
-        fd.write("./packages/%s/%s-%s" % (package, package, pkgversion))
+        fd.write("./+packages/%s/%s-%s.orig" % (package, package, pkgversion))
+    elif configtype == 'debian':
+        writeversion = versions.getupstreamver(pkgversion)
+        fd.write("./+packages/%s/%s-%s" % (package, package, writeversion))
     fd.write(' %s\n' % tlaversion)
     fd.close()
