@@ -2,6 +2,49 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/tla-buildpackage--head--1.0
 #
 
+2003-10-11 16:28:23 GMT	John Goerzen <jgoerzen@complete.org>	patch-6
+
+    Summary:
+      Added files from dh_make
+    Revision:
+      tla-buildpackage--head--1.0--patch-6
+
+
+    new files:
+     debian/.arch-ids/=id debian/.arch-ids/README.Debian.id
+     debian/.arch-ids/README.id debian/.arch-ids/changelog.id
+     debian/.arch-ids/compat.id debian/.arch-ids/conffiles.ex.id
+     debian/.arch-ids/control.id debian/.arch-ids/copyright.id
+     debian/.arch-ids/cron.d.ex.id debian/.arch-ids/dirs.id
+     debian/.arch-ids/docs.id
+     debian/.arch-ids/emacsen-install.ex.id
+     debian/.arch-ids/emacsen-remove.ex.id
+     debian/.arch-ids/emacsen-startup.ex.id
+     debian/.arch-ids/init.d.ex.id debian/.arch-ids/manpage.1.ex.id
+     debian/.arch-ids/manpage.sgml.ex.id
+     debian/.arch-ids/menu.ex.id debian/.arch-ids/postinst.ex.id
+     debian/.arch-ids/postrm.ex.id debian/.arch-ids/preinst.ex.id
+     debian/.arch-ids/prerm.ex.id debian/.arch-ids/rules.id
+     debian/.arch-ids/tla-buildpackage-default.ex.id
+     debian/.arch-ids/tla-buildpackage.doc-base.EX.id
+     debian/.arch-ids/watch.ex.id debian/README
+     debian/README.Debian debian/changelog debian/compat
+     debian/conffiles.ex debian/control debian/copyright
+     debian/cron.d.ex debian/dirs debian/docs
+     debian/emacsen-install.ex debian/emacsen-remove.ex
+     debian/emacsen-startup.ex debian/init.d.ex debian/manpage.1.ex
+     debian/manpage.sgml.ex debian/menu.ex debian/postinst.ex
+     debian/postrm.ex debian/preinst.ex debian/prerm.ex
+     debian/rules debian/tla-buildpackage-default.ex
+     debian/tla-buildpackage.doc-base.EX debian/watch.ex
+
+    modified files:
+     ChangeLog
+
+    new directories:
+     debian debian/.arch-ids
+
+
 2003-10-11 16:24:33 GMT	John Goerzen <jgoerzen@complete.org>	patch-5
 
     Summary:
