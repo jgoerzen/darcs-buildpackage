@@ -20,6 +20,7 @@ $ <command>tla register-archive jgoerzen@complete.org--projects \
 $ <command>tla get \
   jgoerzen@complete.org--projects/tla-buildpackage-configs--head--1.0 \
   tla-buildpackage</command>
+$ <command>cd tla-buildpackage</command>
 $ <command>tla buildcfg tla-buildpackage</command>
       </programlisting>
     </refsect1>
