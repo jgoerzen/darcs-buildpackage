@@ -2,6 +2,20 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/tla-buildpackage--head--1.0
 #
 
+2003-10-22 19:00:43 GMT	John Goerzen <jgoerzen@complete.org>	patch-53
+
+    Summary:
+      Documented tla 1.1 support
+    Revision:
+      tla-buildpackage--head--1.0--patch-53
+
+    Documented tla 1.1 support
+    
+
+    modified files:
+     ChangeLog debian/changelog docs/chapters/intro.sgml
+
+
 2003-10-22 18:58:08 GMT	John Goerzen <jgoerzen@complete.org>	patch-52
 
     Summary:

@@ -1,7 +1,8 @@
 tla-buildpackage (0.9.3) unstable; urgency=low
 
-  * Now compatible with both Tla 1.0 in unstable and latest tla 1.1
-    snapshots.
+  * Now compatible with both tla 1.0 in unstable and latest tla 1.1
+    snapshots.  Introduced dependency on 1.0.9 of tla-load-dirs, which
+    adds the compatibility module and support itself for tla 1.1.
 
  -- John Goerzen <jgoerzen@complete.org>  Wed, 22 Oct 2003 13:39:48 -0500
 

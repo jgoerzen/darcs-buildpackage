@@ -122,13 +122,14 @@
 	<ulink url="http://people.debian.org/~asuffield/arch/">daily
 	  snapshots for Debian</ulink>.  tla 1.1 alters command-line
 	syntax, generally making it more clear and less verbose.
-	However, it is not entirely compatible with tla 1.0.  Since
-	only tla 1.0 is part of Debian, &tbp; is written for it and
-	cannot use tla 1.1 directly.  However, you can easily install
-	tla 1.1 with a different name and use it whenever you issue a
-	tla command directly; the two are completely compatible
-	on-disk.  Just make sure that the first "tla" on your PATH is
-        the one found in Debian unstable.
+      </para>
+      <para>
+        As of version 0.9.3, &tbp; is <emphasis>fully compatible with
+          both versions</emphasis> of tla.
+      </para>
+      <para>
+        Since tla 1.0 is still the default in unstable, examples in
+        this manual will refer to tla 1.0.  However:
       </para>
       &tla11;
 	<para>
