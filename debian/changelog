@@ -1,3 +1,10 @@
+tla-buildpackage (0.9.8) unstable; urgency=low
+
+  * Fixed an import failure case using patch from Erik van
+    Konijenburg.  Closes: #241885.
+
+ -- John Goerzen <jgoerzen@complete.org>  Fri, 10 Dec 2004 15:44:10 -0600
+
 tla-buildpackage (0.9.7) unstable; urgency=low
 
   * Added xpdf-utils to build-dep-indep.  Closes: #242966.

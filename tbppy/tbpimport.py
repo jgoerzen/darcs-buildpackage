@@ -218,6 +218,9 @@ def importorigdir(dirname, package, version):
                 if line.startswith('source '):
                     fd.write(r'source (^[._=a-zA-Z0-9!#-].*$|^\.gdbinit)')
                     fd.write("\n")
+                elif line.startswith('backup '):
+                    fd.write(r'backup ^$')
+                    fd.write("\n")
                 else:
                     fd.write(line)
             fd.close()
