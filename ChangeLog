@@ -2,6 +2,23 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/tla-buildpackage--head--1.0
 #
 
+2003-10-16 14:03:08 GMT	John Goerzen <jgoerzen@complete.org>	patch-27
+
+    Summary:
+      Started work on the chapters
+    Revision:
+      tla-buildpackage--head--1.0--patch-27
+
+    Started work on the chapters
+    
+
+    new files:
+     ./docs/chapters/chapmac.ent ./docs/chapters/intro.sgml
+
+    modified files:
+     ./ChangeLog ./docs/tbp.sgml
+
+
 2003-10-16 13:37:01 GMT	John Goerzen <jgoerzen@complete.org>	patch-26
 
     Summary:

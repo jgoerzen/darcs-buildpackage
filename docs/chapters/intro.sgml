@@ -1,0 +1,104 @@
+  <chapter id="tbp.intro">
+    <title>Introduction</title>
+    <para>
+      Welcome to &tbp;, a system that integrates the
+      <ulink url="http://www.debian.org/">Debian</ulink> package build
+      system with <ulink url="http://regexps.srparish.net/www/">GNU
+	Arch</ulink>.  There are two different programs that implement
+      the Arch specification: larch and tla.  The more modern and
+      better supported is tla, so this system and manual focuses
+      solely on it.
+    </para>
+    <sect1 id="tbp.intro.purpose">
+      <title>Purpose</title>
+      <para>
+	&tbp; is designed to do this for you:
+      </para>
+      <itemizedlist>
+	<listitem><para>Ability to track changes to both upstream and Debian
+	    sources through time</para>
+	</listitem>
+	<listitem><para>Ability to retrieve any version of the sources
+	    from the archive, and build Debian binary and source
+	    packages from them.</para>
+	</listitem>
+	<listitem><para>Generated packages can be built and used by
+	    people that have neither tla nor &tbp; installed.
+	  </para>
+	</listitem>
+	<listitem><para>Provide an alternative to systems like dbs and
+	    dpatch to help manage patches that Debian applies to
+	    packages.
+	  </para>
+	</listitem>
+	<listitem><para>Provide a way to ease collaboration between
+	    multiple Debian developers on a single package.</para>
+	</listitem>
+	<listitem><para>Provide a way to use the merging (update and
+	    replay) features of tla to help merge Debian changes into
+	    new versions of upstream packages.
+	  </para>
+	</listitem>
+	<listitem><para>Make it easy to try &tbp; and switch back to
+	    normal systems if you don't like it.
+	  </para>
+	</listitem>
+      </itemizedlist>
+    </sect1>
+
+    <sect1 id="ch.intro.features">
+      <title>Features</title>
+      <para>
+	&tbp; has these features:
+      </para>
+      <itemizedlist>
+	<listitem><para>tbp-initarchive can completely configure tla
+	    and your working copy for you.</para>
+	</listitem>
+	<listitem><para>tbp-importdsc will import an entire Debian
+	    source package into your Arch archive, handling both
+	    upstream and Debian trees automatically.
+	  </para>
+	</listitem>
+	<listitem><para>tla-importorig can import an upstream tar.gz or a
+	    directory into your archive with a single command.</para>
+	</listitem>
+	<listitem><para>tla-buildpackage can use an existing
+	    orig.tar.gz, or can build you one from the Arch archive if
+	    necessary.</para>
+	</listitem>
+	<listitem><para>tla-buildpackage ensures that Arch metadata
+	    that should not be in the orig.tar.gz or diff.gz does not
+	    show up there.
+	  </para>
+	</listitem>
+      </itemizedlist>
+    </sect1>
+
+    <sect1 id="ch.intro.flow">
+      <title>Usage Overview</title>
+      <para>
+	Here is a high-level overview of the Debian development
+	process using &tbp;.
+      </para>
+      <para>
+	When you first start using &tbp;, you'll run tbp-initarchive
+	to set things up.  Then, if you have some existing Debian
+	packages, you'll import as much history as you like by using
+	tbp-importdsc.  Otherwise, to start a new package in &tbp;,
+	you'll use tbp-importorig to bring in the upstream sources and
+	tag that to the Debian area.
+      </para>
+    </sect1>
+      
+  </chapter>
+
+<!--
+Local Variables:
+mode: sgml
+sgml-parent-document:("../tbp.sgml" "book" "part")
+sgml-set-face: T
+End:
+
+# arch-tag: common data for tla-buildpackage manual: intro chapter
+-->
