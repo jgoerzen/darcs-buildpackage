@@ -1,0 +1,98 @@
+#!/bin/bash
+# -*- Mode: shell-script; -*-
+# arch-tag: program to initialize a Debian package repository
+# Copyright (C) 2003 John Goerzen
+#
+#    This program is free software; you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation; either version 2 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program; if not, write to the Free Software
+#    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
+#
+# Depends: awk, bash, sed, dpkg-dev, devscripts
+# Programs: tail, tla, grep
+
+set -e
+
+printhelp() {
+  cat <<EOF
+Usage:
+$0 archive-name archive-location working-location
+
+Where:
+  archive-name is the tla archive name to create; for instance,
+  foo@example.com--debian
+
+  archive-location is where the tla data gets stored; for instance,
+  ~/arch/debian
+
+  working-location is where you will check out sources and work with
+  the system; for instance, ~/devel/debian
+EOF
+}
+
+syntax() {
+  printhelp
+  exit 1
+}
+
+if test -z "$3"; then
+  syntax
+fi
+
+ARCHIVENAME="$1"
+ARCHIVELOC="$2"
+WCLOC="$3"
+CONFIGVER="$ARCHIVENAME/configs--head--1.0"
+
+if test -e "$ARCHIVELOC"; then
+  echo "Archive location $ARCHIVELOC already exists"
+  exit 2
+fi
+
+if test -e "$WCLOC"; then
+  echo "Working copy location $WCLOC already exists"
+  exit 3
+fi
+
+echo "Making working copy location..."
+mkdir $WCLOC
+cd $WCLOC
+
+echo "Creating archive..."
+tla make-archive -l "$ARCHIVENAME" "$ARCHIVELOC"
+
+echo "Initializing archive..."
+tla archive-setup "$CONFIGVER"
+
+echo "Initializing config tree..."
+tla init-tree "$CONFIGVER"
+tla tagging-method tagline
+
+echo "Populating config tree..."
+
+for NEWDIR in configs configs/upstream configs/debian packages; do
+  mkdir $NEWDIR
+  tla add $NEWDIR
+done
+
+echo "Importing config tree..."
+tla import
+
+if test -e ~/.tla-buildpackage; then
+  echo "~/.tla-buildpackage already exists; not modifying."
+else
+  echo "Generating ~/.tla-buildpackage..."
+  echo "$WCLOC" > ~/.tla-buildpackage
+fi
+
+echo "Operation successful."
+
