@@ -2,6 +2,20 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/tla-buildpackage--head--1.0
 #
 
+2003-10-16 14:26:36 GMT	John Goerzen <jgoerzen@complete.org>	patch-30
+
+    Summary:
+      Relaxed dependencies slightly
+    Revision:
+      tla-buildpackage--head--1.0--patch-30
+
+    Relaxed dependencies slightly
+    
+
+    modified files:
+     ./ChangeLog ./debian/control
+
+
 2003-10-16 14:25:19 GMT	John Goerzen <jgoerzen@complete.org>	patch-29
 
     Summary:
