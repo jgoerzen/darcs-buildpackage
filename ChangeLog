@@ -2,6 +2,21 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/tla-buildpackage--head--1.0
 #
 
+2003-10-22 01:02:56 GMT	John Goerzen <jgoerzen@complete.org>	patch-48
+
+    Summary:
+      Now generate and document latest files for configs.
+    Revision:
+      tla-buildpackage--head--1.0--patch-48
+
+    Now generate and document latest files for configs.
+    
+
+    modified files:
+     ./ChangeLog ./debian/changelog ./docs/chapters/regular.sgml
+     ./tbp-markdeb ./tbppy/configs.py ./tbppy/tbpimport.py
+
+
 2003-10-22 00:35:56 GMT	John Goerzen <jgoerzen@complete.org>	patch-47
 
     Summary:

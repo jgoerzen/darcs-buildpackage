@@ -31,9 +31,10 @@ if configs.hasconfig('debian', package, debver):
 
 os.chdir(startdir)
 tlaversion = tla.gettreeversion()
-newrev = extcmd.run('tla revisions')[-1]
-newrev = '%s--%s' % (tlaversion, newrev)
+newrev_base = extcmd.run('tla revisions')[-1]
+newrev = '%s--%s' % (tlaversion, newrev_base)
 os.chdir(wcdir)
+configs.writelatest('debian', package, debver, tlaversion)
 configs.writeconfig('debian', package, debver, newrev)
 extcmd.qrun('tla commit -L "Added configs for Debian %s %s"' % \
             (package, debver))

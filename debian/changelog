@@ -1,3 +1,9 @@
+tla-buildpackage (0.9.1) unstable; urgency=low
+
+  * Now generate and document "latest" files for configs.
+
+ -- John Goerzen <jgoerzen@complete.org>  Tue, 21 Oct 2003 20:02:23 -0500
+
 tla-buildpackage (0.9.0) unstable; urgency=low
 
   * Initial Release.  Closes: #215265.

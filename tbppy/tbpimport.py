@@ -120,8 +120,8 @@ def importdsc(dscname):
         extcmd.qrun('tla_load_dirs --wc="%s" --summary="Import Debian %s version %s" "%s"' % \
                     (tmpwcdir, dscinfo['Source'], dscinfo['Version'], debsrcdir))
         os.chdir(tmpwcdir)
-        newrev = extcmd.run('tla revisions')[-1]
-        newrev = "%s--%s" % (tladebianver, newrev)
+        newrev_base = extcmd.run('tla revisions')[-1]
+        newrev = "%s--%s" % (tladebianver, newrev_base)
         print "Committed %s" % newrev
     finally:
         os.chdir(wc)
@@ -130,6 +130,8 @@ def importdsc(dscname):
     os.chdir(wc)
     configs.writeconfig('debian', dscinfo['Source'], dscinfo['Version'],
                         newrev)
+    configs.writelatest('debian', dscinfo['Source'], dscinfo['Version'],
+                        tladebianver)
     extcmd.qrun('tla commit -L "Added configs for Debian %s %s"' % \
                 (dscinfo['Source'], dscinfo['Version']))
 
@@ -220,8 +222,8 @@ def importorigdir(dirname, package, version):
         extcmd.qrun('tla_load_dirs --wc="%s/,,tbp-importorigdir" --summary="Import upstream %s version %s" "%s"' % \
                 (wc, package, version, dirname))
         os.chdir('%s/,,tbp-importorigdir' % wc)
-        newrev = extcmd.run('tla revisions')[-1]
-        newrev = "%s--%s" % (tlaversion, newrev)
+        newrev_base = extcmd.run('tla revisions')[-1]
+        newrev = "%s--%s" % (tlaversion, newrev_base)
         print "Committed %s" % newrev
     finally:
         os.chdir(wc)
@@ -232,6 +234,7 @@ def importorigdir(dirname, package, version):
     os.chdir(wc)
     
     configs.writeconfig('upstream', package, version, newrev)
+    configs.writelatest('upstream', package, version, tlaversion)
 
     extcmd.qrun('tla commit -L "Added configs for upstream %s %s"' % \
                 (package, version))

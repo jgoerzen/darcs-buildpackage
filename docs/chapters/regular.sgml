@@ -50,6 +50,11 @@ $ <command>tla buildcfg debian/rdiff-backup/0.12.5-1</command>
         to contain the sources.  Generating upstream sources works the
         same, and puts them into a directory ending in .orig.
       </para>
+      <para>
+	If you don't know what version you want but just want the
+	latest, you can simply use a command such as <command>tla
+	  buildcfg debian/rdiff-backup/latest</command>.
+      </para>
     </sect1>
 
     <sect1 id="tbp.regular.building">

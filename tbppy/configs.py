@@ -60,6 +60,22 @@ def checkversion(configtype, package, version):
             return 0
     return 1
 
+def getmaxversion(configtype, package):
+    """Returns the maximum version for the package.
+
+    Assumes already in wc dir."""
+    assertvalidtype(configtype)
+    max = None
+    for item in os.listdir('configs/%s/%s' % (configtype, package)):
+        if item == '{arch}' or item[0] == ',' or item[0] == '.' or \
+               item[0:2] == '++' or item == 'latest':
+            continue
+        if max == None:
+            max = item
+        elif versions.vercomp(item, max) > 0:
+            max = item
+    return max
+
 def hasconfig(configtype, package, version):
     """Assumes already in wc dir."""
     assertvalidtype(configtype)
@@ -72,12 +88,25 @@ def writeconfig(configtype, package, pkgversion, tlaversion):
     in wc dir."""
     assertvalidtype(configtype)
     fd = open('configs/%s/%s/%s' % (configtype, package, pkgversion), 'w')
-    fd.write("# arch-tag: config for %s package %s version %s (%s)\n" % \
-             (configtype, package, pkgversion, str(time.time())))
+    fd.write("# arch-tag: config for %s package %s version %s\n" % \
+             (configtype, package, pkgversion))
     if configtype == 'upstream':
         fd.write("./+packages/%s/%s-%s.orig" % (package, package, pkgversion))
     elif configtype == 'debian':
         writeversion = versions.getupstreamver(pkgversion)
         fd.write("./+packages/%s/%s-%s" % (package, package, writeversion))
     fd.write(' %s\n' % tlaversion)
+    fd.close()
+
+def writelatest(configtype, package, pkgversion, tlarev):
+    assertvalidtype(configtype)
+    fd = open('configs/%s/%s/latest' % (configtype, package), 'w')
+    fd.write('# arch-tag: config for %s package %s, latest version\n' % \
+             (configtype, package))
+    if configtype == 'upstream':
+        fd.write('./+packages/%s/%s-%s.orig' % (package, package, pkgversion))
+    elif configtype == 'debian':
+        writeversion = versions.getupstreamver(pkgversion)
+        fd.write('./+packages/%s/%s-%s' % (package, package, writeversion))
+    fd.write(' %s\n' % tlarev)
     fd.close()
