@@ -1,0 +1,31 @@
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V4.1//EN" [
+  <!ENTITY % MANMAC SYSTEM "mansgml/manmac.ent">
+  %MANMAC;
+]>
+
+<book id="tbp">
+  <bookinfo>
+    <title>Building Debian Packages with tla-buildpackage</title>
+    <author>
+      <firstname>John</firstname> <surname>Goerzen</surname>
+    </author>
+    <address><email>jgoerzen@complete.org</email></address>
+  </bookinfo>
+  <part id="tbp.man">
+    <title>Manpages</title>
+    <subtitle>Reference to tla-buildpackage Commands</subtitle>
+    <reference>
+    &man.tla.buildpackage;
+    </reference>
+  </part>
+</book>
+
+<!--
+Local Variables:
+mode: sgml
+sgml-set-face: T
+End:
+
+# arch-tag: tla-buildpackage top-level whole manual file
+-->
+    

@@ -1,0 +1,18 @@
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DocBook V4.1//EN" [
+  <!ENTITY % MANMAC SYSTEM "mansgml/manmac.ent">
+  %MANMAC;
+]>
+
+<reference>
+&man.tla.buildpackage;
+</reference>
+
+
+<!--
+Local Variables:
+mode: sgml
+sgml-set-face: T
+End:
+
+# arch-tag: sgml wrapper for tla-buildpackage manpage
+-->

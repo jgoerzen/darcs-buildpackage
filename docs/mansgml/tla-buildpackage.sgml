@@ -1,0 +1,48 @@
+
+<!-- <reference> -->
+  <title>tla-buildpackage Manual</title>
+
+  <refentry>
+    <refentryinfo>
+      <address><email>jgoerzen@complete.org</email></address>
+      <author><firstname>John</firstname><surname>Goerzen</surname></author>
+    </refentryinfo>
+
+    <refmeta>
+      <refentrytitle>tla-buildpackage</refentrytitle>
+      <manvolnum>1</manvolnum>
+      <refmiscinfo>John Goerzen</refmiscinfo>
+    </refmeta>
+
+    <refnamediv>
+      <refname>tla-buildpackage</refname>
+      <refpurpose>Build Debian packages from a tla/Arch
+	archive</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv>
+      <cmdsynopsis>
+	<command>tla-buildpackage</command>
+	<arg rep="repeat"><replaceable>args for
+	    debuild</replaceable></arg>
+      </cmdsynopsis>
+    </refsynopsisdiv>
+
+    <refsect1>
+      <title>Description</title>
+      <para>
+	FOO
+      </para>
+    </refsect1>
+  </refentry>
+<!-- </reference> -->
+
+<!--
+Local Variables:
+mode: sgml
+sgml-parent-document:("../tbp.sgml" "book" "part" "reference")
+sgml-set-face: T
+End:
+
+# arch-tag: manpage for tla-buildpackage(1)
+-->

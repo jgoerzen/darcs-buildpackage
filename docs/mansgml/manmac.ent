@@ -1,0 +1,6 @@
+<!ENTITY man.tla.buildpackage SYSTEM "tla-buildpackage.sgml">
+<!ENTITY OfflineIMAP "<application>OfflineIMAP</application>">
+
+<!--
+# arch-tag: basic macros common to all manpages
+-->
