@@ -17,62 +17,53 @@
 #    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
 #
 
+import sys, os
+from tla_support import util
+from tbppy import versions, extcmd, tbpconfig
+util.verbose = 1
 
-"""
-# Depends: awk, bash, sed, dpkg-dev, devscripts
-# Programs: tail, tla, grep
+debver = versions.getverfromchangelog()
+upstreamver = versions.getupstreamver(debver)
+package = versions.getpackagefromchangelog()
+wcdir = os.path.abspath(tbpconfig.getwcdir())
 
-set -e
+# Sanity checks.
 
-getlastupstream() {
-  tla merges `tla tree-version` | grep $1 | tail -n 1 | awk '{ print $2 }'
-}
+shouldbe = os.path.realpath(wcdir) + '/+packages/%s/%s-%s' % \
+           (package, package, upstreamver)
 
-getupstreamtree() {
-  head -n 1 < debian/tla-upstream
-}
+if not os.path.realpath(os.getcwd()) == shouldbe:
+    print "Current working directory %s" % os.getcwd()
+    print "is not part of working copy build area %s" % shouldbe
+    print "Exiting."
+    sys.exit(50)
 
-getupstreamrev() {
-  getlastupstream `getupstreamtree`
-}
+if not os.path.basename(os.getcwd()) == '%s-%s' % (package, upstreamver):
+    # I guess this test is redundant now....
+    print "Current working directory should be named"
+    print "%s-%s but it is %s" % (package, upstreamver,
+                                  os.path.basename(os.getcwd()))
 
-getdebianver() {
-  dpkg-parsechangelog | sed -n 's/^Version: //p'
-}
+tgzname = "%s_%s.orig.tar.gz" % (package, upstreamver)
+tgzpath = os.path.abspath(os.getcwd + "../%s" % tgzname)
+origdirname = '%s-%s.orig' % (package, upstreamver)
+origdir = os.path.abspath(os.getcwd + "../%s-%s.orig" % (package, upstreamver))
+startdir = os.getcwd()
 
-getupstreamver() {
-  getdebianver | sed 's/-[^-]\+$//'
-}
-
-getpackage() {
-  dpkg-parsechangelog | sed -n 's/^Source: //p'
-}
-
-echo -n " *** tla-buildpackage for "
-getdebianver
-
-UPSTREAMREV=`getupstreamrev`
-WCDIR=`pwd`
-WCDIRNAME=$(basename `pwd`)
-TARNAME=`getpackage`_`getupstreamver`.orig.tar.gz
-
-cd ..
-ORIGDIRNAME=${WCDIRNAME}.orig
-ORIGDIR=`pwd`/${ORIGDIRNAME}
-
-if test -f $TARNAME; then
-  echo " *** Not building $TARNAME"
-else
-  echo " *** Building $ORIGDIRNAME from $UPSTREAMREV"
-  rm -fr ${ORIGDIR} &> /dev/null || true
-  tla get $UPSTREAMREV $ORIGDIRNAME
-  echo " *** Building $TARNAME"
-  tla inventory -s $ORIGDIRNAME | tar -cSpf - -T- | gzip -9 > $TARNAME
-  rm -fr $ORIGDIRNAME 
-fi
-cd "$WCDIR"
-
-echo " *** Running build program"
-debuild '-i\+\+pristine-trees|,,*|\{arch\}|\.arch-ids' "$@"
-
-"""
+if not os.path.isfile(tgzpath):
+    if not os.path.isdir(origdir):
+        # Need to build the orig dir so that the
+        #system can generate the orig tgz
+        os.chdir(wcdir)
+        print "Building .orig from archive."
+        extcmd.qrun('tla buildcfg upstream/%s/%s' % (package, upstreamver))
+        os.chdir(startdir)
+    os.chdir('..')
+    extcmd.qrun('tla inventory -s "%s" | tar -cSpf - -T- | gzip -9 > "%s"' % \
+                (origdirname, tgzname))
+    os.chdir(startdir)
+    print " *** Running build program"
+    util.safeexec("debuild",
+                  [r'-i\+\+pristine-trees|,,*|\{arch\}|\.arch-ids'] + \
+                  sys.argv[1:])
+    

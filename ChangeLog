@@ -2,6 +2,20 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/tla-buildpackage--head--1.0
 #
 
+2003-10-16 14:23:31 GMT	John Goerzen <jgoerzen@complete.org>	patch-28
+
+    Summary:
+      Converted tla-buildpackage to Python
+    Revision:
+      tla-buildpackage--head--1.0--patch-28
+
+    Converted tla-buildpackage to Python
+    
+
+    modified files:
+     ./ChangeLog ./tla-buildpackage
+
+
 2003-10-16 14:03:08 GMT	John Goerzen <jgoerzen@complete.org>	patch-27
 
     Summary:
