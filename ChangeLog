@@ -2,6 +2,26 @@
 # arch-tag: automatic-ChangeLog--jgoerzen@complete.org--projects/tla-buildpackage--head--1.0
 #
 
+2003-10-15 23:38:41 GMT	John Goerzen <jgoerzen@complete.org>	patch-22
+
+    Summary:
+      Added docs dir
+    Revision:
+      tla-buildpackage--head--1.0--patch-22
+
+    Added docs dir
+    
+
+    new files:
+     ./docs/.arch-ids/=id
+
+    modified files:
+     ./ChangeLog
+
+    new directories:
+     ./docs ./docs/.arch-ids
+
+
 2003-10-15 23:36:10 GMT	John Goerzen <jgoerzen@complete.org>	patch-21
 
     Summary:
