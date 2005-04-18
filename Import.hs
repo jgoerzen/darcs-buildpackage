@@ -28,6 +28,22 @@ importOrigDir dirname_r package version =
        bracketCWD upstreamdir
          (safeSystem "darcs" ["tag", "-m", upstreamTag package version])
 
+importOrigTarGz tgz_r package version = 
+    do origcwd <- getCurrentDirectory
+       let tgz = forceMaybe $ absNormPath origcwd tgz_r
+       brackettmpdir ",,dbp-importorigtargz-XXXXXX" $ 
+         (\tmpdir -> bracketCWD tmpdir $
+           do safeSystem "tar" ["-zxSpf", tgz]
+              content <- getDirectoryContents tmpdir
+              -- If it has more than one entry, this directory itself is
+              -- source, since the tar didn't put things under one dir.
+              -- Bad, bad tar.
+              let origdir = case content of
+                              [dir] -> tmpdir ++ "/" ++ dir
+                              _ -> tmpdir
+              importOrigDir origdir package version
+         )
+
 -- FIXME: getmaxversion =
 
 -- | Create a Darcs repository at the given path, or do nothing if the

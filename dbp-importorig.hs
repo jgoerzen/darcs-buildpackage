@@ -31,5 +31,4 @@ main = do args <- getArgs
           isdir <- doesDirectoryExist origname
           if isdir
              then importOrigDir origname package version
-             else return ()
-             --FIXME: else importOrigTarGz origname package version
+             else importOrigTarGz origname package version
