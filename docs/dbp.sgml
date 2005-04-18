@@ -6,15 +6,15 @@
   <!ENTITY index SYSTEM "index/index.sgml">
 ]>
 
-<book id="tbp">
+<book id="dbp">
   <bookinfo>
-    <title>Building Debian Packages with tla-buildpackage</title>
+    <title>Building Debian Packages with darcs-buildpackage</title>
     <author>
       <firstname>John</firstname> <surname>Goerzen</surname>
     </author>
     <address><email>jgoerzen@complete.org</email></address>
     <legalnotice>
-      &tbp.copyright;
+      &dbp.copyright;
     </legalnotice>
   </bookinfo>
 
@@ -23,13 +23,13 @@
   &ch.import;
   &ch.regular;
 
-  <appendix id="tbp.man.reference">
+  <appendix id="dbp.man.reference">
     <title>Command Reference</title>
-    &man.tbp.importdsc;
-    &man.tbp.importorig;
-    &man.tbp.markdeb;
-    &man.tbp.initarchive;
-    &man.tla.buildpackage;
+    &man.dbp.importdsc;
+    &man.dbp.importorig;
+    &man.dbp.markdeb;
+    &man.dbp.initarchive;
+    &man.darcs.buildpackage;
   </appendix>
 
   &index;
@@ -41,6 +41,6 @@ mode: sgml
 sgml-set-face: T
 End:
 
-# arch-tag: tla-buildpackage top-level whole manual file
+# arch-tag: darcs-buildpackage top-level whole manual file
 -->
     

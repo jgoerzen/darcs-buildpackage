@@ -4,8 +4,8 @@
 ]>
 
 <reference>
-<title>tla-buildpackage Manual</title>
-&man.tbp.initarchive;
+<title>darcs-buildpackage Manual</title>
+&man.dbp.initarchive;
 </reference>
 
 
@@ -15,5 +15,5 @@ mode: sgml
 sgml-set-face: T
 End:
 
-# arch-tag: sgml wrapper for tbp-initarchive(1) manpage
+# arch-tag: sgml wrapper for dbp-initarchive(1) manpage
 -->

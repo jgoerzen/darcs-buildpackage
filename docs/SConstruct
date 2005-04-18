@@ -18,13 +18,13 @@
 
 env = Environment()
 env.Export("env")
-env.Append(MASTERBASE = 'tbp', TOPNODE = 'tbp', DOINDEX = 1,
+env.Append(MASTERBASE = 'dbp', TOPNODE = 'dbp', DOINDEX = 1,
         HTMLARGS = '-s local', PDFARGS = '-s local=printlocal')
 
 execfile('sgml-common/SConstruct')
 
 manpages = []
-for manpage in ['tla-buildpackage', 'tbp-initarchive', 'tbp-importorig',
-                'tbp-importdsc', 'tbp-markdeb']:
+for manpage in ['darcs-buildpackage', 'dbp-initarchive', 'dbp-importorig',
+                'dbp-importdsc', 'dbp-markdeb']:
     manpages.append(env.MAN('%s.1' % manpage, 'man.%s.sgml' % manpage))
 env.Alias('manpages', manpages)

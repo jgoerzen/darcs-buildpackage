@@ -4,8 +4,8 @@
 ]>
 
 <reference>
-<title>tla-buildpackage Manual</title>
-&man.tbp.markdeb;
+<title>darcs-buildpackage Manual</title>
+&man.dbp.markdeb;
 </reference>
 
 
@@ -15,5 +15,5 @@ mode: sgml
 sgml-set-face: T
 End:
 
-# arch-tag: sgml wrapper for tbp-markdeb(1) manpage
+# arch-tag: sgml wrapper for dbp-markdeb(1) manpage
 -->

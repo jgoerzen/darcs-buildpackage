@@ -4,8 +4,8 @@
 ]>
 
 <reference>
-<title>tla-buildpackage Manual</title>
-&man.tbp.importorig;
+<title>darcs-buildpackage Manual</title>
+&man.dbp.importorig;
 </reference>
 
 
@@ -15,5 +15,5 @@ mode: sgml
 sgml-set-face: T
 End:
 
-# arch-tag: sgml wrapper for tbp-importorig(1) manpage
+# arch-tag: sgml wrapper for dbp-importorig(1) manpage
 -->

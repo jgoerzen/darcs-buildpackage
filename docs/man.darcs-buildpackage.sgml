@@ -4,8 +4,8 @@
 ]>
 
 <reference>
-<title>tla-buildpackage Manual</title>
-&man.tla.buildpackage;
+<title>darcs-buildpackage Manual</title>
+&man.darcs.buildpackage;
 </reference>
 
 
@@ -15,5 +15,5 @@ mode: sgml
 sgml-set-face: T
 End:
 
-# arch-tag: sgml wrapper for tla-buildpackage manpage
+# arch-tag: sgml wrapper for darcs-buildpackage manpage
 -->
