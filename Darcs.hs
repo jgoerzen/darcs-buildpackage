@@ -7,6 +7,8 @@ module Darcs (bracketCWD)
     where
 
 import System.Directory
+import Control.Exception
+
 {- | Changes the current working directory to the given path,
 executes the given I\/O action, then changes back to the original directory,
 even if the I\/O action raised an exception. -}
