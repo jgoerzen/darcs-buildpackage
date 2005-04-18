@@ -34,13 +34,14 @@ importOrigTarGz tgz_r package version =
        brackettmpdir ",,dbp-importorigtargz-XXXXXX" $ 
          (\tmpdir -> bracketCWD tmpdir $
            do safeSystem "tar" ["-zxSpf", tgz]
-              content <- getDirectoryContents tmpdir
+              let tmpabs = forceMaybe $ absNormPath origcwd tmpdir
+              content <- getDirectoryContents tmpabs
               -- If it has more than one entry, this directory itself is
               -- source, since the tar didn't put things under one dir.
               -- Bad, bad tar.
-              let origdir = case content of
-                              [dir] -> tmpdir ++ "/" ++ dir
-                              _ -> tmpdir
+              let origdir = case filter (\x -> x /= "." && x /= "..") content of
+                              [dir] -> tmpabs ++ "/" ++ dir
+                              _ -> tmpabs
               importOrigDir origdir package version
          )
 
