@@ -22,9 +22,9 @@ a package. -}
 getDirectories :: String -> IO (String, String)
 getDirectories package = 
     let worker cp =
-            do set cp "DEFAULT" "package" package
-               upstr <- get cp package "upstreamrepo"
-               deb <- get cp package "debianrepo"
+            do cp2 <- set cp "DEFAULT" "package" package
+               upstr <- get cp2 package "upstreamrepo"
+               deb <- get cp2 package "debianrepo"
                return ((upstr, deb)::(String, String))
     in do cpath <- getConfigPath
           isfile <- doesFileExist cpath

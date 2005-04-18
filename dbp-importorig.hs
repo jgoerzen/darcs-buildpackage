@@ -16,9 +16,9 @@ usage = unlines $
   "Where:",
   "  orig-name is the name of a tar.gz or directory to import",
   "",
-  "package is the name of the Debian source package",
+  "  package is the name of the Debian source package",
   "",
-  "version is the upstream version being imported"]
+  "  version is the upstream version being imported"]
 
 main = do args <- getArgs
           (origname, package, version) <- case args of
