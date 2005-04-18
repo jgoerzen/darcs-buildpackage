@@ -33,5 +33,3 @@ getTags fp =
     in bracketCWD fp $
          do (ph, lines) <- pipeLinesFrom "darcs" ["changes", "--patches=^TAG"]
             return (ph, concatMap procline lines)
-
-         
