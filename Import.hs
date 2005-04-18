@@ -11,10 +11,12 @@ import MissingH.Maybe
 import MissingH.Path
 import MissingH.Cmd
 import Control.Exception
+import Control.Monad
+import Darcs
 
 importOrigDir dirname_r package version =
     do (upstreamdir, _) <- getDirectories package
-       -- FIXME: create the upstream repo
+       createRepo upstreamdir
        -- FIXME: checkVersion package version -- check that this is newer than all
        cwd <- getCurrentDirectory
        let dirname = forceMaybe $ absNormPath cwd dirname_r 
@@ -23,9 +25,19 @@ importOrigDir dirname_r package version =
                        "--summary=Import upstream " ++ package ++ " version "
                         ++ version,
                        dirname]
-       setCurrentDirectory upstreamdir
-       finally (safeSystem "darcs" ["tag", "-m", upstreamTag package version])
-               (setCurrentDirectory cwd)
+       bracketCWD upstreamdir
+         (safeSystem "darcs" ["tag", "-m", upstreamTag package version])
+
        
 -- FIXME: getmaxversion =
 
+-- | Create a Darcs repository at the given path, or do nothing if the
+-- directory already exists.
+createRepo :: FilePath -> IO ()
+createRepo dir =
+    do isdir <- doesDirectoryExist dir
+       unless isdir $
+          do createDirectory dir
+             bracketCWD dir $ safeSystem "darcs" ["initialize"]
+
+          

@@ -8,6 +8,7 @@ import Config
 import System.Environment
 import System.Directory
 import Import
+import Control.Exception
 
 usage = unlines $
  ["Usage:",
