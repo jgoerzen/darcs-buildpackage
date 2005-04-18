@@ -7,6 +7,10 @@ module Import where
 import Config
 import System.Directory
 import MissingH.Printf
+import MissingH.Maybe
+import MissingH.Path
+import MissingH.Cmd
+import Control.Exception
 
 importOrigDir dirname_r package version =
     do (upstreamdir, _) <- getDirectories package
@@ -19,9 +23,9 @@ importOrigDir dirname_r package version =
                        "--summary=Import upstream " ++ package ++ " version "
                         ++ version,
                        dirname]
-       changeDirectory upstreamdir
+       setCurrentDirectory upstreamdir
        finally (safeSystem "darcs" ["tag", "-m", upstreamTag package version])
-               (changeDirectory cwd)
+               (setCurrentDirectory cwd)
        
 -- FIXME: getmaxversion =
 

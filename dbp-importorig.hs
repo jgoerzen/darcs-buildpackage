@@ -6,6 +6,7 @@ Please see the COPYRIGHT file
 module Main where
 import Config
 import System.Environment
+import System.Directory
 import Import
 
 usage = unlines $
@@ -20,10 +21,10 @@ usage = unlines $
   "version is the upstream version being imported"]
 
 main = do args <- getArgs
-          (origname, package, version) = case args of
+          (origname, package, version) <- case args of
            [x, y, z] -> return (x, y, z)
-           _ -> putStrLn usage
-                fail "Incorect command-line parameters."
+           _ -> do putStrLn usage
+                   fail "Incorect command-line parameters."
           isdir <- doesDirectoryExist origname
           if isdir
              then importOrigDir origname package version

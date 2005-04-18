@@ -14,8 +14,8 @@ getHomeDir = do uid <- getEffectiveUserID
                 entry <- getUserEntryForID uid
                 return (homeDirectory entry)
 
-getConfigPath = hd <- getHomeDir
-                return $ hd ++ "/.darcs-buildpackage"
+getConfigPath = do hd <- getHomeDir
+                   return $ hd ++ "/.darcs-buildpackage"
 
 {- | Returns the (upstream, debian) Darcs repository directories for
 a package. -}
@@ -25,12 +25,12 @@ getDirectories package =
             do set cp "DEFAULT" "package" package
                upstr <- get cp package "upstreamrepo"
                deb <- get cp package "debianrepo"
-               return (upstr, deb)
+               return ((upstr, deb)::(String, String))
     in do cpath <- getConfigPath
-          isfile <- doesFileExist configpath
+          isfile <- doesFileExist cpath
           unless isfile $ fail $ "Please create the configuration file " ++ cpath
-          cp <- readfile (emptyCP {accessfunc = interpolatingAccess}) cpath
-          return $ forceEither $ worker cp
+          cp <- readfile (emptyCP {accessfunc = interpolatingAccess 5}) cpath
+          return $ forceEither $ worker $ forceEither $ cp
 
 
 upstreamTag :: String -> String -> String

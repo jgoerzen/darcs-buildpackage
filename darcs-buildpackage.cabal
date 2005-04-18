@@ -1,3 +1,4 @@
+Name: darcs-buildpackage
 Version: 0.1.0
 License: GPL
 Maintainer: John Goerzen <jgoerzen@complete.org>
@@ -9,4 +10,6 @@ Build-Depends: haskell-src, network, unix, parsec, MissingH>=0.10.6
 GHC-Options: -O2
 
 Executable: dbp-importorig
+Extensions: ExistentialQuantification, AllowOverlappingInstances,
+    AllowUndecidableInstances
 Main-Is: dbp-importorig.hs
