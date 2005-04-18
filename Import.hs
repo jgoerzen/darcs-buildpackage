@@ -10,7 +10,8 @@ import MissingH.Printf
 
 importOrigDir dirname_r package version =
     do (upstreamdir, _) <- getDirectories package
-       -- checkVersion package version -- check that this is newer than all
+       -- FIXME: create the upstream repo
+       -- FIXME: checkVersion package version -- check that this is newer than all
        cwd <- getCurrentDirectory
        let dirname = forceMaybe $ absNormPath cwd dirname_r 
        safeSystem "darcs_load_dirs" 
@@ -22,5 +23,5 @@ importOrigDir dirname_r package version =
        finally (safeSystem "darcs" ["tag", "-m", upstreamTag package version])
                (changeDirectory cwd)
        
--- getmaxversion =
+-- FIXME: getmaxversion =
 

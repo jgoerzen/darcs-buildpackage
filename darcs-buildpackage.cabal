@@ -1,0 +1,12 @@
+Version: 0.1.0
+License: GPL
+Maintainer: John Goerzen <jgoerzen@complete.org>
+Stability: Alpha
+Copyright: Copyright (c) 2003 - 2005 John Goerzen
+Extensions: ExistentialQuantification, AllowOverlappingInstances,
+    AllowUndecidableInstances
+Build-Depends: haskell-src, network, unix, parsec, MissingH>=0.10.6
+GHC-Options: -O2
+
+Executable: dbp-importorig
+Main-Is: dbp-importorig.hs
