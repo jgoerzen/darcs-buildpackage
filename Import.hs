@@ -28,7 +28,6 @@ importOrigDir dirname_r package version =
        bracketCWD upstreamdir
          (safeSystem "darcs" ["tag", "-m", upstreamTag package version])
 
-       
 -- FIXME: getmaxversion =
 
 -- | Create a Darcs repository at the given path, or do nothing if the
@@ -39,5 +38,3 @@ createRepo dir =
        unless isdir $
           do createDirectory dir
              bracketCWD dir $ safeSystem "darcs" ["initialize"]
-
-          

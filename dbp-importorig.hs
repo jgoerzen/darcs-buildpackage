@@ -8,6 +8,7 @@ import Config
 import System.Environment
 import System.Directory
 import Import
+import Logging
 import Control.Exception
 
 usage = unlines $
@@ -22,6 +23,7 @@ usage = unlines $
   "  version is the upstream version being imported"]
 
 main = do args <- getArgs
+          initLogging
           (origname, package, version) <- case args of
            [x, y, z] -> return (x, y, z)
            _ -> do putStrLn usage
