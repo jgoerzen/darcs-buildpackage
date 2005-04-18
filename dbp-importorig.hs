@@ -6,6 +6,7 @@ Please see the COPYRIGHT file
 module Main where
 import Config
 import System.Environment
+import Import
 
 usage = unlines $
  ["Usage:",

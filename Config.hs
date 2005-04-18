@@ -5,8 +5,10 @@ Please see the COPYRIGHT file
 
 module Config where
 import System.Posix.User
+import System.Directory
 import MissingH.ConfigParser
 import MissingH.Either
+import Control.Monad
 
 getHomeDir = do uid <- getEffectiveUserID
                 entry <- getUserEntryForID uid
@@ -24,8 +26,13 @@ getDirectories package =
                upstr <- get cp package "upstreamrepo"
                deb <- get cp package "debianrepo"
                return (upstr, deb)
-    do cp <- getConfigPath >>= readfile (emptyCP {accessfunc = interpolatingAccess})
-       return $ forceEither $ worker cp
+    in do cpath <- getConfigPath
+          isfile <- doesFileExist configpath
+          unless isfile $ fail $ "Please create the configuration file " ++ cpath
+          cp <- readfile (emptyCP {accessfunc = interpolatingAccess}) cpath
+          return $ forceEither $ worker cp
 
 
-       
+upstreamTag :: String -> String -> String
+upstreamTag pkg ver =
+    "UPSTREAM_" ++ pkg ++ "_" ++ ver
