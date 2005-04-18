@@ -33,6 +33,3 @@ getDirectories package =
           return $ forceEither $ worker $ forceEither $ cp
 
 
-upstreamTag :: String -> String -> String
-upstreamTag pkg ver =
-    "UPSTREAM_" ++ pkg ++ "_" ++ ver

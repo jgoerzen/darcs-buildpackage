@@ -13,10 +13,12 @@ import MissingH.Cmd
 import Control.Exception
 import Control.Monad
 import Darcs
+import Utils
 
 importOrigDir dirname_r package version =
     do (upstreamdir, _) <- getDirectories package
        createRepo upstreamdir
+       checkVersion "UPSTREAM" package version upstreamdir
        -- FIXME: checkVersion package version -- check that this is newer than all
        cwd <- getCurrentDirectory
        let dirname = forceMaybe $ absNormPath cwd dirname_r 
@@ -44,8 +46,6 @@ importOrigTarGz tgz_r package version =
                               _ -> tmpabs
               importOrigDir origdir package version
          )
-
--- FIXME: getmaxversion =
 
 -- | Create a Darcs repository at the given path, or do nothing if the
 -- directory already exists.
