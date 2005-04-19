@@ -10,16 +10,39 @@ import MissingH.Printf
 import MissingH.Maybe
 import MissingH.Path
 import MissingH.Cmd
+import MissingH.Either
 import Control.Exception
 import Control.Monad
 import Darcs
 import Utils
+import MissingH.Debian
+import Text.ParserCombinators.Parsec
+import Versions
+
+importDsc dscname =
+    let parsef fl =
+            case split ' ' fl of
+              [md5, size, fn] -> (md5, size, fn)
+              _ -> error $ "Couldn't parse dsc file line " ++ fl
+        in do dscf <- parseFromFile control dscname
+              let dsc = forceEither dscf
+              let package = forceMaybe . lookup "Source" dsc
+              let debvers = forceMaybe . lookup "Version" dsc
+              let files = map parsef . lines . forceMaybe . 
+                              lookup "Files" $ dscf
+              -- Figure out whether there is an upstream for this package.
+              -- If so, import its tar.gz file.
+              when (any (isSuffixOf "diff.gz") files) $
+                   do let origtar = forceMaybe $
+                                      find (isSuffixOf ".orig.tar.gz") files
+                      importOrigTarGz 
+                         
+              
 
 importOrigDir dirname_r package version =
     do (upstreamdir, _) <- getDirectories package
        createRepo upstreamdir
        checkVersion "UPSTREAM" package version upstreamdir
-       -- FIXME: checkVersion package version -- check that this is newer than all
        cwd <- getCurrentDirectory
        let dirname = forceMaybe $ absNormPath cwd dirname_r 
        safeSystem "darcs_load_dirs" 
