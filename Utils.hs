@@ -53,6 +53,6 @@ checkVersion typ pkg newver repodir =
                         case c of 
                                LT -> return ()
                                _ -> fail $ "Existing version " ++ v ++ 
-                                      "is not less than new version " ++ newver
+                                      " isn't less than new version " ++ newver
        seq (seqList tags) $ forceSuccess ph
        return retval
