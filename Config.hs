@@ -23,11 +23,9 @@ getDirectories :: String -> IO (String, String)
 getDirectories package = 
     let worker cp =
             do cp2 <- set cp "DEFAULT" "package" package
-               topdir <- get cp2 package "repobase"
                upstr <- get cp2 package "upstreamrepo"
                deb <- get cp2 package "debianrepo"
-               return ((topdir ++ "/" ++ upstr, 
-                        topdir ++ "/" ++ deb)::(String, String))
+               return (upstr, deb)
     in do cpath <- getConfigPath
           isfile <- doesFileExist cpath
           unless isfile $ fail $ "Please create the configuration file " ++ cpath
