@@ -1,5 +1,4 @@
 <!ENTITY man.tla.buildpackage SYSTEM "darcs-buildpackage.sgml">
-<!ENTITY man.dbp.initarchive SYSTEM "dbp-initarchive.sgml">
 <!ENTITY man.dbp.importdsc SYSTEM "dbp-importdsc.sgml">
 <!ENTITY man.dbp.importorig SYSTEM "dbp-importorig.sgml">
 <!ENTITY man.dbp.markdeb SYSTEM "dbp-markdeb.sgml">
@@ -13,13 +12,12 @@
 <!ENTITY man.com.seealso.para SYSTEM "com.seealso.sgml">
 
 <!ENTITY dbp "<application>darcs-buildpackage</application>">
-<!ENTITY dbp-initarchive "<command>dbp-initarchive</command>">
 <!ENTITY dbp-importdsc "<command>dbp-importdsc</command>">
 <!ENTITY dbp-importorig "<command>dbp-importorig</command>">
 <!ENTITY dbp-markdeb "<command>dbp-markdeb</command>">
 <!ENTITY darcs-buildpackage "<command>darcs-buildpackage</command>">
 
-<!ENTITY tla "<application>tla</application>">
+<!ENTITY darcs "<application>Darcs</application>">
 <!--
 # arch-tag: basic macros common to all manpages
 -->
