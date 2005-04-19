@@ -6,8 +6,7 @@
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
-PYTHON=python2.3
-PACKAGE=tla-buildpackage
+PACKAGE=darcs-buildpackage
 
 
 
@@ -25,8 +24,7 @@ build-stamp: configure-stamp
 	dh_testdir
 
 	# Add here commands to compile the package.
-	#$(MAKE)
-	$(PYTHON) setup.py build
+	$(MAKE)
 	#/usr/bin/docbook-to-man debian/tla-buildpackage.sgml > tla-buildpackage.1
 	cd docs && scons ps html
 	cd docs && scons manpages
@@ -38,11 +36,10 @@ clean:
 	rm -f build-stamp configure-stamp
 
 	# Add here commands to clean up after the build process.
-	-$(PYTHON) setup.py clean
-	-rm -rf build
+	-$(MAKE) clean
+	-rm -rf dist
 	-cd docs; scons -c .
 	-cd docs; rm -r `find . -name .sconsign` manpage.links manpage.refs
-	#-$(MAKE) clean
 
 	dh_clean 
 
@@ -54,18 +51,17 @@ install: build
 
 	# Add here commands to install the package into debian/tla-buildpackage.
 	#$(MAKE) install DESTDIR=$(CURDIR)/debian/tla-buildpackage
-	$(PYTHON) setup.py install --root=`pwd`/debian/$(PACKAGE) --no-compile
-
+	./setup copy --copy-prefix=`pwd`/debian/$(PACKAGE)
 
 # Build architecture-independent files here.
 binary-indep: build install
 # We have nothing to do by default.
 
 # Build architecture-dependent files here.
-binary-indep: build install
+binary-arch: build install
 	dh_testdir
 	dh_testroot
-	dh_installchangelogs ChangeLog
+	dh_installchangelogs #ChangeLog
 	dh_installdocs
 	dh_installexamples
 #	dh_install
@@ -84,7 +80,7 @@ binary-indep: build install
 	dh_compress
 	dh_fixperms
 #	dh_perl
-	dh_python
+#	dh_python
 #	dh_makeshlibs
 	dh_installdeb
 	dh_shlibdeps

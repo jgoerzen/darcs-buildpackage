@@ -1,31 +1,27 @@
-Source: tla-buildpackage
+Source: darcs-buildpackage
 Section: devel
 Priority: optional
 Maintainer: John Goerzen <jgoerzen@complete.org>
-Build-Depends-Indep: debhelper (>= 4.1.80), python2.3-dev, gtk-doc-tools, sgml2x, docbook-utils, jade, tla-load-dirs (>= 1.0.11), lynx, scons, xpdf-utils
-Build-Depends: libghc6-missingh-dev (>= 0.10.7)
+Build-Depends: debhelper (>= 4.1.80), gtk-doc-tools, sgml2x, docbook-utils, jade, libghc6-missingh-dev (>= 0.10.7), ghc6 (>= 6.2), libghc6-cabal-dev (>= 0.5), scons, xpdf-utils, lynx
 Standards-Version: 3.6.0
 
-Package: tla-buildpackage
-Architecture: all
-Depends: python2.3, tla, darcs-load-dirs (>= 1.0.17), dpkg-dev, devscripts, python-apt
-Description: Suite to help with Debian packages in Arch archives
+Package: darcs-buildpackage
+Architecture: any
+Depends: darcs (>= 1.0.2), darcs-load-dirs (>= 1.0.17), dpkg-dev, devscripts
+Description: Suite to help with Debian packages in Darcs archives
  This package helps automate and ease the task of maintaining Debian
  packages by helping you, the Debian developer, take advantage of
- the unique features in tla/Arch.  The programs included are:
+ the unique features in Darcs.  The programs included are:
  .
- tbp-initarchive: Initialize an archive and working directory for use
- with tla-buildpackage.
- .
- tbp-importdsc: Import an upstream version and a Debian version from
+ dbp-importdsc: Import an upstream version and a Debian version from
  a Debian source package, automatically detecting package and version
  information from the .dsc.
  .
- tbp-importorig: Import an upstream tar.gz or directory.
+ dbp-importorig: Import an upstream tar.gz or directory.
  .
- tbp-markdeb: Mark a working copy for future reference.
+ dbp-markdeb: Mark a working copy for future reference.
  .
- tla-buildpackage: Builds a Debian package based on information in
+ darcs-buildpackage: Builds a Debian package based on information in
  the repository, checking out Debian and upstream versions as necessary.
  .
  Also, the package includes a comprehensive 24-page manual in PostScript and
