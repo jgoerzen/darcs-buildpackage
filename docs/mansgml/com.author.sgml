@@ -1,18 +1,18 @@
     <refsect1>
       <title>Author</title>
       <para>
-	&tbp;, its modules, documentation, executables, and all
+	&dbp;, its modules, documentation, executables, and all
 	included files, except where noted, was written by
 	John Goerzen <email>jgoerzen@complete.org</email> and
 	copyright is held as stated in the COPYRIGHT section.
       </para>
       <para>
-	&tbp; may be downloaded from the Debian packaging system or at
+	&dbp; may be downloaded from the Debian packaging system or at
 	<ulink
-	  url="http://packages.debian.org/tla-buildpackage"></ulink>.
+	  url="http://packages.debian.org/darcs-buildpackage"></ulink>.
       </para>
       <para>
-	&tbp; may also be downloaded using tla like this:
+	&dbp; may also be downloaded using tla like this:
       </para>
       <programlisting>
 $ <command>tla register-archive jgoerzen@complete.org--projects \
@@ -21,7 +21,7 @@ $ <command>tla get \
   jgoerzen@complete.org--projects/configs--head--1.0 \
   jgoerzen</command>
 $ <command>cd jgoerzen</command>
-$ <command>tla buildcfg tla-buildpackage/latest</command>
+$ <command>tla buildcfg darcs-buildpackage/latest</command>
       </programlisting>
     </refsect1>
 
@@ -29,9 +29,9 @@ $ <command>tla buildcfg tla-buildpackage/latest</command>
 <!--
 Local Variables:
 mode: sgml
-sgml-parent-document:("./tla-buildpackage.sgml" "reference")
+sgml-parent-document:("./darcs-buildpackage.sgml" "reference")
 sgml-set-face: T
 End:
 
-# arch-tag: common data for tla-buildpackage manual: author
+# arch-tag: common data for darcs-buildpackage manual: author
 -->

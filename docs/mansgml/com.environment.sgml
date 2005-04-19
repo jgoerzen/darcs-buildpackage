@@ -6,9 +6,9 @@
       <variablelist>
 	<varlistentry><term>TBP_WC</term>
 	  <listitem><para>
-	      Specifies the working copy area for &tbp; to use for all
+	      Specifies the working copy area for &dbp; to use for all
 	      build-related tasks, overriding the value in
-	      <filename>~/.tla-buildpackage</filename>, if any.
+	      <filename>~/.darcs-buildpackage</filename>, if any.
 	    </para>
 	  </listitem>
 	</varlistentry>
@@ -17,9 +17,9 @@
 <!--
 Local Variables:
 mode: sgml
-sgml-parent-document:("./tla-buildpackage.sgml" "reference")
+sgml-parent-document:("./darcs-buildpackage.sgml" "reference")
 sgml-set-face: T
 End:
 
-# arch-tag: common data for tla-buildpackage manual: environment
+# arch-tag: common data for darcs-buildpackage manual: environment
 -->

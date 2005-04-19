@@ -1,5 +1,5 @@
   <para>
-    tla-buildpackage, all associated scripts and programs, this manual,
+    darcs-buildpackage, all associated scripts and programs, this manual,
     and all build scripts are Copyright &copy; 2003 John Goerzen.
   </para>
       <para>
@@ -24,9 +24,9 @@
 <!--
 Local Variables:
 mode: sgml
-sgml-parent-document:("./tla-buildpackage.sgml" "reference" "refsect1")
+sgml-parent-document:("./darcs-buildpackage.sgml" "reference" "refsect1")
 sgml-set-face: T
 End:
 
-# arch-tag: common data for tla-buildpackage manual: text of copyright
+# arch-tag: common data for darcs-buildpackage manual: text of copyright
 -->

@@ -1,52 +1,52 @@
 
 <!-- <reference> -->
-  <refentry id="tbp.man.tbp.importorig">
-    <indexterm><primary>tbp-importorig</><secondary>Reference For</></>
+  <refentry id="dbp.man.dbp.importorig">
+    <indexterm><primary>dbp-importorig</><secondary>Reference For</></>
     <refentryinfo>
       <address><email>jgoerzen@complete.org</email></address>
       <author><firstname>John</firstname><surname>Goerzen</surname></author>
     </refentryinfo>
 
     <refmeta>
-      <refentrytitle>tbp-importorig</refentrytitle>
+      <refentrytitle>dbp-importorig</refentrytitle>
       <manvolnum>1</manvolnum>
       <refmiscinfo>John Goerzen</refmiscinfo>
     </refmeta>
 
     <refnamediv>
-      <refname>tbp-importorig</refname>
-      <refpurpose>Import an upstream source into tla-buildpackage
+      <refname>dbp-importorig</refname>
+      <refpurpose>Import an upstream source into darcs-buildpackage
       archive</>
     </refnamediv>
 
     <refsynopsisdiv>
       <cmdsynopsis>
-	<command>tbp-importorig</command>
+	<command>dbp-importorig</command>
 	<arg choice="plain"><replaceable>filename_or_dir</replaceable></arg>
 	<arg choice="plain"><replaceable>package</></>
 	<arg choice="plain"><replaceable>version</></>
       </cmdsynopsis>
     </refsynopsisdiv>
 
-    <refsect1 id="tbp.man.tbp.importorig.description">
+    <refsect1 id="dbp.man.dbp.importorig.description">
       <title>Description</title>
       <para>
-	&tbp-importorig; imports the tar.gz file given by
+	&dbp-importorig; imports the tar.gz file given by
 	<property>filename</property> (or a directory, if
-	<property>filename</property> is one) into the &tbp;
+	<property>filename</property> is one) into the &dbp;
 	archive.  Since upstream tarballs do not contain the package
 	and version information in a unified format, you must specify
 	that on the command line as well.
       </para>
       <para>
         It is an
-        error to run &tbp-importorig; on a package when a newer version
-        already exists in the archive.  &tbp-importorig; detects this
+        error to run &dbp-importorig; on a package when a newer version
+        already exists in the archive.  &dbp-importorig; detects this
         condition and will terminate without causing harm.
       </para>
     </refsect1>
 
-    <refsect1 id="tbp.man.tbp.importorig.options">
+    <refsect1 id="dbp.man.dbp.importorig.options">
       <title>Options</title>
       <variablelist>
 	<varlistentry><term>filename_or_dir</term>
@@ -98,9 +98,9 @@
 <!--
 Local Variables:
 mode: sgml
-sgml-parent-document:("../tbp.sgml" "book" "appendix" "reference")
+sgml-parent-document:("../dbp.sgml" "book" "appendix" "reference")
 sgml-set-face: T
 End:
 
-# arch-tag: manpage for tbp-importorig(1)
+# arch-tag: manpage for dbp-importorig(1)
 -->

@@ -1,43 +1,43 @@
 
 <!-- <reference> -->
-  <refentry id="tbp.man.tla.buildpackage">
-    <indexterm><primary>tla-buildpackage</><secondary>Reference For</></>
+  <refentry id="dbp.man.tla.buildpackage">
+    <indexterm><primary>darcs-buildpackage</><secondary>Reference For</></>
     <refentryinfo>
       <address><email>jgoerzen@complete.org</email></address>
       <author><firstname>John</firstname><surname>Goerzen</surname></author>
     </refentryinfo>
 
     <refmeta>
-      <refentrytitle>tla-buildpackage</refentrytitle>
+      <refentrytitle>darcs-buildpackage</refentrytitle>
       <manvolnum>1</manvolnum>
       <refmiscinfo>John Goerzen</refmiscinfo>
     </refmeta>
 
     <refnamediv>
-      <refname>tla-buildpackage</refname>
+      <refname>darcs-buildpackage</refname>
       <refpurpose>Build Debian packages from a tla/Arch
 	archive</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv>
       <cmdsynopsis>
-	<command>tla-buildpackage</command>
+	<command>darcs-buildpackage</command>
 	<arg rep="repeat"><replaceable>args for
 	    debuild</replaceable></arg>
       </cmdsynopsis>
     </refsynopsisdiv>
 
-    <refsect1 id="tbp.man.tla.buildpackage.desc">
+    <refsect1 id="dbp.man.tla.buildpackage.desc">
       <title>Description</title>
       <para>
-        The &tla-buildpackage; command is used to build Debian source
+        The &darcs-buildpackage; command is used to build Debian source
         and .deb packages from a checked-out version of a Debian
         source tree.
-        Please refer to the &tbp; manual for instructions on how to
+        Please refer to the &dbp; manual for instructions on how to
         check out such a tree.
       </para>
       <para>
-        &tla-buildpackage will, in order:
+        &darcs-buildpackage will, in order:
       </para>
       <itemizedlist>
         <listitem><para>Verify that it is being executed from the
@@ -46,35 +46,35 @@
         </listitem>
         <listitem><para>Check to see if a proper orig.tar.gz exists.
             If not, it will check out the proper upstream directory
-            from the &tbp; repository (if necessary) and build the
+            from the &dbp; repository (if necessary) and build the
             orig.tar.gz.  The orig.tar.gz will not contain Arch meta-data.
           </para>
         </listitem>
         <listitem><para>Call <application>debuild</application>(1)
             with arguments instructing it to ignore Arch meta-data in
             the diff.gz, passing along all arguments given to
-            &tla-buildpackage;.
+            &darcs-buildpackage;.
           </para>
         </listitem>
       </itemizedlist>
             
     </refsect1>
 
-    <refsect1 id="tbp.man.tla.buildpackage.options">
+    <refsect1 id="dbp.man.tla.buildpackage.options">
       <title>Options</title>
       <para>
-        All options passed to &tla-buildpackage; are sent directly to
+        All options passed to &darcs-buildpackage; are sent directly to
         <application>debuild</application>(1).
       </para>
     </refsect1>
 
-    <refsect1 id="tbp.man.tla.buildpackage.examples">
+    <refsect1 id="dbp.man.tla.buildpackage.examples">
       <title>Example</title>
       <screen>
 ~$ <command>cd ~/tree/debian</command>
 ~/tree/debian$ <command>tla buildcfg debian/rdiff-backup/0.12.5-1</command>
 ~/tree/debian$ <command>cd +packages/rdiff-backup/rdiff-backup-0.12.5</command>
-~/tree/debian/+packages/rdiff-backup/rdiff-backup-0.12.5$ <command>tla-buildpackage \
+~/tree/debian/+packages/rdiff-backup/rdiff-backup-0.12.5$ <command>darcs-buildpackage \
         -rfakeroot</command>
       </screen>
     </refsect1>
@@ -102,9 +102,9 @@
 <!--
 Local Variables:
 mode: sgml
-sgml-parent-document:("../tbp.sgml" "book" "appendix" "reference")
+sgml-parent-document:("../dbp.sgml" "book" "appendix" "reference")
 sgml-set-face: T
 End:
 
-# arch-tag: manpage for tla-buildpackage(1)
+# arch-tag: manpage for darcs-buildpackage(1)
 -->

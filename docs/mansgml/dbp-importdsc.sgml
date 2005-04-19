@@ -1,35 +1,35 @@
 
 <!-- <reference> -->
-  <refentry id="tbp.man.tbp.importdsc">
-    <indexterm><primary>tbp-importdsc</><secondary>Reference For</></>
+  <refentry id="dbp.man.dbp.importdsc">
+    <indexterm><primary>dbp-importdsc</><secondary>Reference For</></>
     <refentryinfo>
       <address><email>jgoerzen@complete.org</email></address>
       <author><firstname>John</firstname><surname>Goerzen</surname></author>
     </refentryinfo>
 
     <refmeta>
-      <refentrytitle>tbp-importdsc</refentrytitle>
+      <refentrytitle>dbp-importdsc</refentrytitle>
       <manvolnum>1</manvolnum>
       <refmiscinfo>John Goerzen</refmiscinfo>
     </refmeta>
 
     <refnamediv>
-      <refname>tbp-importdsc</refname>
-      <refpurpose>Import a Debian source package into tla-buildpackage
+      <refname>dbp-importdsc</refname>
+      <refpurpose>Import a Debian source package into darcs-buildpackage
       archive</>
     </refnamediv>
 
     <refsynopsisdiv>
       <cmdsynopsis>
-	<command>tbp-importdsc</command>
+	<command>dbp-importdsc</command>
 	<arg choice="plain"><replaceable>dsc_name</replaceable></arg>
       </cmdsynopsis>
     </refsynopsisdiv>
 
-    <refsect1 id="tbp.man.tbp.importdsc.description">
+    <refsect1 id="dbp.man.dbp.importdsc.description">
       <title>Description</title>
       <para>
-        &tbp-importdsc; imports a Debian source package into a &tbp;
+        &dbp-importdsc; imports a Debian source package into a &dbp;
         archive, notes the package version in the configs, and commits
         the change.  All information, including package name, version,
         Debian diffs, and upstream source, is automatically detected
@@ -41,15 +41,15 @@
         re-import them again.
       </para>
       <para>
-        It is an error to run &tbp-importdsc; on a package whose
+        It is an error to run &dbp-importdsc; on a package whose
         Debian version already exists in the archive.  It is also an
-        error to run &tbp-importdsc; on a package when a newer version
-        already exists in the archive.  &tbp-importdsc; detects both
+        error to run &dbp-importdsc; on a package when a newer version
+        already exists in the archive.  &dbp-importdsc; detects both
         conditions and will terminate without causing harm.
       </para>
     </refsect1>
 
-    <refsect1 id="tbp.man.tbp.importdsc.options">
+    <refsect1 id="dbp.man.dbp.importdsc.options">
       <title>Options</title>
       <variablelist>
 	<varlistentry><term>dsc_name</term>
@@ -60,7 +60,7 @@
       </variablelist>
     </refsect1>
       
-    <refsect1 id="tbp.man.tbp.importdsc.bugs">
+    <refsect1 id="dbp.man.dbp.importdsc.bugs">
       <title>Bugs</title>
       <itemizedlist>
         <listitem><para>Neither GPG signatures nor MD5 sums are
@@ -96,9 +96,9 @@
 <!--
 Local Variables:
 mode: sgml
-sgml-parent-document:("../tbp.sgml" "book" "appendix" "reference")
+sgml-parent-document:("../dbp.sgml" "book" "appendix" "reference")
 sgml-set-face: T
 End:
 
-# arch-tag: manpage for tbp-importdsc(1)
+# arch-tag: manpage for dbp-importdsc(1)
 -->

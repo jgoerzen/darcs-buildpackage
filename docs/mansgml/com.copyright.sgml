@@ -1,13 +1,13 @@
 <refsect1>
   <title>Copyright</title>
-  &tbp.copyright;
+  &dbp.copyright;
 </refsect1>
 <!--
 Local Variables:
 mode: sgml
-sgml-parent-document:("./tla-buildpackage.sgml" "reference")
+sgml-parent-document:("./darcs-buildpackage.sgml" "reference")
 sgml-set-face: T
 End:
 
-# arch-tag: common data for tla-buildpackage manual: copyright
+# arch-tag: common data for darcs-buildpackage manual: copyright
 -->

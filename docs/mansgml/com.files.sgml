@@ -4,11 +4,11 @@
         The following specific files are used by this application:
       </para>
       <variablelist>
-	<varlistentry><term><filename>~/.tla-buildpackage</></term>
+	<varlistentry><term><filename>~/.darcs-buildpackage</></term>
 	  <listitem><para>
             Specifies the default working copy location for all
             build procedures.  This file, and the directory it specifies,
-            are both normally created by <application>tbp-initarchive</>.
+            are both normally created by <application>dbp-initarchive</>.
 	    </para>
 	  </listitem>
 	</varlistentry>
@@ -17,9 +17,9 @@
 <!--
 Local Variables:
 mode: sgml
-sgml-parent-document:("./tla-buildpackage.sgml" "reference")
+sgml-parent-document:("./darcs-buildpackage.sgml" "reference")
 sgml-set-face: T
 End:
 
-# arch-tag: common data for tla-buildpackage manual: files
+# arch-tag: common data for darcs-buildpackage manual: files
 -->

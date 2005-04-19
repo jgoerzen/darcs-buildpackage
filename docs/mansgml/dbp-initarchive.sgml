@@ -1,51 +1,51 @@
 
 <!-- <reference> -->
-  <refentry id="tbp.man.tbp.initarchive">
-    <indexterm><primary>tbp-initarchive</><secondary>Reference For</></>
+  <refentry id="dbp.man.dbp.initarchive">
+    <indexterm><primary>dbp-initarchive</><secondary>Reference For</></>
     <refentryinfo>
       <address><email>jgoerzen@complete.org</email></address>
       <author><firstname>John</firstname><surname>Goerzen</surname></author>
     </refentryinfo>
 
     <refmeta>
-      <refentrytitle>tbp-initarchive</refentrytitle>
+      <refentrytitle>dbp-initarchive</refentrytitle>
       <manvolnum>1</manvolnum>
       <refmiscinfo>John Goerzen</refmiscinfo>
     </refmeta>
 
     <refnamediv>
-      <refname>tbp-initarchive</refname>
-      <refpurpose>Initialize an archive and tree for tla-buildpackage</>
+      <refname>dbp-initarchive</refname>
+      <refpurpose>Initialize an archive and tree for darcs-buildpackage</>
     </refnamediv>
 
     <refsynopsisdiv>
       <cmdsynopsis>
-	<command>tbp-initarchive</command>
+	<command>dbp-initarchive</command>
 	<arg choice="plain"><replaceable>archive_name</replaceable></arg>
 	<arg choice="plain"><replaceable>archive_location</></>
 	<arg choice="plain"><replaceable>working_location</></>
       </cmdsynopsis>
     </refsynopsisdiv>
 
-    <refsect1 id="tbp.man.tbp.initarchive.description">
+    <refsect1 id="dbp.man.dbp.initarchive.description">
       <title>Description</title>
       <para>
-	&tbp-initarchive; is designed to set up both the &tla; archive
-	and the working area for a &tbp; setup.  It automatically
-	handles all the tasks relating to running tla and &tbp;
+	&dbp-initarchive; is designed to set up both the &tla; archive
+	and the working area for a &dbp; setup.  It automatically
+	handles all the tasks relating to running tla and &dbp;
       </para>
       <para>
-	&tbp-initarchive; will create the tla archive
+	&dbp-initarchive; will create the tla archive
 	<property>archive_name</property> in
 	<property>archive_location</property>, and check it out into
 	<property>working_location</property>, having initialized that
-	working area for &tbp;.  If
-	<filename>~/.tla-buildpackage</filename> does not exist, it
+	working area for &dbp;.  If
+	<filename>~/.darcs-buildpackage</filename> does not exist, it
 	will be created and the working location will be written into it.
       </para>
     </refsect1>
 
-    <refsect1 id="tbp.man.tbp.initarchove.options">
+    <refsect1 id="dbp.man.dbp.initarchove.options">
       <title>Options</title>
       <variablelist>
 	<varlistentry><term>archive_name</term>
@@ -66,7 +66,7 @@
 
 	<varlistentry><term>working_location</term>
 	  <listitem><para>Gives the directory where you will work with
-	      &tbp; on a daily basis.
+	      &dbp; on a daily basis.
 	    </para>
 	  </listitem>
 	</varlistentry>
@@ -94,9 +94,9 @@
 <!--
 Local Variables:
 mode: sgml
-sgml-parent-document:("../tbp.sgml" "book" "appendix" "reference")
+sgml-parent-document:("../dbp.sgml" "book" "appendix" "reference")
 sgml-set-face: T
 End:
 
-# arch-tag: manpage for tbp-initarchive(1)
+# arch-tag: manpage for dbp-initarchive(1)
 -->

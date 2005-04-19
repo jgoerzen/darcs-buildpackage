@@ -1,10 +1,10 @@
-<!ENTITY man.tla.buildpackage SYSTEM "tla-buildpackage.sgml">
-<!ENTITY man.tbp.initarchive SYSTEM "tbp-initarchive.sgml">
-<!ENTITY man.tbp.importdsc SYSTEM "tbp-importdsc.sgml">
-<!ENTITY man.tbp.importorig SYSTEM "tbp-importorig.sgml">
-<!ENTITY man.tbp.markdeb SYSTEM "tbp-markdeb.sgml">
+<!ENTITY man.tla.buildpackage SYSTEM "darcs-buildpackage.sgml">
+<!ENTITY man.dbp.initarchive SYSTEM "dbp-initarchive.sgml">
+<!ENTITY man.dbp.importdsc SYSTEM "dbp-importdsc.sgml">
+<!ENTITY man.dbp.importorig SYSTEM "dbp-importorig.sgml">
+<!ENTITY man.dbp.markdeb SYSTEM "dbp-markdeb.sgml">
 
-<!ENTITY tbp.copyright SYSTEM "copyright.sgml">
+<!ENTITY dbp.copyright SYSTEM "copyright.sgml">
 <!ENTITY man.com.copyright.refsect1 SYSTEM "com.copyright.sgml">
 <!ENTITY man.com.author.refsect1 SYSTEM "com.author.sgml">
 <!ENTITY man.com.footer.refsect1 "&man.com.copyright.refsect1; &man.com.author.refsect1;">
@@ -12,12 +12,12 @@
 <!ENTITY man.com.files.refsect1 SYSTEM "com.files.sgml">
 <!ENTITY man.com.seealso.para SYSTEM "com.seealso.sgml">
 
-<!ENTITY tbp "<application>tla-buildpackage</application>">
-<!ENTITY tbp-initarchive "<command>tbp-initarchive</command>">
-<!ENTITY tbp-importdsc "<command>tbp-importdsc</command>">
-<!ENTITY tbp-importorig "<command>tbp-importorig</command>">
-<!ENTITY tbp-markdeb "<command>tbp-markdeb</command>">
-<!ENTITY tla-buildpackage "<command>tla-buildpackage</command>">
+<!ENTITY dbp "<application>darcs-buildpackage</application>">
+<!ENTITY dbp-initarchive "<command>dbp-initarchive</command>">
+<!ENTITY dbp-importdsc "<command>dbp-importdsc</command>">
+<!ENTITY dbp-importorig "<command>dbp-importorig</command>">
+<!ENTITY dbp-markdeb "<command>dbp-markdeb</command>">
+<!ENTITY darcs-buildpackage "<command>darcs-buildpackage</command>">
 
 <!ENTITY tla "<application>tla</application>">
 <!--
