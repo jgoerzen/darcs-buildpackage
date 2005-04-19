@@ -19,15 +19,18 @@ import MissingH.Debian
 import Text.ParserCombinators.Parsec
 import Versions
 
-importDsc dscname =
+importDsc dscname_r =
     let parsef fl =
             case split ' ' fl of
               [md5, size, fn] -> (md5, size, fn)
               _ -> error $ "Couldn't parse dsc file line " ++ fl
-        in do dscf <- parseFromFile control dscname
+        in do cwd <- getCurrentDirectory
+              let dscname = forceMaybe . absNormPath cwd dscname_r
+              dscf <- parseFromFile control dscname
               let dsc = forceEither dscf
               let package = forceMaybe . lookup "Source" dsc
-              let debvers = forceMaybe . lookup "Version" dsc
+              let version = forceMaybe . lookup "Version" dsc
+              let (debv, upsv) = splitVer version
               let files = map parsef . lines . forceMaybe . 
                               lookup "Files" $ dscf
               -- Figure out whether there is an upstream for this package.
@@ -35,23 +38,31 @@ importDsc dscname =
               when (any (isSuffixOf "diff.gz") files) $
                    do let origtar = forceMaybe $
                                       find (isSuffixOf ".orig.tar.gz") files
-                      importOrigTarGz 
+                      importOrigTarGz ((dir_part dsc) ++ "/" ++ origtar)
+                                      package (forceMaybe upsv)
+              
+              -- Now, handle Debian side of things.
+              
                          
               
 
 importOrigDir dirname_r package version =
     do (upstreamdir, _) <- getDirectories package
        createRepo upstreamdir
-       checkVersion "UPSTREAM" package version upstreamdir
-       cwd <- getCurrentDirectory
-       let dirname = forceMaybe $ absNormPath cwd dirname_r 
-       safeSystem "darcs_load_dirs" 
+       checkv <- checkVersion "UPSTREAM" package version upstreamdir
+       if checkv
+          then do cwd <- getCurrentDirectory
+                  let dirname = forceMaybe $ absNormPath cwd dirname_r 
+                  safeSystem "darcs_load_dirs" 
                       ["--wc=" ++ upstreamdir,
                        "--summary=Import upstream " ++ package ++ " version "
                         ++ version,
                        dirname]
-       bracketCWD upstreamdir
-         (safeSystem "darcs" ["tag", "-m", upstreamTag package version])
+                  bracketCWD upstreamdir
+                    (safeSystem "darcs" 
+                     ["tag", "-m", upstreamTag package version])
+          else infoM "main" $ "Not importing orig; version " ++ version ++
+                 " already exists in repository."
 
 importOrigTarGz tgz_r package version = 
     do origcwd <- getCurrentDirectory

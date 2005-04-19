@@ -42,8 +42,10 @@ getFirstVersion typ pkg tags =
              [] -> Nothing
              ((_,_,v):_) -> Just v
 
--- | Raise an error if we try to import something older than or the same
--- as the current maximum version in the system.
+{- | Raise an error if we try to import something older than the current
+maximum version in the system.  Return False if the new version already exists
+in the system.  Return True otherwise. -}
+
 checkVersion typ pkg newver repodir =
     do (ph, tags) <- getTags repodir
        let fv = getFirstVersion typ pkg (parseTags tags)
@@ -51,8 +53,9 @@ checkVersion typ pkg newver repodir =
            Nothing -> return ()
            Just v -> do c <- compareDebVersion v newver
                         case c of 
-                               LT -> return ()
-                               _ -> fail $ "Existing version " ++ v ++ 
-                                      " isn't less than new version " ++ newver
+                               LT -> return True
+                               EQ -> return False
+                               GT -> fail $ "Existing version " ++ v ++ 
+                                      " is greater than new version " ++ newver
        seq (seqList tags) $ forceSuccess ph
        return retval
