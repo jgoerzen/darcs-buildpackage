@@ -26,25 +26,28 @@ import Versions
 
 importDsc dscname_r =
     let parsef fl =
-            case split " " fl of
+            case split " " (strip fl) of
               [md5, size, fn] -> fn
               _ -> error $ "Couldn't parse dsc file line " ++ fl
         in do cwd <- getCurrentDirectory
               let dscname = forceMaybe . absNormPath cwd $ dscname_r
               dscf <- parseFromFile control dscname
+              print dscf
               let dsc = forceEither dscf
-              let package = forceMaybe . lookup "Source" $ dsc
-              let version = forceMaybe . lookup "Version" $ dsc
-              let (debv, upsv) = splitVer version
-              let files = map parsef . lines . forceMaybe . 
-                              lookup "Files" $ forceEither dscf
+              let package = strip . forceMaybe . lookup "Source" $ dsc
+              let version = strip . forceMaybe . lookup "Version" $ dsc
+              let (upsv, debv) = splitVer version
+              let files = map parsef . filter (/= "") . map strip .
+                              lines . forceMaybe . 
+                              lookup "Files" $ dsc
               -- Figure out whether there is an upstream for this package.
               -- If so, import its tar.gz file.
               when (any (isSuffixOf "diff.gz") files) $
                    do let origtar = forceMaybe $
                                       find (isSuffixOf ".orig.tar.gz") files
+                      print "IMPORTING UPSTREAM"
                       importOrigTarGz ((dir_part dscname) ++ "/" ++ origtar)
-                                      package (forceMaybe upsv)
+                                      package upsv
               
               -- Now, handle Debian side of things.
               (upstreamdir, debiandir) <- getDirectories package
@@ -52,14 +55,14 @@ importDsc dscname_r =
               checkv <- checkVersion "DEBIAN" package version debiandir
               if checkv
                  then do bracketCWD debiandir $ 
-                           unless (upsv == Nothing) $
+                           unless (debv == Nothing) $
                              safeSystem "darcs" 
                                 ["pull", "--no-set-default", "-a", 
-                                 "--tags=^" ++ upstreamTag package (forceMaybe upsv) ++ "$",
+                                 "--tags=^" ++ upstreamTag package upsv ++ "$",
                                  upstreamdir]
                          brackettmpdir ",,extract-XXXXXX" (\tmpd -> bracketCWD tmpd $
                            do safeSystem "dpkg-source" ["-x", dscname]
-                              debsrcdir <- findSrc tmpd
+                              debsrcdir <- findSrc "."
                               safeSystem "darcs_load_dirs" 
                                 ["--wc=" ++ debiandir,
                                  "--summary=Import Debian " ++ package ++

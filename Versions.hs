@@ -10,7 +10,7 @@ splitVer version =
     case elemIndices '-' version of
         [] -> (version, Nothing)      -- No dash: no Debian version
         x -> case splitAt (last x) version of
-                 (d, u) -> (d, Just (drop 1 u))
+                 (u, d) -> (u, Just (drop 1 d))
 
 getUpstreamVer = fst . splitVer
 getDebianVer = snd . splitVer

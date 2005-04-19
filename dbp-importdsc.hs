@@ -16,11 +16,7 @@ usage = unlines $
   "dbp-importorig dscname",
   "",
   "Where:",
-  "  dsc-name is the name of a dsc file to import",
-  "",
-  "  package is the name of the Debian source package",
-  "",
-  "  version is the upstream version being imported"]
+  "  dsc-name is the name of a dsc file to import"]
 
 main = do args <- getArgs
           initLogging
