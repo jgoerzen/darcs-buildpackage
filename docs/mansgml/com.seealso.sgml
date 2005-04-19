@@ -8,7 +8,6 @@
   <para>
     &dbp; applications have references in that manual and the
     following manpages: 
-    <application>dbp-initarchive</application>(1),
     <application>dbp-importdsc</application>(1),
     <application>dbp-importorig</application>(1),
     <application>dbp-markdeb</application>(1),

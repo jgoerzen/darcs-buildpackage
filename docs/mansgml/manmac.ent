@@ -1,4 +1,4 @@
-<!ENTITY man.tla.buildpackage SYSTEM "darcs-buildpackage.sgml">
+<!ENTITY man.darcs.buildpackage SYSTEM "darcs-buildpackage.sgml">
 <!ENTITY man.dbp.importdsc SYSTEM "dbp-importdsc.sgml">
 <!ENTITY man.dbp.importorig SYSTEM "dbp-importorig.sgml">
 <!ENTITY man.dbp.markdeb SYSTEM "dbp-markdeb.sgml">
@@ -19,5 +19,4 @@
 
 <!ENTITY darcs "<application>Darcs</application>">
 <!--
-# arch-tag: basic macros common to all manpages
 -->

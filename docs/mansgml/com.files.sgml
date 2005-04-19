@@ -6,9 +6,8 @@
       <variablelist>
 	<varlistentry><term><filename>~/.darcs-buildpackage</></term>
 	  <listitem><para>
-            Specifies the default working copy location for all
-            build procedures.  This file, and the directory it specifies,
-            are both normally created by <application>dbp-initarchive</>.
+              Specifies the location of the canonical Debian and
+              upstream repositories.
 	    </para>
 	  </listitem>
 	</varlistentry>

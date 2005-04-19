@@ -84,7 +84,7 @@
       &man.com.seealso.para;
       <para>
 	Other related references include:
-	<application>tla</application>(1), <application>dpkg-source</>(1).
+	<application>darcs</application>(1), <application>dpkg-source</>(1).
       </para>
     </refsect1>
       

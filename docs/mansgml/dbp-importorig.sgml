@@ -15,7 +15,7 @@
 
     <refnamediv>
       <refname>dbp-importorig</refname>
-      <refpurpose>Import an upstream source into darcs-buildpackage
+      <refpurpose>Import an upstream source into a &dbp;
       archive</>
     </refnamediv>
 
@@ -84,7 +84,7 @@
       &man.com.seealso.para;
       <para>
 	Other related references include:
-	<application>tla</application>(1),
+	<application>darcs</application>(1),
 	<application>dpkg-source</>(1),
 	<application>tar</application>(1).
       </para>
