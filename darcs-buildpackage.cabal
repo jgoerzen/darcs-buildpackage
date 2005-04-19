@@ -6,7 +6,7 @@ Stability: Alpha
 Copyright: Copyright (c) 2003 - 2005 John Goerzen
 Extensions: ExistentialQuantification, AllowOverlappingInstances,
     AllowUndecidableInstances
-Build-Depends: haskell-src, network, unix, parsec, MissingH>=0.10.6
+Build-Depends: haskell-src, network, unix, parsec, MissingH>=0.10.7
 GHC-Options: -O2
 
 Executable: dbp-importorig
@@ -18,3 +18,8 @@ Executable: dbp-importdsc
 Extensions: ExistentialQuantification, AllowOverlappingInstances,
     AllowUndecidableInstances
 Main-Is: dbp-importdsc.hs
+
+Executable: dbp-markdeb
+Extensions: ExistentialQuantification, AllowOverlappingInstances,
+    AllowUndecidableInstances
+Main-Is: dbp-markdeb.hs

@@ -9,4 +9,4 @@ import MissingH.Logging.Logger
 initLogging = 
     sequence_ $ map (\x -> updateGlobalLogger x (setLevel DEBUG))
          ["darcs-buildpackage", "MissingH.Cmd.safeSystem",
-          "MissingH.Cmd.pOpen"]
+          "MissingH.Cmd.pOpen", "main"]
