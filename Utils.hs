@@ -28,6 +28,9 @@ upstreamTag :: String -> String -> String
 upstreamTag pkg ver =
     "UPSTREAM_" ++ pkg ++ "_" ++ ver
 
+debianTag :: String -> String -> String
+debianTag pkg ver = "DEBIAN_" ++ pkg ++ "_" ++ ver
+
 {- | Given a list of tags, find the first one of the given type and package,
 or Nothing if there are none yet. 
 
@@ -50,7 +53,7 @@ checkVersion typ pkg newver repodir =
     do (ph, tags) <- getTags repodir
        let fv = getFirstVersion typ pkg (parseTags tags)
        retval <- case fv of
-           Nothing -> return ()
+           Nothing -> return True
            Just v -> do c <- compareDebVersion v newver
                         case c of 
                                LT -> return True

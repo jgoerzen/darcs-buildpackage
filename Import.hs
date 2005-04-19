@@ -11,11 +11,16 @@ import MissingH.Maybe
 import MissingH.Path
 import MissingH.Cmd
 import MissingH.Either
+import MissingH.Path.NameManip
+import MissingH.Logging.Logger
+import MissingH.Str
 import Control.Exception
 import Control.Monad
 import Darcs
 import Utils
 import MissingH.Debian
+import MissingH.Debian.ControlParser
+import Data.List
 import Text.ParserCombinators.Parsec
 import Versions
 
@@ -52,14 +57,14 @@ importDsc dscname_r =
                                 ["pull", "--no-set-default", "-a", 
                                  "--tags=^" ++ upstreamTag package (forceMaybe upsv) ++ "$",
                                  upstreamdir]
-                         brackettmpdir extractdeb (\tmpd -> bracketCWD tmpd $
+                         brackettmpdir ",,extract-XXXXXX" (\tmpd -> bracketCWD tmpd $
                            do safeSystem "dpkg-source" ["-x", dscname]
-                              let debsrcdir = findSrc tmpdir
+                              let debsrcdir = findSrc tmpd
                               safeSystem "darcs_load_dirs" 
                                 ["--wc=" ++ debiandir,
                                  "--summary=Import Debian " ++ package ++
                                   " version " ++ version,
-                                 debsrcdir]
+                                 debsrcdir])
                          bracketCWD debiandir $ 
                             safeSystem "darcs" ["tag", "-m",
                                                 debianTag package version]
@@ -72,11 +77,6 @@ findSrc dir =
        let fc = filter (\x -> x /= "." && x /= ".." && (not isSuffixOf "tar.gz x")) contents
        return $ dir ++ "/" ++ head fc
                            
-                 else infoM "main" $ "Debian import: version " ++ version ++
-                       "is not newer than all versions in archive.\nWill not import Debian because of this."
-                                                                                                      
-              
-
 importOrigDir dirname_r package version =
     do (upstreamdir, _) <- getDirectories package
        createRepo upstreamdir

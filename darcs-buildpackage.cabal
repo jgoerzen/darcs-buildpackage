@@ -13,3 +13,8 @@ Executable: dbp-importorig
 Extensions: ExistentialQuantification, AllowOverlappingInstances,
     AllowUndecidableInstances
 Main-Is: dbp-importorig.hs
+
+Executable: dbp-importdsc
+Extensions: ExistentialQuantification, AllowOverlappingInstances,
+    AllowUndecidableInstances
+Main-Is: dbp-importdsc.hs
