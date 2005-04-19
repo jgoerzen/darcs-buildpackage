@@ -26,24 +26,24 @@ import Versions
 
 importDsc dscname_r =
     let parsef fl =
-            case split ' ' fl of
-              [md5, size, fn] -> (md5, size, fn)
+            case split " " fl of
+              [md5, size, fn] -> fn
               _ -> error $ "Couldn't parse dsc file line " ++ fl
         in do cwd <- getCurrentDirectory
-              let dscname = forceMaybe . absNormPath cwd dscname_r
+              let dscname = forceMaybe . absNormPath cwd $ dscname_r
               dscf <- parseFromFile control dscname
               let dsc = forceEither dscf
-              let package = forceMaybe . lookup "Source" dsc
-              let version = forceMaybe . lookup "Version" dsc
+              let package = forceMaybe . lookup "Source" $ dsc
+              let version = forceMaybe . lookup "Version" $ dsc
               let (debv, upsv) = splitVer version
               let files = map parsef . lines . forceMaybe . 
-                              lookup "Files" $ dscf
+                              lookup "Files" $ forceEither dscf
               -- Figure out whether there is an upstream for this package.
               -- If so, import its tar.gz file.
               when (any (isSuffixOf "diff.gz") files) $
                    do let origtar = forceMaybe $
                                       find (isSuffixOf ".orig.tar.gz") files
-                      importOrigTarGz ((dir_part dsc) ++ "/" ++ origtar)
+                      importOrigTarGz ((dir_part dscname) ++ "/" ++ origtar)
                                       package (forceMaybe upsv)
               
               -- Now, handle Debian side of things.
@@ -59,7 +59,7 @@ importDsc dscname_r =
                                  upstreamdir]
                          brackettmpdir ",,extract-XXXXXX" (\tmpd -> bracketCWD tmpd $
                            do safeSystem "dpkg-source" ["-x", dscname]
-                              let debsrcdir = findSrc tmpd
+                              debsrcdir <- findSrc tmpd
                               safeSystem "darcs_load_dirs" 
                                 ["--wc=" ++ debiandir,
                                  "--summary=Import Debian " ++ package ++
@@ -74,7 +74,7 @@ importDsc dscname_r =
 findSrc :: String -> IO String
 findSrc dir =
     do contents <- getDirectoryContents dir
-       let fc = filter (\x -> x /= "." && x /= ".." && (not isSuffixOf "tar.gz x")) contents
+       let fc = filter (\x -> x /= "." && x /= ".." && (not $ isSuffixOf "tar.gz" x)) contents
        return $ dir ++ "/" ++ head fc
                            
 importOrigDir dirname_r package version =
