@@ -1,7 +1,7 @@
-  <chapter id="tbp.intro">
+  <chapter id="dbp.intro">
     <title>Introduction</title>
     <para>
-      Welcome to &tbp;, a system that integrates the
+      Welcome to &dbp;, a system that integrates the
       <ulink url="http://www.debian.org/">Debian</ulink> package build
       system with <ulink url="http://regexps.srparish.net/www/">GNU
 	Arch</ulink>.  There are two different programs that implement
@@ -9,10 +9,10 @@
       better supported is tla, so this system and manual focuses
       solely on it.
     </para>
-    <sect1 id="tbp.intro.purpose">
+    <sect1 id="dbp.intro.purpose">
       <title>Purpose</title>
       <para>
-	&tbp; is designed to do this for you:
+	&dbp; is designed to do this for you:
       </para>
       <itemizedlist>
 	<listitem><para>Ability to track changes to both upstream and Debian
@@ -23,7 +23,7 @@
 	    packages from them.</para>
 	</listitem>
 	<listitem><para>Generated packages can be built and used by
-	    people that have neither tla nor &tbp; installed.
+	    people that have neither tla nor &dbp; installed.
 	  </para>
 	</listitem>
 	<listitem><para>Provide an alternative to systems like dbs and
@@ -39,7 +39,7 @@
 	    new versions of upstream packages.
 	  </para>
 	</listitem>
-	<listitem><para>Make it easy to try &tbp; and switch back to
+	<listitem><para>Make it easy to try &dbp; and switch back to
 	    normal systems if you don't like it.
 	  </para>
 	</listitem>
@@ -49,13 +49,13 @@
     <sect1 id="ch.intro.features">
       <title>Features</title>
       <para>
-	&tbp; has these features:
+	&dbp; has these features:
       </para>
       <itemizedlist>
-	<listitem><para>tbp-initarchive can completely configure tla
+	<listitem><para>dbp-initarchive can completely configure tla
 	    and your working copy for you.</para>
 	</listitem>
-	<listitem><para>tbp-importdsc will import an entire Debian
+	<listitem><para>dbp-importdsc will import an entire Debian
 	    source package into your Arch archive, handling both
 	    upstream and Debian trees automatically.
 	  </para>
@@ -63,11 +63,11 @@
 	<listitem><para>tla-importorig can import an upstream tar.gz or a
 	    directory into your archive with a single command.</para>
 	</listitem>
-	<listitem><para>tla-buildpackage can use an existing
+	<listitem><para>darcs-buildpackage can use an existing
 	    orig.tar.gz, or can build you one from the Arch archive if
 	    necessary.</para>
 	</listitem>
-	<listitem><para>tla-buildpackage ensures that Arch metadata
+	<listitem><para>darcs-buildpackage ensures that Arch metadata
 	    that should not be in the orig.tar.gz or diff.gz does not
 	    show up there.
 	  </para>
@@ -91,24 +91,24 @@
       <indexterm><primary>Overview</primary></indexterm>
       <para>
 	Here is a high-level overview of the Debian development
-	process using &tbp;.
+	process using &dbp;.
       </para>
       <para>
-	When you first start using &tbp;, you'll run tbp-initarchive
+	When you first start using &dbp;, you'll run dbp-initarchive
 	to set things up.  Then, if you have some existing Debian
 	packages, you'll import as much history as you like by using
-	tbp-importdsc.  Otherwise, to start a new package in &tbp;,
-	you'll use tbp-importorig to bring in the upstream sources and
+	dbp-importdsc.  Otherwise, to start a new package in &dbp;,
+	you'll use dbp-importorig to bring in the upstream sources and
 	tag that to the Debian area.
       </para>
       <para>
 	As you work on your Debian sources, you'll use
-	tla-buildpackage in place of debuild or dpkg-buildpackage
-	(tla-buildpackage passes all its arguments to debuild for
+	darcs-buildpackage in place of debuild or dpkg-buildpackage
+	(darcs-buildpackage passes all its arguments to debuild for
 	you).  You can use standard tla commands, such as tla commit
 	or tla logs, to commit changes and view history.  When you
 	have a final version of a Debian package, you'll upload it and
-	run tbp-markdeb to record the version for future reference.
+	run dbp-markdeb to record the version for future reference.
       </para>
     </sect1>
 
@@ -124,7 +124,7 @@
 	syntax, generally making it more clear and less verbose.
       </para>
       <para>
-        As of version 0.9.3, &tbp; is <emphasis>fully compatible with
+        As of version 0.9.3, &dbp; is <emphasis>fully compatible with
           both versions</emphasis> of tla.
       </para>
       <para>
@@ -145,9 +145,9 @@
 <!--
 Local Variables:
 mode: sgml
-sgml-parent-document:("../tbp.sgml" "book")
+sgml-parent-document:("../dbp.sgml" "book")
 sgml-set-face: T
 End:
 
-# arch-tag: common data for tla-buildpackage manual: intro chapter
+# arch-tag: common data for darcs-buildpackage manual: intro chapter
 -->

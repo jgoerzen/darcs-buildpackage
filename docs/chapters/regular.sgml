@@ -1,14 +1,14 @@
-  <chapter id="tbp.regular">
+  <chapter id="dbp.regular">
     <title>Common Tasks</title>
     <para>
-      This chapter describes how to use &tbp; to carry out regular,
+      This chapter describes how to use &dbp; to carry out regular,
       every-day development activities.
     </para>
-    <sect1 id="tbp.regular.historic-versions">
+    <sect1 id="dbp.regular.historic-versions">
       <title>Finding Historic Versions</title>
       <indexterm><primary>Configs</></>
       <para>
-        To find the versions available in your &tbp; archive, first cd
+        To find the versions available in your &dbp; archive, first cd
         to its top level and then run:
       </para>
       <screen>
@@ -24,14 +24,14 @@ configs/upstream/rdiff-backup:
         versions of rdiff-backup are present.
       </para>
     </sect1>
-    <sect1 id="tbp.regular.fetching">
+    <sect1 id="dbp.regular.fetching">
       <title>Fetching Source from History</title>
       <indexterm><primary>Configs</></>
       <para>
-        To fetch the source code from the &tbp; archive, first
+        To fetch the source code from the &dbp; archive, first
         <command>cd</command> into your top-level working copy.
         Then, using the name of the config file (see <xref
-          linkend="tbp.regular.historic-versions">), use the
+          linkend="dbp.regular.historic-versions">), use the
         <command>tla buildcfg</command> command:
       </para>
       <screen>
@@ -57,13 +57,13 @@ $ <command>tla buildcfg debian/rdiff-backup/0.12.5-1</command>
       </para>
     </sect1>
 
-    <sect1 id="tbp.regular.building">
+    <sect1 id="dbp.regular.building">
       <title>Building and Working With Source</title>
-      <indexterm><primary>tla-buildpackage</></>
+      <indexterm><primary>darcs-buildpackage</></>
       <para>
-        Before you start working on any source package with &tbp;,
+        Before you start working on any source package with &dbp;,
         first check it out as described in <xref
-          linkend="tbp.regular.fetching"> to make sure it is in its
+          linkend="dbp.regular.fetching"> to make sure it is in its
         proper location.  Then, as you work, you will use
         <command>tla commit</command> to commit your changes to the
         Debian repository.  (If you just want to build an old package,
@@ -71,11 +71,11 @@ $ <command>tla buildcfg debian/rdiff-backup/0.12.5-1</command>
       </para>
       <para>
         When you're ready to build a package, just run
-        &tla-buildpackage; to build it.  The &tla-buildpackage;
+        &darcs-buildpackage; to build it.  The &darcs-buildpackage;
         command takes the same arguments as
         <command>debuild</command>, and passes them on to
         <command>debuild</command>, so give it your usual set.
-        &tla-buildpackage; will use your existing orig.tar.gz file for
+        &darcs-buildpackage; will use your existing orig.tar.gz file for
         source generation, if it exists; otherwise, it will take care
         of automatically building it from the upstream sources if
         necessary.
@@ -85,7 +85,7 @@ $ <command>tla buildcfg debian/rdiff-backup/0.12.5-1</command>
       </para>
       <screen>
 ~/tree/debian$ <command>cd +packages/rdiff-backup/rdiff-backup-0.12.5</command>
-~/tree/debian/+packages/rdiff-backup/rdiff-backup-0.12.5$ <command>tla-buildpackage \
+~/tree/debian/+packages/rdiff-backup/rdiff-backup-0.12.5$ <command>darcs-buildpackage \
         -rfakeroot -us -uc</command>
 ...
 Building .orig from archive.
@@ -103,7 +103,7 @@ Running:  debuild ['-i\\+\\+pristine-trees|,,*|\\{arch\\}|\\.arch-ids', '-rfaker
       <para>
         In this case, I had not checked out the upstream source and
         did not have my orig.tar.gz file handy.  Therefore,
-        &tla-buildpackage; checked out the upstream sources for me,
+        &darcs-buildpackage; checked out the upstream sources for me,
         generated the tar.gz file, and then called
         <command>debuild</command>
         to do the
@@ -116,11 +116,11 @@ Running:  debuild ['-i\\+\\+pristine-trees|,,*|\\{arch\\}|\\.arch-ids', '-rfaker
       </para>
       <para>
         For more details, please see the manpage for
-        <xref linkend="tbp.man.tla.buildpackage">.
+        <xref linkend="dbp.man.tla.buildpackage">.
       </para>
     </sect1>
 
-    <sect1 id="tbp.regular.upstream-update">
+    <sect1 id="dbp.regular.upstream-update">
       <title>Handling New Upstream Versions</title>
       <para>
         A common scenario for a Debian developer to deal with is that
@@ -135,19 +135,19 @@ Running:  debuild ['-i\\+\\+pristine-trees|,,*|\\{arch\\}|\\.arch-ids', '-rfaker
       </para>
       <para>
         The first thing that you will do is to import the new upstream
-        sources into your &tbp; archive.  Please see <xref
-          linkend="tbp.import.orig"> for instructions.
+        sources into your &dbp; archive.  Please see <xref
+          linkend="dbp.import.orig"> for instructions.
       </para>
       <para>
         Next, check out the latest Debian version if you don't already
-        have it (see <xref linkend="tbp.regular.fetching">) and then
+        have it (see <xref linkend="dbp.regular.fetching">) and then
         cd into the Debian source directory.
       </para>
       <para>
         [ Note: I anticipate writing a program to automate the
         following steps. ]
       </para>
-      <sect2 id="tbp.upstream.merging">
+      <sect2 id="dbp.upstream.merging">
         <title>Merging In Upstream</title>
         <para>
           Now, you are ready to merge in the new upstream.
@@ -168,7 +168,7 @@ Running:  debuild ['-i\\+\\+pristine-trees|,,*|\\{arch\\}|\\.arch-ids', '-rfaker
           two only matters if there are conflicts; otherwise, the end
           result is identical.
         </para>
-        <sect3 id="tbp.upstream.merging.replay">
+        <sect3 id="dbp.upstream.merging.replay">
           <title>Using tla replay</title>
           <indexterm><primary>tla replay</primary></indexterm>
           <screen>
@@ -190,7 +190,7 @@ $ <command>tla replay --new --in-place . rdiff-backup--head--1.0</command>
           &etla11;
 
         </sect3>
-        <sect3 id="tbp.upstream.merging.update">
+        <sect3 id="dbp.upstream.merging.update">
           <title>Using tla update</title>
           <indexterm><primary>tla update</primary></indexterm>
           <screen>
@@ -220,7 +220,7 @@ $ <command>tla update --in-place . rdiff-backup--head--1.0</command>
           &etla11;
         </sect3>
       </sect2>
-      <sect2 id="tbp.upstream.merge.examining">
+      <sect2 id="dbp.upstream.merge.examining">
         <title>Examining the Merge</title>
         <para>
           Now, you will want to examine the merge, especially of &tla;
@@ -236,7 +236,7 @@ $ <command>tla update --in-place . rdiff-backup--head--1.0</command>
           for you.
         </para>
       </sect2>
-      <sect2 id="tbp.upstream.commiting">
+      <sect2 id="dbp.upstream.commiting">
         <title>Committing the Merge</title>
         <para>
           Finally, you will want to commit the merge.  If you want to
@@ -290,14 +290,14 @@ Patches applied:
 
     <sect1 id="tla.regular.debian-update">
       <title>Finalizing New Debian Versions</title>
-      <indexterm><primary>tbp-markdeb</primary>
+      <indexterm><primary>dbp-markdeb</primary>
       <para>
         When you have uploaded a Debian package to the archive, you
-        should ask &tbp; to note this for you.  That way, you can
+        should ask &dbp; to note this for you.  That way, you can
         request this specific version later.  Just run this:
       </para>
       <screen>
-$ <command>tbp-markdeb</command>
+$ <command>dbp-markdeb</command>
 ...
  *** Success: Noted Debian rdiff-backup version 0.13.3-1
  *** at jgoerzen@complete.org--debian/rdiff-backup--debian--1.0--patch-3
@@ -315,9 +315,9 @@ $ <command>tbp-markdeb</command>
 <!--
 Local Variables:
 mode: sgml
-sgml-parent-document:("../tbp.sgml" "book")
+sgml-parent-document:("../dbp.sgml" "book")
   sgml-set-face: T
 End:
 
-# arch-tag: common data for tla-buildpackage manual: common/regular tasks
+# arch-tag: common data for darcs-buildpackage manual: common/regular tasks
 -->

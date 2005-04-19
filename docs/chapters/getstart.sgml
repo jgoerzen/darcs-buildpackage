@@ -1,12 +1,12 @@
-  <chapter id="tbp.getstart">
+  <chapter id="dbp.getstart">
     <title>Getting Started</title>
     <para>
-      Getting started with &tbp; is pretty simple -- you just need to
+      Getting started with &dbp; is pretty simple -- you just need to
       run <link
-	linkend="tbp.man.tbp.initarchive"><command>tbp-initarchive</command></link>.  This chapter shows you how.
+	linkend="dbp.man.dbp.initarchive"><command>dbp-initarchive</command></link>.  This chapter shows you how.
     </para>
 
-    <sect1 id="tbp.getstart.archivename">
+    <sect1 id="dbp.getstart.archivename">
       <title>Archive Names</title>
       <indexterm><primary>Archive</><secondary>Names</></>
       <para>
@@ -15,7 +15,7 @@
 	of archives; each mirror has the same archive name but a
 	different archive location.)  Generally, the archive name uses
 	your name followed by two dashes and then an identifier.  Some
-	people might just use "2003" for the identifier.  &tbp; is
+	people might just use "2003" for the identifier.  &dbp; is
 	designed to have an archive all to itself, so I suggest using
 	"debian" for the identifier.  So, your archive name might be:
       </para>
@@ -24,12 +24,12 @@
       </para>
     </sect1>
 
-    <sect1 id="tbp.getstart.init">
-      <title>Running tbp-initarchive</title>
-      <indexterm significance="preferred"><primary>tbp-initarchive</></>
+    <sect1 id="dbp.getstart.init">
+      <title>Running dbp-initarchive</title>
+      <indexterm significance="preferred"><primary>dbp-initarchive</></>
       <para>
 	Once you have decided on an archive name, you are ready to run
-	<command>tbp-initarchive</command>.  It takes three arguments:
+	<command>dbp-initarchive</command>.  It takes three arguments:
 	your archive name, an archive location, and a working
 	location.  The archive location is where all the tla files go
 	(similar to the CVSROOT in cvs).  You will never need to
@@ -38,12 +38,12 @@
       </para>
       <para>
 	The working location is where you will do your daily work.
-	tbp-initarchive creates both directories for you; they must
+	dbp-initarchive creates both directories for you; they must
 	not already exist.
 	Here is an example:
       </para>
       <screen>
-$ <command>tbp-initarchive jgoerzen@complete.org--debian \
+$ <command>dbp-initarchive jgoerzen@complete.org--debian \
   ~/arch/debian ~/tree/debian</command>
 Making working copy location...
 Creating archive...
@@ -64,7 +64,7 @@ Populating config tree...
 Importing config tree...
  * tla import
 * imported jgoerzen@complete.org--debian/configs--head--1.0
-Generating /home/jgoerzen/.tla-buildpackage
+Generating /home/jgoerzen/.darcs-buildpackage
 Operation successful.
       </screen>
       <para>
@@ -75,7 +75,7 @@ Operation successful.
 	example).
       </para>
     </sect1>
-    <sect1 id="tbp.getstart.defaultarchive">
+    <sect1 id="dbp.getstart.defaultarchive">
       <title>Setting Your Default Archive</title>
       <indexterm><primary>Archive</><secondary>Default</></>
       <para>
@@ -83,7 +83,7 @@ Operation successful.
 	doing this.  If you do not, you'll need to use -A to specify
 	the archive each time you refer to a specific revision in
 	&tla;.  While that may not be often, it can save some
-	hassles.  (The &tbp; tools automatically find the right
+	hassles.  (The &dbp; tools automatically find the right
 	archive and don't need to be told.)
       </para>
       <para>
@@ -100,22 +100,22 @@ Operation successful.
       </para>
     </sect1>
 
-    <sect1 id="tbp.getstart.pref">
-      <title>The ~/.tla-buildpackage file</title>
-      <indexterm significance="preferred"><primary>~/.tla-buildpackage</></>
+    <sect1 id="dbp.getstart.pref">
+      <title>The ~/.darcs-buildpackage file</title>
+      <indexterm significance="preferred"><primary>~/.darcs-buildpackage</></>
       <indexterm><primary>Working Tree</><secondary>Location Of</></>
       <indexterm><primary>TBP_WC environment variable</primary></indexterm>
       <para>
-	The <filename>~/.tla-buildpackage</filename> file holds the
-	path to your working tree.  <command>tbp-initarchive</command>
+	The <filename>~/.darcs-buildpackage</filename> file holds the
+	path to your working tree.  <command>dbp-initarchive</command>
 	will create and set it up for you if it does not already
 	exist.  If it does already exist, and you want your default
 	changed, you'll have to edit it manually.  It has just one
 	line, which is the full path to the working tree.
       </para>
       <para>
-	When you run any of the &tbp; tools except for
-	<command>tbp-initarchive</command>, you can set the
+	When you run any of the &dbp; tools except for
+	<command>dbp-initarchive</command>, you can set the
 	environment variable TBP_WC to a different path, which will
 	override the default.
       </para>
@@ -125,9 +125,9 @@ Operation successful.
 <!--
 Local Variables:
 mode: sgml
-sgml-parent-document:("../tbp.sgml" "book")
+sgml-parent-document:("../dbp.sgml" "book")
 sgml-set-face: T
 End:
 
-# arch-tag: common data for tla-buildpackage manual: getting started chapter
+# arch-tag: common data for darcs-buildpackage manual: getting started chapter
 -->

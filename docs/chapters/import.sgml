@@ -1,50 +1,50 @@
-  <chapter id="tbp.import">
+  <chapter id="dbp.import">
     <title>Importing Packages</title>
     <para>
-      You will need to import sources into your &tbp; archive on
+      You will need to import sources into your &dbp; archive on
       several different occasions:
     </para>
     <itemizedlist>
       <listitem><para>You have existing Debian packages that you would
-          like to maintain with &tbp;.  In this case, you'll want to
+          like to maintain with &dbp;.  In this case, you'll want to
           import one or more full Debian source packages with
-          &tbp-importdsc;.</para>
+          &dbp-importdsc;.</para>
       </listitem>
       <listitem><para>You want to package some previously-unpackaged
           software for Debian.  In this case, you'll want to import an
-          upstream tarball with &tbp-importorig;.
+          upstream tarball with &dbp-importorig;.
         </para>
       </listitem>
       <listitem><para>You want to update your Debian package with a
           new version of upstream source.  This case also calls for
-          &tbp-importorig;.
+          &dbp-importorig;.
         </para>
       </listitem>
       <listitem><para>You want to import Debian sources from someone
           else (for instance, if someone NMU's a package you maintain)
-          into your tree.  &tbp-importdsc; can handle that.
+          into your tree.  &dbp-importdsc; can handle that.
         </para>
       </listitem>
     </itemizedlist>
     
     <para>
       There are two different programs that handle importing:
-      &tbp-importdsc; and &tbp-importorig;.  Both are covered in this
+      &dbp-importdsc; and &dbp-importorig;.  Both are covered in this
       chapter.
     </para>
-    <sect1 id="tbp.import.deb">
+    <sect1 id="dbp.import.deb">
       <title>Importing Debian Source Packages</title>
-      <indexterm><primary>tbp-importdsc</primary></>
+      <indexterm><primary>dbp-importdsc</primary></>
       <para>
 	Importing a package is very easy.  All you have to do is run
-	&tbp-importdsc; with the name of a .dsc file to import:
+	&dbp-importdsc; with the name of a .dsc file to import:
       </para>
       <screen>
-$ <command>tbp-importdsc ~/dpkg/rdiff-backup_0.12.3-1.dsc</command>
+$ <command>dbp-importdsc ~/dpkg/rdiff-backup_0.12.3-1.dsc</command>
  * tar -zxSpf "/home/jgoerzen/dpkg/rdiff-backup_0.12.3.orig.tar.gz"
  *** Import upstream package rdiff-backup version 0.12.3 from
 	directory
-        /home/jgoerzen/tree/debian/,,tbp-importorigtargz/rdiff-backup-0.12.3
+        /home/jgoerzen/tree/debian/,,dbp-importorigtargz/rdiff-backup-0.12.3
 ...
 * commited jgoerzen@complete.org--debian/configs--head--1.0--patch-1
 ...
@@ -54,7 +54,7 @@ Committed jgoerzen@complete.org--debian/rdiff-backup--debian--1.0--patch-1
       </screen>
       <para>
 	In this example, I had never imported rdiff-backup before.
-	&tbp-importdsc; therefore initialized the repository for me.
+	&dbp-importdsc; therefore initialized the repository for me.
 	It then added and committed the upstream version (the first
 	commit message), committed the Debian diffs (second commit), 
 	and noted which version in the archive corresponds to 0.12.3
@@ -64,11 +64,11 @@ Committed jgoerzen@complete.org--debian/rdiff-backup--debian--1.0--patch-1
 	I can run it again with a new version:
       </para>
       <screen>
-$ <command>tbp-importdsc ~/dpkg/rdiff-backup_0.12.5-1.dsc</command>
+$ <command>dbp-importdsc ~/dpkg/rdiff-backup_0.12.5-1.dsc</command>
  * tar -zxSpf "/home/jgoerzen/dpkg/rdiff-backup_0.12.5.orig.tar.gz"
  *** Import upstream package rdiff-backup version 0.12.5 from
 	directory
-        /home/jgoerzen/tree/debian/,,tbp-importorigtargz/rdiff-backup-0.12.5
+        /home/jgoerzen/tree/debian/,,dbp-importorigtargz/rdiff-backup-0.12.5
 ...
 * commited jgoerzen@complete.org--debian/rdiff-backup--head--1.0--patch-2
 ...
@@ -77,32 +77,32 @@ Committed jgoerzen@complete.org--debian/rdiff-backup--debian--1.0--patch-2
 * commited jgoerzen@complete.org--debian/configs--head--1.0--patch-4
       </screen>
       <para>
-	&tbp-importdsc; is smart enough to know not to import an
+	&dbp-importdsc; is smart enough to know not to import an
 	upstream version twice.  For instance, if I would now load
 	0.12.5-2, there would be only two commits: a patch-3 on the
 	Debian tree and a patch-5 on the configs tree.
       </para>
       <para>
-	&tbp-importdsc; has a few restrictions: you must always load
+	&dbp-importdsc; has a few restrictions: you must always load
 	packages in ascending order of package version.  Please see
-	<xref linkend="tbp.man.tbp.importdsc"> for more details.
+	<xref linkend="dbp.man.dbp.importdsc"> for more details.
       </para>
     </sect1>
 
-    <sect1 id="tbp.import.orig">
+    <sect1 id="dbp.import.orig">
       <title>Importing Upstream Sources</title>
-      <indexterm><primary>tbp-importorig</primary></>
+      <indexterm><primary>dbp-importorig</primary></>
       <para>
-	While &tbp-importdsc; can solve many problems, sometimes you
+	While &dbp-importdsc; can solve many problems, sometimes you
 	need to import just upstream sources (the Debian orig.tar.gz
-	file).  For this task, &tbp-importorig; exists.  You will
+	file).  For this task, &dbp-importorig; exists.  You will
 	often use it if you have already loaded all the Debian
 	versions into your archive, upstream has released a new
 	version, and you want to package that version.
       </para>
       <para>
-	Using &tbp-importorig; is simple and straightforward; please
-	refer to <xref linkend="tbp.man.tbp.importorig"> for more
+	Using &dbp-importorig; is simple and straightforward; please
+	refer to <xref linkend="dbp.man.dbp.importorig"> for more
 	details.
       </para>
     </sect1>
@@ -112,9 +112,9 @@ Committed jgoerzen@complete.org--debian/rdiff-backup--debian--1.0--patch-2
 <!--
 Local Variables:
 mode: sgml
-sgml-parent-document:("../tbp.sgml" "book")
+sgml-parent-document:("../dbp.sgml" "book")
   sgml-set-face: T
 End:
 
-# arch-tag: common data for tla-buildpackage manual: import chapter
+# arch-tag: common data for darcs-buildpackage manual: import chapter
 -->
