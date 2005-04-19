@@ -1,18 +1,9 @@
     <refsect1>
       <title>Environment</title>
       <para>
-        The following environment variables are used by this application:
+        This application uses no environment variables directly, but
+        other programs it calls may do so.
       </para>
-      <variablelist>
-	<varlistentry><term>TBP_WC</term>
-	  <listitem><para>
-	      Specifies the working copy area for &dbp; to use for all
-	      build-related tasks, overriding the value in
-	      <filename>~/.darcs-buildpackage</filename>, if any.
-	    </para>
-	  </listitem>
-	</varlistentry>
-      </variablelist>
     </refsect1>
 <!--
 Local Variables:
