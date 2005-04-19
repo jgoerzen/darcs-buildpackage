@@ -7,9 +7,6 @@
 #export DH_VERBOSE=1
 
 PACKAGE=darcs-buildpackage
-BINS=darcs-buildpackage      dbp-importdsc      dbp-importorig      dbp-markdeb
-
-
 
 configure: configure-stamp
 configure-stamp:
@@ -52,9 +49,7 @@ install: build
 
 	# Add here commands to install the package into debian/tla-buildpackage.
 	#$(MAKE) install DESTDIR=$(CURDIR)/debian/tla-buildpackage
-#	./setup copy --copy-prefix=`pwd`/debian/$(PACKAGE)
-	for ASDF in $(BINS); do cp -v dist/build/$$ASDF \
-		debian/$(PACKAGE)/usr/bin/
+	./setup copy --copy-prefix=`pwd`/debian/usr/$(PACKAGE)
 
 # Build architecture-independent files here.
 binary-indep: build install
