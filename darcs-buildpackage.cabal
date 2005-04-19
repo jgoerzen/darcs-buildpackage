@@ -9,6 +9,11 @@ Extensions: ExistentialQuantification, AllowOverlappingInstances,
 Build-Depends: haskell-src, network, unix, parsec, MissingH>=0.10.7
 GHC-Options: -O2
 
+Executable: darcs-buildpackage
+Extensions: ExistentialQuantification, AllowOverlappingInstances,
+    AllowUndecidableInstances
+Main-Is: darcs-buildpackage.hs
+
 Executable: dbp-importorig
 Extensions: ExistentialQuantification, AllowOverlappingInstances,
     AllowUndecidableInstances
