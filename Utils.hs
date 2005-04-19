@@ -7,6 +7,7 @@ module Utils where
 import Darcs
 import MissingH.Cmd
 import MissingH.List
+import MissingH.Debian
 
 {- | Parse a tag into (type, package, version) -}
 parseTag :: String -> Maybe (String, String, String)
@@ -14,6 +15,14 @@ parseTag inp =
     case split "_" inp of
        [t, pkg, ver] -> Just (t, pkg, ver)
        _ -> Nothing
+
+{- | Parse all tags, returning a list of valid ones. -}
+parseTags :: [String] -> [(String, String, String)]
+parseTags [] = []
+parseTags (x:xs) =
+    case parseTag x of
+       Nothing -> parseTags xs
+       Just y -> y : parseTags xs
 
 upstreamTag :: String -> String -> String
 upstreamTag pkg ver =
@@ -24,7 +33,7 @@ or Nothing if there are none yet.
 
 This should be the maximum version if this program has been used the entire
 time. -}
-getFirstVersion :: String -> String -> [String] -> Maybe String
+getFirstVersion :: String -> String -> [(String, String, String)] -> Maybe String
 getFirstVersion typ pkg tags =
     let taglist = filter 
                     (\(thist, thisp, thisv) -> thist == typ && thisp == pkg)
@@ -37,13 +46,13 @@ getFirstVersion typ pkg tags =
 -- as the current maximum version in the system.
 checkVersion typ pkg newver repodir =
     do (ph, tags) <- getTags repodir
-       fv <- getFirstVersion typ pkg tags
+       let fv = getFirstVersion typ pkg (parseTags tags)
        retval <- case fv of
            Nothing -> return ()
-           Just v -> do c <- compareDebVersion fv newver
+           Just v -> do c <- compareDebVersion v newver
                         case c of 
                                LT -> return ()
-                               _ -> fail $ "Existing version " ++ fv ++ 
+                               _ -> fail $ "Existing version " ++ v ++ 
                                       "is not less than new version " ++ newver
        seq (seqList tags) $ forceSuccess ph
        return retval

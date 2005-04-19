@@ -3,7 +3,7 @@
 Please see the COPYRIGHT file
 -}
 
-module Darcs (bracketCWD)
+module Darcs (bracketCWD, getTags)
     where
 
 import System.Directory
