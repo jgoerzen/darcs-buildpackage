@@ -41,16 +41,7 @@
       </para>
       <screen>
 $ <command>dbp-importdsc ~/dpkg/rdiff-backup_0.12.3-1.dsc</command>
- * tar -zxSpf "/home/jgoerzen/dpkg/rdiff-backup_0.12.3.orig.tar.gz"
- *** Import upstream package rdiff-backup version 0.12.3 from
-	directory
-        /home/jgoerzen/tree/debian/,,dbp-importorigtargz/rdiff-backup-0.12.3
-...
-* commited jgoerzen@complete.org--debian/configs--head--1.0--patch-1
-...
-Committed jgoerzen@complete.org--debian/rdiff-backup--debian--1.0--patch-1
-...
-* commited jgoerzen@complete.org--debian/configs--head--1.0--patch-2
+FIXME: show output
       </screen>
       <para>
 	In this example, I had never imported rdiff-backup before.
@@ -58,29 +49,22 @@ Committed jgoerzen@complete.org--debian/rdiff-backup--debian--1.0--patch-1
 	It then added and committed the upstream version (the first
 	commit message), committed the Debian diffs (second commit), 
 	and noted which version in the archive corresponds to 0.12.3
-	and 0.12.3-1 (third commit message).
+	and 0.12.3-1 (third commit message). (FIXME: these are
+	probably old)
       </para>
       <para>
 	I can run it again with a new version:
       </para>
       <screen>
 $ <command>dbp-importdsc ~/dpkg/rdiff-backup_0.12.5-1.dsc</command>
- * tar -zxSpf "/home/jgoerzen/dpkg/rdiff-backup_0.12.5.orig.tar.gz"
- *** Import upstream package rdiff-backup version 0.12.5 from
-	directory
-        /home/jgoerzen/tree/debian/,,dbp-importorigtargz/rdiff-backup-0.12.5
-...
-* commited jgoerzen@complete.org--debian/rdiff-backup--head--1.0--patch-2
-...
-Committed jgoerzen@complete.org--debian/rdiff-backup--debian--1.0--patch-2
-...
-* commited jgoerzen@complete.org--debian/configs--head--1.0--patch-4
+FIXME: show output
       </screen>
       <para>
 	&dbp-importdsc; is smart enough to know not to import an
 	upstream version twice.  For instance, if I would now load
 	0.12.5-2, there would be only two commits: a patch-3 on the
-	Debian tree and a patch-5 on the configs tree.
+	Debian tree and a patch-5 on the configs tree.  (FIXME: these
+	names are for arch)
       </para>
       <para>
 	&dbp-importdsc; has a few restrictions: you must always load
