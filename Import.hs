@@ -42,8 +42,39 @@ importDsc dscname_r =
                                       package (forceMaybe upsv)
               
               -- Now, handle Debian side of things.
-              
-                         
+              (upstreamdir, debiandir) <- getDirectories package
+              createRepo debiandir
+              checkv <- checkVersion "DEBIAN" package version debiandir
+              if checkv
+                 then do bracketCWD debiandir $ 
+                           unless (upsv == Nothing) $
+                             safeSystem "darcs" 
+                                ["pull", "--no-set-default", "-a", 
+                                 "--tags=^" ++ upstreamTag package (forceMaybe upsv) ++ "$",
+                                 upstreamdir]
+                         brackettmpdir extractdeb (\tmpd -> bracketCWD tmpd $
+                           do safeSystem "dpkg-source" ["-x", dscname]
+                              let debsrcdir = findSrc tmpdir
+                              safeSystem "darcs_load_dirs" 
+                                ["--wc=" ++ debiandir,
+                                 "--summary=Import Debian " ++ package ++
+                                  " version " ++ version,
+                                 debsrcdir]
+                         bracketCWD debiandir $ 
+                            safeSystem "darcs" ["tag", "-m",
+                                                debianTag package version]
+                 else infoM "main" $ "Debian version " ++ version ++
+                        " already exists; not modifying."
+
+findSrc :: String -> IO String
+findSrc dir =
+    do contents <- getDirectoryContents dir
+       let fc = filter (\x -> x /= "." && x /= ".." && (not isSuffixOf "tar.gz x")) contents
+       return $ dir ++ "/" ++ head fc
+                           
+                 else infoM "main" $ "Debian import: version " ++ version ++
+                       "is not newer than all versions in archive.\nWill not import Debian because of this."
+                                                                                                      
               
 
 importOrigDir dirname_r package version =
