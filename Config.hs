@@ -9,6 +9,8 @@ import System.Directory
 import MissingH.ConfigParser
 import MissingH.Either
 import Control.Monad
+import MissingH.Str
+import Text.Regex
 
 getHomeDir = do uid <- getEffectiveUserID
                 entry <- getUserEntryForID uid
@@ -42,4 +44,5 @@ loadCP =
 getMirrors :: String -> IO [String]
 getMirrors typ =
     do cp <- loadCP
-       return $ forceEither $ get cp "DEFAULT" (typ ++ "mirror")
+       let mirrorstr = forceEither $ get cp "DEFAULT" (typ ++ "mirror")
+       return $ splitRe (mkRegex "[ \t\n]+") mirrorstr
