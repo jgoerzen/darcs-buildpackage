@@ -40,10 +40,11 @@ loadCP =
               cp <- readfile startCP cpath
               return $ forceEither cp
 
-{- | Gets a mirror list. -}
+{- | Gets a mirror list. Returns an empty list if no mirror specified. -}
 getMirrors :: String -> String -> IO [String]
 getMirrors typ package =
     do cp <- loadCP
        let cp2 = forceEither $ set cp "DEFAULT" "package" package
-       let mirrorstr = forceEither $ get cp2 "DEFAULT" (typ ++ "mirror")
-       return $ splitRe (mkRegex "[ \t\n]+") mirrorstr
+       return $ case get cp2 "DEFAULT" (typ ++ "mirror") of
+                     Left _ -> []
+                     Right x -> splitRe (mkRegex "[ \t\n]+") x
