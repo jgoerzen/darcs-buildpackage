@@ -23,13 +23,23 @@ getDirectories :: String -> IO (String, String)
 getDirectories package = 
     let worker cp =
             do cp2 <- set cp "DEFAULT" "package" package
-               upstr <- get cp2 package "upstreamrepo"
-               deb <- get cp2 package "debianrepo"
+               upstr <- get cp2 "DEFAULT" "upstreamrepo"
+               deb <- get cp2 "DEFAULT" "debianrepo"
                return (upstr, deb)
-    in do cpath <- getConfigPath
-          isfile <- doesFileExist cpath
-          unless isfile $ fail $ "Please create the configuration file " ++ cpath
-          cp <- readfile (emptyCP {accessfunc = interpolatingAccess 5}) cpath
-          return $ forceEither $ worker $ forceEither $ cp
+    in do cp <- loadCP
+          return $ forceEither $ worker cp
 
+loadCP :: IO ConfigParser
+loadCP =
+    let startCP = emptyCP {accessfunc = interpolatingAccess 5}
+        in do cpath <- getConfigPath
+              isfile <- doesFileExist cpath
+              unless isfile $ fail $ "Please create the configuration file " ++ cpath
+              cp <- readfile startCP cpath
+              return $ forceEither cp
 
+{- | Gets a mirror list. -}
+getMirrors :: String -> IO [String]
+getMirrors typ =
+    do cp <- loadCP
+       return $ forceEither $ get cp "DEFAULT" (typ ++ "mirror")
