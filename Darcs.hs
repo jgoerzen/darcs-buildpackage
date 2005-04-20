@@ -3,7 +3,7 @@
 Please see the COPYRIGHT file
 -}
 
-module Darcs (bracketCWD, getTags)
+module Darcs (bracketCWD, getTags, isLocalPath)
     where
 
 import System.Directory
@@ -33,3 +33,7 @@ getTags fp =
     in bracketCWD fp $
          do (ph, lines) <- pipeLinesFrom "darcs" ["changes", "--patches=^TAG"]
             return (ph, concatMap procline lines)
+
+{- | Determines whether a path is a local one. -}
+isLocalPath :: FilePath -> Bool
+isLocalPath x = not (elem ':' x)
