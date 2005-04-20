@@ -45,6 +45,6 @@ getMirrors :: String -> String -> IO [String]
 getMirrors typ package =
     do cp <- loadCP
        let cp2 = forceEither $ set cp "DEFAULT" "package" package
-       return $ case get cp2 "DEFAULT" (typ ++ "mirror") of
+       return $ case get cp2 "DEFAULT" (typ ++ "mirrors") of
                      Left _ -> []
-                     Right x -> splitRe (mkRegex "[ \t\n]+") x
+                     Right x -> splitRe (mkRegex "[ \t\n]+") (strip x)

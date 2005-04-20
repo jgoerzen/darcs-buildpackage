@@ -32,7 +32,6 @@ importDsc dscname_r =
         in do cwd <- getCurrentDirectory
               let dscname = forceMaybe . absNormPath cwd $ dscname_r
               dscf <- parseFromFile control dscname
-              print dscf
               let dsc = forceEither dscf
               let package = strip . forceMaybe . lookup "Source" $ dsc
               let version = strip . forceMaybe . lookup "Version" $ dsc
@@ -45,7 +44,6 @@ importDsc dscname_r =
               when (any (isSuffixOf "diff.gz") files) $
                    do let origtar = forceMaybe $
                                       find (isSuffixOf ".orig.tar.gz") files
-                      print "IMPORTING UPSTREAM"
                       importOrigTarGz ((dir_part dscname) ++ "/" ++ origtar)
                                       package upsv
               

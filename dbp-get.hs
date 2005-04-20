@@ -32,7 +32,7 @@ main = do args <- initLogging
             _ -> do putStrLn usage
                     fail "Incorrect command-line parameters."
           upsMirrors <- getMirrors "upstream" pkg
-          debMirrors <- getMirrors "deb" pkg
+          debMirrors <- getMirrors "debian" pkg
           getIt pkg upsMirrors debMirrors
 
 getIt pkg upsMirrors debMirrors =
