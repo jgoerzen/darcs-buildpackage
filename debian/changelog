@@ -1,6 +1,6 @@
 darcs-buildpackage (0.5.0) unstable; urgency=low
 
-  * Initial release.
+  * Initial release.  Closes: #305420.
 
  -- John Goerzen <jgoerzen@complete.org>  Tue, 19 Apr 2005 18:55:10 -0500
 
