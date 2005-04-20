@@ -13,13 +13,14 @@ import Control.Exception
 
 usage = unlines $
  ["Usage:",
-  "dbp-importorig dscname",
+  "dbp-importorig [-v] dscname",
   "",
   "Where:",
-  "  dsc-name is the name of a dsc file to import"]
+  "  dsc-name is the name of a dsc file to import",
+  "",
+  "  -v indicates verbose mode"]
 
-main = do args <- getArgs
-          initLogging
+main = do args <- initLogging
           dscname <- case args of
             [x] -> return x
             _ -> do putStrLn usage

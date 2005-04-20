@@ -13,17 +13,18 @@ import Control.Exception
 
 usage = unlines $
  ["Usage:",
-  "dbp-importorig orig-name package version",
+  "dbp-importorig [-v] orig-name package version",
   "",
   "Where:",
   "  orig-name is the name of a tar.gz or directory to import",
   "",
   "  package is the name of the Debian source package",
   "",
-  "  version is the upstream version being imported"]
+  "  version is the upstream version being imported",
+  "",
+  "  -v specifies verbose mode"]
 
-main = do args <- getArgs
-          initLogging
+main = do args <- initLogging
           (origname, package, version) <- case args of
            [x, y, z] -> return (x, y, z)
            _ -> do putStrLn usage
