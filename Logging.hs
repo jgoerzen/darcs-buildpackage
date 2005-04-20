@@ -9,12 +9,12 @@ import System.Environment
 
 initLogging = 
     do args <- getArgs
-       let verb = case args of
-                        ("-v":_) -> ["MissingH.Cmd.safeSystem",
-                                     "MissingH.Cmd.pOpen",
-                                     "MissingH.Cmd.pipeFrom"]
-                        _ -> []
-       sequence_ $ map (\x -> updateGlobalLogger x (setLevel DEBUG))
-         (["darcs-buildpackage", "main", ""] ++ verb)
+       let lvl = case args of
+                        ("-v":_) -> DEBUG
+                        _ -> INFO
+       sequence_ $ map (\x -> updateGlobalLogger x (setLevel lvl))
+         ["darcs-buildpackage", "main", "", "internalcmd",
+          "MissingH.Cmd.safeSystem", "MissingH.Cmd.pOpen",
+          "MissingH.Cmd.pipeFrom"]
        return args
 

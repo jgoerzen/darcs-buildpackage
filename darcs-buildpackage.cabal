@@ -29,3 +29,9 @@ Extensions: ExistentialQuantification, AllowOverlappingInstances,
     AllowUndecidableInstances
 GHC-Options: -O2
 Main-Is: dbp-markdeb.hs
+
+Executable: dbp-get
+Extensions: ExistentialQuantification, AllowOverlappingInstances,
+    AllowUndecidableInstances
+GHC-Options: -O2
+Main-Is: dbp-get.hs

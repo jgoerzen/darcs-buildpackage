@@ -41,8 +41,9 @@ loadCP =
               return $ forceEither cp
 
 {- | Gets a mirror list. -}
-getMirrors :: String -> IO [String]
-getMirrors typ =
+getMirrors :: String -> String -> IO [String]
+getMirrors typ package =
     do cp <- loadCP
-       let mirrorstr = forceEither $ get cp "DEFAULT" (typ ++ "mirror")
+       let cp2 = forceEither $ set cp "DEFAULT" "package" package
+       let mirrorstr = forceEither $ get cp2 "DEFAULT" (typ ++ "mirror")
        return $ splitRe (mkRegex "[ \t\n]+") mirrorstr

@@ -119,7 +119,8 @@ importOrigTarGz tgz_r package version =
 -- directory already exists.
 createRepo :: FilePath -> IO ()
 createRepo dir =
-    do isdir <- doesDirectoryExist dir
-       unless isdir $
-          do createDirectory dir
-             bracketCWD dir $ safeSystem "darcs" ["initialize"]
+    when (isLocalPath dir) $
+         do isdir <- doesDirectoryExist dir
+            unless isdir $
+                do createDirectory dir
+                   bracketCWD dir $ safeSystem "darcs" ["initialize"]
