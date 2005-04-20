@@ -25,6 +25,6 @@ execfile('sgml-common/SConstruct')
 
 manpages = []
 for manpage in ['darcs-buildpackage', 'dbp-initarchive', 'dbp-importorig',
-                'dbp-importdsc', 'dbp-markdeb']:
+                'dbp-importdsc', 'dbp-markdeb', 'dbp-get']:
     manpages.append(env.MAN('%s.1' % manpage, 'man.%s.sgml' % manpage))
 env.Alias('manpages', manpages)

@@ -1,0 +1,93 @@
+
+<!-- <reference> -->
+  <refentry id="dbp.man.dbp.get">
+    <indexterm><primary>dbp-get</><secondary>Reference For</></>
+    <refentryinfo>
+      <address><email>jgoerzen@complete.org</email></address>
+      <author><firstname>John</firstname><surname>Goerzen</surname></author>
+    </refentryinfo>
+
+    <refmeta>
+      <refentrytitle>dbp-get</refentrytitle>
+      <manvolnum>1</manvolnum>
+      <refmiscinfo>John Goerzen</refmiscinfo>
+    </refmeta>
+
+    <refnamediv>
+      <refname>dbp-get</refname>
+      <refpurpose>Check out a Debian package from a Darcs repository</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv>
+      <cmdsynopsis>
+	<command>darcs-buildpackage</command>
+	<arg rep="repeat"><replaceable>package</replaceable></arg>
+      </cmdsynopsis>
+    </refsynopsisdiv>
+
+    <refsect1 id="dbp.man.dbp.get.desc">
+      <title>Description</title>
+      <para>
+        The dbp-get command is used to check out a copy of the
+        Debian source for a package from Darcs.  Additionally, it can
+        automatically download a copy from any of several mirrors if
+        the Darcs repository doesn't already exist locally.
+      </para>
+    </refsect1>
+
+    <refsect1 id="dbp.man.dbp.options">
+      <title>Options</title>
+      <para>
+        The one option specifies the name of the package to get.
+      </para>
+    </refsect1>
+
+    <refsect1 id="dbp.man.dbp.config">
+      <title>Configuration</title>
+      <para>
+        Configuration happens in
+        <filename>~/.darcs-buildpackage</filename> like with all the
+        other commands.  The two new options are
+        <filename>debianmirrors</filename> and
+        <filename>upstreammirrors</filename>.  They are
+        whitespace-separated lists of mirrors to check if the given
+        package isn't in the local area.  Here's an example:
+      </para>
+      <programlisting>
+repobase = /home/jgoerzen/debdarcs
+upstreamrepo = %(repobase)s/%(package)s.upstream
+debianrepo = %(repobase)s/%(package)s
+
+debianmirrors = http://darcs.complete.org/debian/%(package)s
+        http://somewhereelse.example.com/debian/%(package)s
+upstreammirrors = http://darcs.complete.org/debian/%(package)s.upstream
+        http://foo.example.com/upstream/%(package)s
+      </programlisting>
+    </refsect1>
+        
+
+    <refsect1>
+      <title>See Also</title>
+      &man.com.seealso.para;
+      <para>
+	Other related references include:
+	<application>darcs</application>(1),
+	<application>debuild</application>(1),
+	<application>dpkg-buildpackage</application>(1).
+      </para>
+    </refsect1>
+      
+
+  </refentry>
+
+<!-- </reference> -->
+
+<!--
+Local Variables:
+mode: sgml
+sgml-parent-document:("../dbp.sgml" "book" "appendix" "reference")
+sgml-set-face: T
+End:
+
+# arch-tag: manpage for darcs-buildpackage(1)
+-->

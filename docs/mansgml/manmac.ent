@@ -2,6 +2,7 @@
 <!ENTITY man.dbp.importdsc SYSTEM "dbp-importdsc.sgml">
 <!ENTITY man.dbp.importorig SYSTEM "dbp-importorig.sgml">
 <!ENTITY man.dbp.markdeb SYSTEM "dbp-markdeb.sgml">
+<!ENTITY man.dbp.get SYSTEM "dbp-get.sgml">
 
 <!ENTITY dbp.copyright SYSTEM "copyright.sgml">
 <!ENTITY man.com.copyright.refsect1 SYSTEM "com.copyright.sgml">
@@ -15,6 +16,7 @@
 <!ENTITY dbp-importdsc "<command>dbp-importdsc</command>">
 <!ENTITY dbp-importorig "<command>dbp-importorig</command>">
 <!ENTITY dbp-markdeb "<command>dbp-markdeb</command>">
+<!ENTITY dbp-get "<command>dbp-get</command">
 <!ENTITY darcs-buildpackage "<command>darcs-buildpackage</command>">
 
 <!ENTITY darcs "<application>Darcs</application>">

@@ -28,6 +28,7 @@
     &man.dbp.importdsc;
     &man.dbp.importorig;
     &man.dbp.markdeb;
+    &man.dbp.get;
     &man.darcs.buildpackage;
   </appendix>
 
