@@ -49,7 +49,7 @@ install: build
 
 	# Add here commands to install the package into debian/tla-buildpackage.
 	#$(MAKE) install DESTDIR=$(CURDIR)/debian/tla-buildpackage
-	./setup copy --copy-prefix=`pwd`/debian/usr/$(PACKAGE)
+	./setup copy --copy-prefix=`pwd`/debian/$(PACKAGE)/usr
 
 # Build architecture-independent files here.
 binary-indep: build install
