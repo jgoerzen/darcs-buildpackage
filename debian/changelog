@@ -1,3 +1,9 @@
+darcs-buildpackage (0.5.2) unstable; urgency=low
+
+  * Let darcs-buildpackage use mirrors for upstream.
+
+ -- John Goerzen <jgoerzen@complete.org>  Mon, 25 Apr 2005 06:41:05 -0500
+
 darcs-buildpackage (0.5.1) unstable; urgency=low
 
   * Failure to find upstream is no longer fatal in darcs-buildpackage.
