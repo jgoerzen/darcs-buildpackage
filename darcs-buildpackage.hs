@@ -19,6 +19,7 @@ import Darcs
 import System.Posix.Files
 import System.Cmd
 import System.Exit
+import Mirrors
 
 main = do initLogging
           ver <- getVerFromCL
