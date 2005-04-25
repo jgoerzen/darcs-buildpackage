@@ -62,3 +62,13 @@ checkVersion typ pkg newver repodir =
                                       " is greater than new version " ++ newver
        seq (seqList tags) $ forceSuccess ph
        return retval
+
+{- | Quote any special characters in the input string so they match literally
+if applied as a regular expression. -}
+quoteRe :: String -> String
+quoteRe [] = []
+quoteRe (x:xs) =
+    let specials = "[]*.\\?+^$(){}" in
+        if x `elem` specials
+           then '\\' : x : quoteRe xs
+           else x : quoteRe xs
