@@ -3,10 +3,8 @@ darcs-buildpackage (0.5.1) unstable; urgency=low
   * Failure to find upstream is no longer fatal in darcs-buildpackage.
     It seems that lots of people are generating Debian-native packages
     with version numbers that indicate an upsteam.
-
   * Fixed import of .dsc files for Debian-native packages.
     This would cause a crash previously.
-
   * Quote tag names before sending them to darcs as regexps.
 
  -- John Goerzen <jgoerzen@complete.org>  Mon, 25 Apr 2005 06:08:14 -0500
