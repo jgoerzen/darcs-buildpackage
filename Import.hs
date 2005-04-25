@@ -41,7 +41,8 @@ importDsc dscname_r =
                               lookup "Files" $ dsc
               -- Figure out whether there is an upstream for this package.
               -- If so, import its tar.gz file.
-              when (any (isSuffixOf "diff.gz") files) $
+              let hasupstream = any (isSuffixOf "diff.gz") files
+              when hasupstream $
                    do let origtar = forceMaybe $
                                       find (isSuffixOf ".orig.tar.gz") files
                       importOrigTarGz ((dir_part dscname) ++ "/" ++ origtar)
@@ -52,7 +53,7 @@ importDsc dscname_r =
               createRepo debiandir
               checkv <- checkVersion "DEBIAN" package version debiandir
               if checkv
-                 then do bracketCWD debiandir $ 
+                 then do when hasupstream $ bracketCWD debiandir $ 
                            unless (debv == Nothing) $
                              safeSystem "darcs" 
                                 ["pull", "--no-set-default", "-a", 
