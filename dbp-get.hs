@@ -37,5 +37,4 @@ main = do args <- initLogging
           (upsdir, debdir) <- getDirectories pkg
           getItUps pkg upsdir upsMirrors
           getItDeb pkg debdir debMirrors
-          getIt pkg upsMirrors debMirrors
 
