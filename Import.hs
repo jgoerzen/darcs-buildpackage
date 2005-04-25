@@ -57,7 +57,8 @@ importDsc dscname_r =
                            unless (debv == Nothing) $
                              safeSystem "darcs" 
                                 ["pull", "--no-set-default", "-a", 
-                                 "--tags=^" ++ upstreamTag package upsv ++ "$",
+                                 "--tags=^" ++ 
+                                  quoteRe (upstreamTag package upsv) ++ "$",
                                  upstreamdir]
                          brackettmpdir ",,extract-XXXXXX" (\tmpd -> bracketCWD tmpd $
                            do safeSystem "dpkg-source" ["-x", dscname]

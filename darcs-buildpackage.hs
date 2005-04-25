@@ -43,7 +43,8 @@ buildorig pkg upsv debv =
                       (upstreamdir, _) <- getDirectories pkg
                       bracketCWD ".." $
                         do ec <- rawSystem "darcs" ["get", "--partial", 
-                                "--tag=^" ++ upstreamTag pkg upsv ++ "$",
+                                "--tag=^" ++ 
+                                 quoteRe (upstreamTag pkg upsv) ++ "$",
                                 upstreamdir, origdirname]
                            case ec of
                                ExitSuccess -> do bracketCWD origdirname $
