@@ -41,6 +41,8 @@ buildorig pkg upsv debv =
               then infoM "main" $ "Upstream file or directory already exists; not re-building"
               else do cwd <- getCurrentDirectory
                       (upstreamdir, _) <- getDirectories pkg
+                      upsMirrors <- getMirrors "upstream" pkg
+                      getItUps pkg upstreamdir upsMirrors
                       bracketCWD ".." $
                         do ec <- rawSystem "darcs" ["get", "--partial", 
                                 "--tag=^" ++ 

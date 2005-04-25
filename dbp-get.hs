@@ -16,6 +16,7 @@ import MissingH.Cmd
 import Darcs
 import System.Cmd
 import System.Exit
+import Mirrors
 
 usage = unlines $
  ["Usage:",
@@ -33,35 +34,8 @@ main = do args <- initLogging
                     fail "Incorrect command-line parameters."
           upsMirrors <- getMirrors "upstream" pkg
           debMirrors <- getMirrors "debian" pkg
+          (upsdir, debdir) <- getDirectories pkg
+          getItUps pkg upsdir upsMirrors
+          getItDeb pkg debdir debMirrors
           getIt pkg upsMirrors debMirrors
 
-getIt pkg upsMirrors debMirrors =
-    do (upsdir, debdir) <- getDirectories pkg
-       -- Grab upstream first.
-       if isLocalPath upsdir
-          then do dd <- doesDirectoryExist upsdir
-                  unless dd (getFromMirrors upsMirrors upsdir)
-          else warningM "main" $ "Warning: Upstream path " ++ upsdir ++
-               " is not on the local filesystem; will not attempt to mirror upstream."
-       if isLocalPath debdir
-          then do dd <- doesDirectoryExist debdir
-                  unless dd (getFromMirrors debMirrors debdir)
-          else warningM "main" $ "Warning: Debian path " ++ debdir ++
-               " is not on the local filesystem; will not attempt to mirror Debian."
-       safeSystem "darcs" ["get", "--partial", debdir]
-
-getFromMirrors [] destdir = fail $ "Could not obtain package from any mirror."
-getFromMirrors (x:xs) destdir =
-    do infoM "main" $ "Attempting to pull " ++ x ++ " to " ++ destdir
-       this <- tryGet x destdir
-       if this
-          then return ()
-          else getFromMirrors xs destdir
-
-tryGet src dest =
-    let (command, args) = ("darcs", ["get", "--partial", src, dest])
-    in do debugM "internalcmd" ("Running: " ++ command ++ " " ++ (show args))
-          ec <- rawSystem command args
-          case ec of
-               ExitSuccess -> return True
-               ExitFailure _ -> return False
