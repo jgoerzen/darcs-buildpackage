@@ -49,6 +49,10 @@
             from the &dbp; repository (if necessary) and build the
             orig.tar.gz.  The orig.tar.gz will not contain Darcs meta-data.
           </para>
+          <para>
+            If the upstream repository is not available locally,
+            it will consult mirrors in the same manner as
+            <application>dbp-get</application>(1).
         </listitem>
         <listitem><para>Call <application>debuild</application>(1)
             with arguments instructing it to ignore Darcs meta-data in
@@ -87,6 +91,7 @@ FIXME: show example
 	Other related references include:
 	<application>darcs</application>(1),
 	<application>debuild</application>(1),
+        <application>dbp-get</application>(1),
 	<application>dpkg-buildpackage</application>(1).
       </para>
     </refsect1>
