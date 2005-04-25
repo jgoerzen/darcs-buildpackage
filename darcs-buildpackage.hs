@@ -17,6 +17,8 @@ import MissingH.Cmd
 import MissingH.IO.HVFS.Utils
 import Darcs
 import System.Posix.Files
+import System.Cmd
+import System.Exit
 
 main = do initLogging
           ver <- getVerFromCL
@@ -40,10 +42,12 @@ buildorig pkg upsv debv =
               else do cwd <- getCurrentDirectory
                       (upstreamdir, _) <- getDirectories pkg
                       bracketCWD ".." $
-                        do safeSystem "darcs" ["get", "--partial", 
+                        do ec <- rawSystem "darcs" ["get", "--partial", 
                                 "--tag=^" ++ upstreamTag pkg upsv ++ "$",
                                 upstreamdir, origdirname]
-                           bracketCWD origdirname $
-                             do safeSystem "darcs" ["dist"]
-                                rename (origdirname ++ ".tar.gz") ("../" ++ tgzname)
-                           recursiveRemove SystemFS origdirname
+                           case ec of
+                               ExitSuccess -> do bracketCWD origdirname $
+                                                  do safeSystem "darcs" ["dist"]
+                                                     rename (origdirname ++ ".tar.gz") ("../" ++ tgzname)
+                                                 recursiveRemove SystemFS origdirname
+                               _ -> warningM "main" "WARNING: FOUND NO UPSTREAM SOURCE FOR PACKAGE, will build native (no-diff) package"
