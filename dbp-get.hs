@@ -23,7 +23,7 @@ usage = unlines $
   "dbp-get [-v] package",
   "",
   "Where:",
-  "  pacakge is the name of the Debian package to obtain",
+  "  package is the name of the Debian package to obtain",
   "",
   "  -v indicates verbose mode"]
 
