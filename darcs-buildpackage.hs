@@ -46,6 +46,7 @@ buildorig pkg upsv debv =
                       getItUps pkg upstreamdir upsMirrors
                       bracketCWD ".." $
                         do ec <- rawSystem "darcs" ["get", "--partial", 
+                                "--set-scripts-executable",
                                 "--tag=^" ++ 
                                  quoteRe (upstreamTag pkg upsv) ++ "$",
                                 upstreamdir, origdirname]

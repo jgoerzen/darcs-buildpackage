@@ -29,7 +29,8 @@ getItDeb pkg debdir debMirrors =
                   unless dd (getFromMirrors debMirrors debdir)
           else warningM "main" $ "Warning: Debian path " ++ debdir ++
                " is not on the local filesystem; will not attempt to mirror Debian."
-       safeSystem "darcs" ["get", "--partial", debdir]
+       safeSystem "darcs" ["get", "--partial", "--set-scripts-executable",
+                           debdir]
 
 
 getFromMirrors [] destdir = fail $ "Could not obtain package from any mirror."
@@ -41,7 +42,8 @@ getFromMirrors (x:xs) destdir =
           else getFromMirrors xs destdir
 
 tryGet src dest =
-    let (command, args) = ("darcs", ["get", "--partial", src, dest])
+    let (command, args) = ("darcs", ["get", "--partial", 
+                                     "--set-scripts-executable", src, dest])
     in do debugM "internalcmd" ("Running: " ++ command ++ " " ++ (show args))
           ec <- rawSystem command args
           case ec of
