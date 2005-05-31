@@ -2,6 +2,7 @@ darcs-buildpackage (0.5.3) unstable; urgency=low
 
   * Use --set-scripts-executable on darcs get or pull.  A workaround
     for #311156.
+  * Clean up build-deps to work with GHC 6.4.
 
  -- John Goerzen <jgoerzen@complete.org>  Tue, 31 May 2005 06:01:52 -0500
 
