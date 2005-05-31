@@ -1,3 +1,10 @@
+darcs-buildpackage (0.5.3) unstable; urgency=low
+
+  * Use --set-scripts-executable on darcs get or pull.  A workaround
+    for #311156.
+
+ -- John Goerzen <jgoerzen@complete.org>  Tue, 31 May 2005 06:01:52 -0500
+
 darcs-buildpackage (0.5.2) unstable; urgency=low
 
   * Let darcs-buildpackage use mirrors for upstream.
