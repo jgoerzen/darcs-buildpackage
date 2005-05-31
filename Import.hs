@@ -56,7 +56,8 @@ importDsc dscname_r =
                  then do when hasupstream $ bracketCWD debiandir $ 
                            unless (debv == Nothing) $
                              safeSystem "darcs" 
-                                ["pull", "--no-set-default", "-a", 
+                                ["pull", "--set-scripts-executable",
+                                 "--no-set-default", "-a", 
                                  "--tags=^" ++ 
                                   quoteRe (upstreamTag package upsv) ++ "$",
                                  upstreamdir]
