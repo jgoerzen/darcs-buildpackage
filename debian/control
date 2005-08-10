@@ -7,7 +7,7 @@ Standards-Version: 3.6.0
 
 Package: darcs-buildpackage
 Architecture: any
-Depends: darcs (>= 1.0.2), darcs-load-dirs (>= 1.0.17), dpkg-dev, devscripts
+Depends: darcs (>= 1.0.2), darcs-load-dirs (>= 1.0.17), dpkg-dev, devscripts, ${shlib:Depends}
 Description: Suite to help with Debian packages in Darcs archives
  This package helps automate and ease the task of maintaining Debian
  packages by helping you, the Debian developer, take advantage of
