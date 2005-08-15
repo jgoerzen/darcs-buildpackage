@@ -4,7 +4,7 @@ License: GPL
 Maintainer: John Goerzen <jgoerzen@complete.org>
 Stability: Alpha
 Copyright: Copyright (c) 2003 - 2005 John Goerzen
-Build-Depends: haskell-src, network, unix, parsec, MissingH>=0.10.7
+Build-Depends: haskell-src, network, unix, parsec, MissingH>=0.11.4
 
 Executable: darcs-buildpackage
 Extensions: ExistentialQuantification, AllowOverlappingInstances,
