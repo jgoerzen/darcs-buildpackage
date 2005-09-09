@@ -2,7 +2,7 @@ Source: darcs-buildpackage
 Section: devel
 Priority: optional
 Maintainer: John Goerzen <jgoerzen@complete.org>
-Build-Depends: debhelper (>= 4.1.80), gtk-doc-tools, sgml2x, docbook-utils, jade, libghc6-missingh-dev (>= 0.11.4), ghc6 (>= 6.4), scons, xpdf-utils, lynx
+Build-Depends: debhelper (>= 4.1.80), gtk-doc-tools, sgml2x, docbook-utils, jade, libghc6-missingh-dev (>= 0.11.4), ghc6 (>= 6.4-4.1), scons, xpdf-utils, lynx
 Standards-Version: 3.6.0
 
 Package: darcs-buildpackage
