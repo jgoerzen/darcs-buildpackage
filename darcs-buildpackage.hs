@@ -20,32 +20,8 @@ import System.Posix.Files
 import System.Cmd
 import System.Exit
 import Mirrors
-import List
-
-split :: Eq a => [a]
-      -> [a]
-      -> [[a]]
-
-split glue xs = split' xs
-    where
-    split' [] = []
-    split' xs = piece : split' (dropGlue rest)
-        where (piece, rest) = breakOnGlue glue xs
-    dropGlue = drop (length glue)
-
-breakOnGlue :: (Eq a) => [a]
-            -> [a]
-            -> ([a],[a])
-
-breakOnGlue _ [] = ([],[])
-breakOnGlue glue rest@(x:xs)
-    | glue `isPrefixOf` rest = ([], rest)
-    | otherwise = (x:piece, rest') where (piece, rest') = breakOnGlue glue xs
 
 main = do initLogging
-          args <- getArgs
-          let (dbp_args, rest) = partition (isPrefixOf "--dbp_builder=") (["--dbp_builder=debuild"] ++ args)
-          let build_cmd = last $ split "=" $ last dbp_args
           ver <- getVerFromCL
           pkg <- getPkgFromCL
           let (upsv, debv) = splitVer ver
@@ -53,7 +29,7 @@ main = do initLogging
               Nothing -> infoM "main" "Debian-native package; not building upstream"
               Just dv -> do buildorig pkg upsv debv
           args <- getArgs
-          safeSystem build_cmd (["-i_darcs", "-I_darcs"] ++ rest)
+          safeSystem "debuild" (["-i_darcs", "-I_darcs"] ++ args)
 
 -- Build the orig.tar.gz
 buildorig pkg upsv debv =
