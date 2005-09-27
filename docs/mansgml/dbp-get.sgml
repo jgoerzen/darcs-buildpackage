@@ -20,7 +20,7 @@
 
     <refsynopsisdiv>
       <cmdsynopsis>
-	<command>darcs-buildpackage</command>
+	<command>dbp-get</command>
 	<arg rep="repeat"><replaceable>package</replaceable></arg>
       </cmdsynopsis>
     </refsynopsisdiv>

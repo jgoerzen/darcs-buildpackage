@@ -14,7 +14,7 @@
     </refmeta>
 
     <refnamediv>
-      <refname>dbp-importdsc</refname>
+      <refname>dbp-markdeb</refname>
       <refpurpose>Mark the Debian version of the working directory in archive</>
     </refnamediv>
 
