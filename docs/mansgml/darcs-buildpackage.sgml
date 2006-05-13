@@ -55,6 +55,7 @@
             <application>dbp-get</application>(1).
         </listitem>
         <listitem><para>Call <application>debuild</application>(1)
+            (or the application specified in DBP_BUILDER)
             with arguments instructing it to ignore Darcs meta-data in
             the diff.gz, passing along all arguments given to
             &darcs-buildpackage;.
@@ -69,6 +70,24 @@
       <para>
         All options passed to &darcs-buildpackage; are sent directly to
         <application>debuild</application>(1).
+      </para>
+    </refsect1>
+
+    <refsect1 id="dbp.man.darcs.buildpackage.environment">
+      <title>ENVIRONMENT VARIABLES</title>
+      <para>
+        If the DBP_BUILDER environment variable is set, it will be
+        taken as the name of a command to use to build the Debian
+        packages.  It will be passed no arguments save those passed to
+        darcs-buildpackage itself.
+      </para>
+      <para>
+        If DBP_BUILDER is not set, the default is to use
+        debuild -i_darcs -I_darcs, which will build a package and
+        ensure that that _darcs directory is not included in the
+        generated Debian source package.  If you set DBP_BUILDER, you
+        should probably ensure that similar exclusions are passed to
+        your preferred building tool.
       </para>
     </refsect1>
 

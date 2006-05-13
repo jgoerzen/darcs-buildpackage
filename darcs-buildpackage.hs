@@ -30,8 +30,9 @@ main = do initLogging
               Just dv -> do buildorig pkg upsv debv
           args <- getArgs
           buildenv <- getEnv "DBP_BUILDER"
-          let buildcmd = if buildenv == "" then "debuild" else buildenv
-          safeSystem buildcmd (["-i_darcs", "-I_darcs"] ++ args)
+          if buildenv /= ""
+             then safeSystem "/bin/sh" ["-c", buildenv]
+             else safeSystem "debuild" (["-i_darcs", "-I_darcs"] ++ args)
 
 -- Build the orig.tar.gz
 buildorig pkg upsv debv =
