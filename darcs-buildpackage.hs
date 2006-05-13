@@ -29,7 +29,9 @@ main = do initLogging
               Nothing -> infoM "main" "Debian-native package; not building upstream"
               Just dv -> do buildorig pkg upsv debv
           args <- getArgs
-          safeSystem "debuild" (["-i_darcs", "-I_darcs"] ++ args)
+          buildenv <- getEnv "DBP_BUILDER"
+          let buildcmd = if buildenv == "" then "debuild" else buildenv
+          safeSystem buildcmd (["-i_darcs", "-I_darcs"] ++ args)
 
 -- Build the orig.tar.gz
 buildorig pkg upsv debv =
