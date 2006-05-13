@@ -1,3 +1,10 @@
+darcs-buildpackage (0.5.6) unstable; urgency=low
+
+  * New environment variable DBP_BUILDER to let the user specify a build
+    application other than debuild.  Closes: #323220.
+
+ -- John Goerzen <jgoerzen@complete.org>  Sat, 13 May 2006 14:29:23 -0500
+
 darcs-buildpackage (0.5.5) unstable; urgency=low
 
   * Rebuild against new ghc6.  Closes: #327283.
