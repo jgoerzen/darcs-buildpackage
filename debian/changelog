@@ -1,3 +1,10 @@
+darcs-buildpackage (0.5.7) unstable; urgency=low
+
+  * Fixed DBP_BUILDER support to work even when no environment variable is
+    given.
+
+ -- John Goerzen <jgoerzen@complete.org>  Wed, 24 May 2006 01:48:03 -0500
+
 darcs-buildpackage (0.5.6) unstable; urgency=low
 
   * New environment variable DBP_BUILDER to let the user specify a build
