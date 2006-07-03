@@ -1,3 +1,9 @@
+darcs-buildpackage (0.5.8) unstable; urgency=low
+
+  * Update for GHC 6.4.2.  Closes: #376509.
+
+ -- John Goerzen <jgoerzen@complete.org>  Mon,  3 Jul 2006 06:35:25 -0500
+
 darcs-buildpackage (0.5.7) unstable; urgency=low
 
   * Fixed DBP_BUILDER support to work even when no environment variable is

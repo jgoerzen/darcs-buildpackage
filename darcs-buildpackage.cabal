@@ -7,31 +7,31 @@ Copyright: Copyright (c) 2003 - 2005 John Goerzen
 Build-Depends: haskell-src, network, unix, parsec, MissingH>=0.11.4
 
 Executable: darcs-buildpackage
-Extensions: ExistentialQuantification, AllowOverlappingInstances,
-    AllowUndecidableInstances
+Extensions: ExistentialQuantification, OverlappingInstances,
+    UndecidableInstances
 GHC-Options: -O2
 Main-Is: darcs-buildpackage.hs
 
 Executable: dbp-importorig
-Extensions: ExistentialQuantification, AllowOverlappingInstances,
-    AllowUndecidableInstances
+Extensions: ExistentialQuantification, OverlappingInstances,
+    UndecidableInstances
 GHC-Options: -O2
 Main-Is: dbp-importorig.hs
 
 Executable: dbp-importdsc
-Extensions: ExistentialQuantification, AllowOverlappingInstances,
-    AllowUndecidableInstances
+Extensions: ExistentialQuantification, OverlappingInstances,
+    UndecidableInstances
 GHC-Options: -O2
 Main-Is: dbp-importdsc.hs
 
 Executable: dbp-markdeb
-Extensions: ExistentialQuantification, AllowOverlappingInstances,
-    AllowUndecidableInstances
+Extensions: ExistentialQuantification, OverlappingInstances,
+    UndecidableInstances
 GHC-Options: -O2
 Main-Is: dbp-markdeb.hs
 
 Executable: dbp-get
-Extensions: ExistentialQuantification, AllowOverlappingInstances,
-    AllowUndecidableInstances
+Extensions: ExistentialQuantification, OverlappingInstances,
+    UndecidableInstances
 GHC-Options: -O2
 Main-Is: dbp-get.hs
