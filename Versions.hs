@@ -14,7 +14,13 @@ splitVer version =
     case elemIndices '-' version of
         [] -> (version, Nothing)      -- No dash: no Debian version
         x -> case splitAt (last x) version of
-                 (u, d) -> (u, Just (drop 1 d))
+                 (u, d) -> (removeEpoch u, Just (drop 1 d))
+
+removeEpoch upsVersion =
+    case elemIndices ':' upsVersion of
+      [] -> upsVersion
+      x  -> case splitAt (last x) upsVersion of
+              (e, v) -> (drop 1 v)
 
 getUpstreamVer = fst . splitVer
 getDebianVer = snd . splitVer
@@ -24,7 +30,8 @@ extractLine hdr =
        let rv = case find (isPrefixOf (hdr ++ ": ")) (lines l) of
                   Just x -> strip . drop ((length hdr) + 2) $ x
                   Nothing -> error $ 
-                             vsprintf "Couldn't obtain %s from %s" hdr (show l)
+                             vsprintf "Couldn't obtain %s from %s" hdr (show 
+l)
        seq (seqList l) $ forceSuccess ph
        return rv
 
