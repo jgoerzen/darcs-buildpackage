@@ -6,7 +6,7 @@ Please see the COPYRIGHT file
 module Versions where
 import Data.List
 import MissingH.Cmd
-import MissingH.Printf
+import Text.Printf
 import MissingH.Str
 import MissingH.List
 
@@ -30,7 +30,7 @@ extractLine hdr =
        let rv = case find (isPrefixOf (hdr ++ ": ")) (lines l) of
                   Just x -> strip . drop ((length hdr) + 2) $ x
                   Nothing -> error $ 
-                             vsprintf "Couldn't obtain %s from %s" hdr (show 
+                             printf "Couldn't obtain %s from %s" hdr (show 
 l)
        seq (seqList l) $ forceSuccess ph
        return rv
