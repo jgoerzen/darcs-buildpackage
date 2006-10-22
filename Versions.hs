@@ -30,8 +30,7 @@ extractLine hdr =
        let rv = case find (isPrefixOf (hdr ++ ": ")) (lines l) of
                   Just x -> strip . drop ((length hdr) + 2) $ x
                   Nothing -> error $ 
-                             printf "Couldn't obtain %s from %s" hdr (show 
-l)
+                             (printf "Couldn't obtain %s from %s" hdr (show l))
        seq (seqList l) $ forceSuccess ph
        return rv
 

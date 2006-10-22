@@ -6,7 +6,7 @@ Please see the COPYRIGHT file
 module Import where
 import Config
 import System.Directory
-import MissingH.Printf
+import Text.Printf
 import MissingH.Maybe
 import MissingH.Path
 import MissingH.Cmd
