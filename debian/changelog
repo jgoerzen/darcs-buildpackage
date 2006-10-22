@@ -1,6 +1,6 @@
 darcs-buildpackage (0.5.10) unstable; urgency=low
 
-  * Update MissingH build-dep to 0.16.2.
+  * Update MissingH build-dep to 0.16.2.  Closes: #394583.
 
  -- John Goerzen <jgoerzen@complete.org>  Sat, 21 Oct 2006 20:22:30 -0500
 
