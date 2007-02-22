@@ -1,3 +1,9 @@
+darcs-buildpackage (0.5.11) unstable; urgency=low
+
+  * Update to MissingH 0.18.0.
+
+ -- John Goerzen <jgoerzen@complete.org>  Thu, 22 Feb 2007 05:19:42 -0600
+
 darcs-buildpackage (0.5.10) unstable; urgency=low
 
   * Update MissingH build-dep to 0.16.2.  Closes: #394583.
