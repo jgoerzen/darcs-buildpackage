@@ -4,7 +4,7 @@ Please see the COPYRIGHT file
 -}
 
 module Logging where
-import MissingH.Logging.Logger
+import System.Log.Logger
 import System.Environment
 
 initLogging = 

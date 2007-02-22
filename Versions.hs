@@ -5,10 +5,10 @@ Please see the COPYRIGHT file
 
 module Versions where
 import Data.List
-import MissingH.Cmd
+import System.Cmd.Utils
 import Text.Printf
-import MissingH.Str
-import MissingH.List
+import Data.String
+import Data.List.Utils
 
 splitVer version =
     case elemIndices '-' version of

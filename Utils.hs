@@ -5,9 +5,9 @@ Please see the COPYRIGHT file
 
 module Utils where
 import Darcs
-import MissingH.Cmd
-import MissingH.List
-import MissingH.Debian
+import System.Cmd.Utils
+import Data.List.Utils
+import System.Debian
 
 {- | Parse a tag into (type, package, version) -}
 parseTag :: String -> Maybe (String, String, String)

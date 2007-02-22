@@ -4,7 +4,7 @@ License: GPL
 Maintainer: John Goerzen <jgoerzen@complete.org>
 Stability: Alpha
 Copyright: Copyright (c) 2003 - 2005 John Goerzen
-Build-Depends: base, network, unix, parsec, MissingH>=0.11.4, regex-compat
+Build-Depends: base, network, unix, parsec, MissingH>=0.18.0, regex-compat, hslogger, ConfigFile
 
 Executable: darcs-buildpackage
 Extensions: ExistentialQuantification, OverlappingInstances,

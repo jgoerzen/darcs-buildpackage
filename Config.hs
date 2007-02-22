@@ -6,10 +6,10 @@ Please see the COPYRIGHT file
 module Config where
 import System.Posix.User
 import System.Directory
-import MissingH.ConfigParser
-import MissingH.Either
+import Data.ConfigFile
+import Data.Either.Utils
 import Control.Monad
-import MissingH.Str
+import Data.String
 import Text.Regex
 
 getHomeDir = do uid <- getEffectiveUserID

@@ -12,9 +12,9 @@ import Logging
 import Control.Exception
 import Utils
 import Versions
-import MissingH.Logging.Logger
-import MissingH.Cmd
-import MissingH.IO.HVFS.Utils
+import System.Log.Logger
+import System.Cmd.Utils
+import System.IO.HVFS.Utils
 import Darcs
 import System.Posix.Files
 import System.Cmd

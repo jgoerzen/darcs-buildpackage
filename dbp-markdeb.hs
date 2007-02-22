@@ -12,8 +12,8 @@ import Logging
 import Control.Exception
 import Utils
 import Versions
-import MissingH.Logging.Logger
-import MissingH.Cmd
+import System.Log.Logger
+import System.Cmd.Utils
 
 main = do initLogging
           ver <- getVerFromCL

@@ -9,9 +9,9 @@ import System.Directory
 import Import
 import Logging
 import Control.Exception
-import MissingH.Logging.Logger
+import System.Log.Logger
 import Control.Monad
-import MissingH.Cmd
+import System.Cmd.Utils 
 import Darcs
 import System.Cmd
 import System.Exit

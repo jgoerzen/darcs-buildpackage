@@ -8,8 +8,8 @@ module Darcs (bracketCWD, getTags, isLocalPath)
 
 import System.Directory
 import Control.Exception
-import MissingH.Cmd
-import MissingH.Path(bracketCWD)
+import Data.Cmd.Utils
+import System.Path(bracketCWD)
 import Text.Regex
 
 getTagsRe = mkRegex "^  tagged (.+)$"
