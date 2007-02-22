@@ -1,9 +1,9 @@
 Name: darcs-buildpackage
-Version: 0.5.3
+Version: 0.5.10
 License: GPL
 Maintainer: John Goerzen <jgoerzen@complete.org>
 Stability: Alpha
-Copyright: Copyright (c) 2003 - 2005 John Goerzen
+Copyright: Copyright (c) 2003 - 2007 John Goerzen
 Build-Depends: base, network, unix, parsec, MissingH>=0.18.0, regex-compat, hslogger, ConfigFile
 
 Executable: darcs-buildpackage
