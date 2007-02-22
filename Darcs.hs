@@ -8,7 +8,7 @@ module Darcs (bracketCWD, getTags, isLocalPath)
 
 import System.Directory
 import Control.Exception
-import Data.Cmd.Utils
+import System.Cmd.Utils
 import System.Path(bracketCWD)
 import Text.Regex
 

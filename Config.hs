@@ -47,4 +47,4 @@ getMirrors typ package =
        let cp2 = forceEither $ set cp "DEFAULT" "package" package
        return $ case get cp2 "DEFAULT" (typ ++ "mirrors") of
                      Left _ -> []
-                     Right x -> splitRe (mkRegex "[ \t\n]+") (strip x)
+                     Right x -> splitRegex (mkRegex "[ \t\n]+") (strip x)
