@@ -2,8 +2,13 @@ Name: darcs-buildpackage
 Version: 0.5.11
 License: GPL
 Maintainer: John Goerzen <jgoerzen@complete.org>
+Author: John Goerzen
 Stability: Alpha
 Copyright: Copyright (c) 2003 - 2007 John Goerzen
+license-file: COPYRIGHT
+extra-source-files: COPYING
+Category: System
+Synopsis: Tools to help manage Debian packages with Darcs
 Build-Depends: base, network, unix, parsec, MissingH>=0.18.0, regex-compat, hslogger, ConfigFile
 
 Executable: darcs-buildpackage
