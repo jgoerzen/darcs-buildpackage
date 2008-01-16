@@ -9,7 +9,7 @@ import System.Directory
 import Data.ConfigFile
 import Data.Either.Utils
 import Control.Monad
-import Data.String
+import Data.String.Utils
 import Text.Regex
 
 getHomeDir = do uid <- getEffectiveUserID

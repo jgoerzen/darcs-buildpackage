@@ -9,7 +9,7 @@ license-file: COPYRIGHT
 extra-source-files: COPYING
 Category: System
 Synopsis: Tools to help manage Debian packages with Darcs
-Build-Depends: base, network, unix, parsec, MissingH>=1.0.0, regex-compat, hslogger, ConfigFile
+Build-Depends: base, network, unix, parsec, MissingH>=1.0.0, regex-compat, hslogger, ConfigFile, process, directory
 
 Executable: darcs-buildpackage
 Extensions: ExistentialQuantification, OverlappingInstances,

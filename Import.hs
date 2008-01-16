@@ -13,7 +13,7 @@ import System.Cmd.Utils
 import Data.Either.Utils
 import System.Path.NameManip
 import System.Log.Logger
-import Data.String
+import Data.String.Utils
 import Control.Exception
 import Control.Monad
 import Darcs

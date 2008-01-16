@@ -7,7 +7,7 @@ module Versions where
 import Data.List
 import System.Cmd.Utils
 import Text.Printf
-import Data.String
+import Data.String.Utils
 import Data.List.Utils
 
 splitVer version =
